@@ -1,0 +1,131 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title"><a href="#/users/">Team</a> &rsaquo; Edit user</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-sm btn-primary">Save</button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+<div id="user-content">
+
+<div class="user-sidebar">
+<div class="user-sidebar-head">
+<gravatar email="{{user.email}}" size="124" avatar-default="mm" class="img-circle hidden-xs hidden-sm" alt="{{user.fullname}}" />
+<gravatar email="{{user.email}}" size="64" avatar-default="mm" class="img-circle hidden-md hidden-lg" alt="{{user.fullname}}" />
+<h3>{{user.fullname}}</h3>
+<p>Registered on {{user.registered | date : 'MMMM d, yyyy'}}</p>
+</div>
+<div class="user-sidebar-body clearfix">
+<h4 class="hidden-xs hidden-sm"><span>Profile</span></h4>
+<ul>
+<li ng-repeat="v in views track by $index"><button type="button" ng-class="(isActiveView(v.id))? 'active' : ''" ng-click="setActiveView(v.id)"><span class="glyphicon glyphicon-{{v.icon}}"></span><em class="hidden-xs hidden-sm">{{v.title}}</em></button></li>
+</ul>
+</div>
+</div>
+
+<div class="user-data" ng-show="isActiveView('profile')">
+
+<div class="field">
+<label for="fullname">Full name</label>
+<input type="text" id="fullname" class="textfield" size="50" ng-model="user.fullname" />
+<p class="text-muted">Use your real name so people can recognise you.</p>
+</div>
+
+<div class="field">
+<label for="location">Location</label>
+<input type="text" id="location" class="textfield" size="50" ng-model="user.location" />
+<p class="text-muted">Where in the world do you live?</p>
+</div>
+
+<div class="field">
+<label for="url">Website</label>
+<input type="text" id="url" class="textfield" size="50" ng-model="user.url" />
+<p class="text-muted">Have a website other than this one? Link it!</p>
+</div>
+
+<div class="field">
+<label for="description">Bio</label>
+<textarea id="description" cols="50" rows="4" ng-model="user.description"></textarea>
+<p class="text-muted">Write about you.</p>
+</div>
+
+</div>
+
+<div class="user-data" ng-show="isActiveView('account')">
+
+<div class="field">
+<label for="email">E-mail address</label>
+<input type="text" id="email" class="textfield" size="50" ng-model="user.email" />
+<p class="text-muted">Your e-mail address. It is used to login and will never be displayed.</p>
+</div>
+
+<hr />
+
+<p>If you want to change your password, type a new password twice.</p>
+
+<div class="field">
+<label for="password-1">New password</label>
+<input type="text" id="password-1" class="textfield" size="50" value="" />
+<p class="text-muted">At least 8 characters.</p>
+</div>
+
+<div class="field">
+<label for="password-2">Confirm password</label>
+<input type="password" id="password-2" class="textfield" size="50" value="" />
+<p class="text-muted">Type your new password again.</p>
+</div>
+
+<hr />
+
+<p>If you delete your account, all your data will be lost forever.</p>
+
+<div class="field text-center">
+<button type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash-2"></span> Delete your account</button>
+</div>
+
+</div>
+
+<div class="user-data" ng-show="isActiveView('stats')">
+
+
+
+</div>
+
+</div>
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->

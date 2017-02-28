@@ -1,0 +1,116 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Delete tag modal -->
+
+<div id="delete-tag-modal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<p>Do you really want to delete this tag?</p>
+</div>
+<div class="modal-footer modal-buttons">
+<button type="button" class="btn btn-success">Yes</button>
+<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End delete tag modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-success" ng-click="showSidebar($event)"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">New tag</span></button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+
+<div class="list">
+
+<div class="item" ng-repeat="t in tags track by $index">
+<div class="item-body">
+<h3>{{t.name}} <span class="badge hidden-xs hidden-sm">/{{t.slug}}</span></h3>
+</div>
+<div class="item-right">
+<p class="count">{{t.count}}</p>
+</div>
+<a href="#" ng-click="showSidebar($event)">Edit</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
+
+<!-- Sidebar -->
+
+<aside id="sidebar">
+<div class="title clearfix">
+<button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
+<h3>Tag settings</h3>
+</div>
+<div class="side-body">
+<div class="side-body-content">
+
+<div class="field">
+<label for="name">Name</label>
+<input type="text" id="name" class="textfield" size="50" value="" />
+</div>
+
+<div class="field">
+<label for="url">URL</label>
+<input type="text" id="url" class="textfield" size="50" value="" />
+<p class="text-muted">localhost:3000/tags/</p>
+</div>
+
+<div class="field">
+<label for="description">Description</label>
+<textarea id="description" class="noresize" cols="50" rows="4"></textarea>
+<p class="text-muted">Maximum <strong>200</strong> characters.</p>
+</div>
+
+<div class="field clearfix">
+<button type="button" class="btn btn-sm btn-link pull-left" data-toggle="modal" data-target="#delete-tag-modal"><span class="text-danger"><span class="glyphicon glyphicon-trash-2"></span> Delete</span></button>
+<button type="button" class="btn btn-sm btn-primary pull-right">Save</button>
+</div>
+
+</div>
+</div>
+</aside>
+
+<!-- End sidebar -->

@@ -1,0 +1,122 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">Edit theme</h2>
+<div id="title-bar-controls">
+<button type="button" class="toggle-sidebar btn btn-sm btn-link"><span class="glyphicon glyphicon-series"></span><span class="sr-only">Theme files</span></button>
+<div class="btn-group">
+<button type="button" class="btn btn-sm btn-primary">Save</button>
+<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right">
+<li><a href="#">Save</a></li>
+<li><a href="#">Activate</a></li>
+<li class="separate"><a href="#" data-toggle="modal" data-target="#delete-theme-modal">Delete theme</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+
+<!-- Delete theme modal -->
+
+<div id="delete-theme-modal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<p>Do you really want to delete this theme?</p>
+</div>
+<div class="modal-footer modal-buttons">
+<button type="button" class="btn btn-success">Yes</button>
+<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End delete theme modal -->
+
+<div class="editor-panel-head clearfix">
+<h3>File: 404.hbs</h3>
+</div>
+<div class="editor-panel-body">
+<div class="editor-panel-content theme-editor">
+<textarea class="code" cols="100" rows="50"></textarea>
+</div>
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
+
+<!-- Sidebar -->
+
+<aside id="sidebar">
+<div class="title clearfix">
+<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>Theme files</h3>
+</div>
+<div class="side-body">
+<div class="side-body-content">
+
+<h4>Templates</h4>
+<ul>
+<li><a href="#" class="active">404.hbs</a></li>
+<li><a href="#">comments.hbs</a></li>
+<li><a href="#">default.hbs</a></li>
+<li><a href="#">index.hbs</a></li>
+<li><a href="#">navigation.hbs</a></li>
+<li><a href="#">page.hbs</a></li>
+<li><a href="#">post.hbs</a></li>
+<li><a href="#">search.hbs</a></li>
+<li><a href="#">tag.hbs</a></li>
+</ul>
+
+<h4>Scripts</h4>
+<ul>
+<li><a href="#">functions.js</a></li>
+</ul>
+
+<h4>Stylesheets</h4>
+<ul>
+<li><a href="#">reset.css</a></li>
+<li><a href="#">style.css</a></li>
+</ul>
+
+</div>
+</div>
+</aside>
+
+<!-- End sidebar -->

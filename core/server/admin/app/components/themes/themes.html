@@ -1,0 +1,64 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Install theme</span></button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+
+<div class="list">
+
+<div class="item">
+<div class="item-left">
+<img src="http://gravatar.com/avatar/fc916baa1ff98b389e916d528cf69ed4.jpg?s=48&amp;d=mm" alt="Default" />
+</div>
+<div class="item-body">
+<h3>Default</h3>
+<p>by Alexandro Morato</p>
+</div>
+<div class="item-right">
+<p class="theme-active">Active</p>
+</div>
+<a href="theme-editor.html">Edit</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->

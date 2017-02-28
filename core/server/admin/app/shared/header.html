@@ -1,0 +1,86 @@
+<!-- Header -->
+
+<header id="header" ng-init="initHeader()">
+
+<!-- Header bar -->
+
+<div class="header-bar">
+<h1 class="hidden-xs hidden-sm"><span class="glyphicon glyphicon-leaf-1"></span><span class="sr-only">Leaf</span></h1>
+<button type="button" class="hidden-md hidden-lg header-bar-close" ng-click="hideHeader()"><span class="glyphicon glyphicon-arrow-left-1"></span><span class="sr-only">Close</span></button>
+<ul>
+<li class="even first"><a href="#/user/1/"><gravatar email="ale@ffhorizon.it" size="24" class="img-circle" avatar-default="mm" alt="Alexandro Morato" /><span class="sr-only">Your profile</span></a></li>
+<li class="odd"><button type="button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-help"></span><span class="sr-only">Help</span></button></li>
+<li class="even"><button type="button" data-toggle="modal" data-target="#system-info-modal"><span class="glyphicon glyphicon-laptop"></span><span class="sr-only">System</span></button></li>
+<li class="odd last"><button type="button"><span class="glyphicon glyphicon-power"></span><span class="sr-only">Logout</span></button></li>
+</ul>
+</div>
+
+<!-- End header bar -->
+
+<!-- Navigation -->
+
+<nav>
+
+<!-- Search -->
+
+<form method="get" class="search" novalidate>
+<div ng-class="(isSearchDisabled())? 'disabled' : ''">
+<input type="text" class="form-control" size="40" value="" placeholder="Search..." aria-label="Search" ng-disabled="isSearchDisabled()" />
+<button type="submit" ng-disabled="isSearchDisabled()"><span class="glyphicon glyphicon-search"></span></button>
+</div>
+</form>
+
+<!-- End search -->
+
+<!-- Navigation links -->
+
+<div class="nav-bar">
+<div class="nav-bar-content">
+
+<!-- Site -->
+
+<div class="site">
+<a href="http://igiardinidiringford.it"><span><img src="../../favicon.ico" alt="I giardini di Ringford" /></span><em><strong>I giardini di Ringford</strong> igiardinidiringford.it</em></a>
+</div>
+
+<!-- End site -->
+
+<div ng-repeat="g in adminMenu track by $index">
+<h2 ng-if="g.title">{{g.title}}</h2>
+<ul ng-if="g.items.length">
+<li ng-repeat="i in g.items track by $index"><a href="#{{i.url}}/" ng-class="(isActivePage(i.id))? 'active' : ''"><span class="glyphicon glyphicon-{{i.icon}}"></span>{{i.title}}</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<!-- End navigation links -->
+
+</nav>
+
+<!-- End navigation -->
+
+</header>
+
+<!-- End header -->
+
+<button type="button" id="toggle-nav" class="hidden-md hidden-lg" ng-click="showHeader()"><span class="glyphicon glyphicon-leaf-1"></span><span class="sr-only">Menu</span></button>
+
+<!-- System info modal -->
+
+<div id="system-info-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="system-info-modal-title">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="system-info-modal-title" class="modal-title">System</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End system info modal -->

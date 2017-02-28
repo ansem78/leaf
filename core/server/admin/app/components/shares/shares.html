@@ -1,0 +1,92 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+
+<div class="wrapper">
+
+<div class="padding">
+
+<div class="data-item" ng-repeat="i in items | orderBy : 'order' track by $index">
+
+<div class="data-item-drag">
+<span class="glyphicon glyphicon-more-vertical"></span>
+</div>
+
+<div class="data-item-input data-item-label">
+<input type="hidden" ng-model="i.id" />
+<input type="hidden" ng-model="i.slug" />
+<input type="hidden" ng-model="i.order" />
+<input type="text" class="textfield text" size="30" ng-model="i.label" placeholder="Name" ng-change="update(i)" />
+</div>
+
+<div class="data-item-input data-item-url">
+<input type="text" class="textfield url" size="50" ng-model="i.url" placeholder="URL" ng-change="update(i)" />
+</div>
+
+<div class="data-item-controls">
+<button type="button" class="btn btn-sm btn-link" ng-click="remove(i)"><span class="glyphicon glyphicon-trash-2"></span><span class="sr-only">Delete</span></button>
+</div>
+
+</div>
+
+<div class="data-item">
+
+<div class="data-item-drag"></div>
+
+<div class="data-item-input data-item-label">
+<input type="text" id="add-text" class="textfield text" size="30" ng-model="item.label" placeholder="Name" />
+</div>
+
+<div class="data-item-input data-item-url">
+<input type="text" id="add-url" class="textfield url" size="50" ng-model="item.url" placeholder="URL" />
+</div>
+
+<div class="data-item-controls">
+<button type="button" class="btn btn-sm btn-success" ng-click="add()"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Add</span></button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->

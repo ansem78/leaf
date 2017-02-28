@@ -1,0 +1,128 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Invite modal -->
+
+<div id="invite-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="invite-modal-title">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="invite-modal-title" class="modal-title">Invite a new user</h3>
+</div>
+<div class="modal-body">
+<div class="field">
+<label for="email">E-mail address</label>
+<input type="email" id="email" class="textfield" size="50" value="" placeholder="E-mail address" />
+</div>
+<div class="field">
+<label for="role">Role</label>
+<select id="role" size="1">
+<option value="admin">Administrator</option>
+<option value="editor">Editor</option>
+<option value="author" selected="selected">Author</option>
+</select>
+</div>
+</div>
+<div class="modal-footer">
+<button type="submit" class="btn btn-block btn-success">Send invitation</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End invite modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#invite-modal"><span class="glyphicon glyphicon-paperplane hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Invite</span></button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div id="content">
+
+<div class="wrapper">
+
+<div class="padding">
+
+<div class="list">
+
+<div class="list-group">
+<h3 class="list-group-label">Invited users</h3>
+
+<div class="item" ng-repeat="u in invited track by $index">
+<div class="item-left">
+<gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.email}}" />
+</div>
+<div class="item-body">
+<h3>{{u.email}}</h3>
+<p>{{u.sent | date : 'MMMM d, yyyy'}}</p>
+</div>
+<div class="item-right">
+<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-trash-2 hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Revoke</span></button>
+<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-paperplane hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Resend</span></button>
+</div>
+</div>
+
+</div>
+
+<div class="list-group">
+<h3 class="list-group-label">Active users</h3>
+
+<div class="item" ng-repeat="u in users track by $index">
+<div class="item-left">
+<gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.fullname}}" />
+</div>
+<div class="item-body">
+<h3>{{u.fullname}}</h3>
+<p>{{u.registered | date : 'MMMM d, yyyy'}}</p>
+</div>
+<div class="item-right">
+<p class="role role-{{u.role.slug}}">{{u.role.name}}</p>
+</div>
+<a href="#/user/{{u.id}}/">Edit</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
