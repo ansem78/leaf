@@ -1,4 +1,4 @@
-const db = require('./index');
+const db = require('./bookshelf');
 
 // Users.
 db.knex.schema.createTableIfNotExists('users',function(table) {
