@@ -2,11 +2,11 @@
 	"url": "http://localhost:3000",
 	"database": {
 		"client": "sqlite3",
-    "debug": false,
+		"debug": false,
 		"connection": {
 			"filename": "content/data/leaf.db"
 		},
-    "useNullAsDefault": true
+		"useNullAsDefault": true
 	},
 	"server": {
 		"host": "127.0.0.1",
@@ -14,6 +14,6 @@
 	},
 	"paths": {
 		"contentPath": "content",
-    "corePath": "core"
+		"corePath": "core"
 	}
 }
