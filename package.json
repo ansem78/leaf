@@ -12,7 +12,8 @@
   "repository": {},
   "main": "./core/index",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "migrate":" node_modules/.bin/knex migrate:latest "
   },
   "dependencies": {
     "bcryptjs": "2.4.0",
