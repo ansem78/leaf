@@ -1,7 +1,8 @@
 'use strict';
-exports.up = function(knex) {
-  return knex.schema
-    .createTableIfNotExists('posts', function(table) {
+
+exports.up = function(knex,Promise) {
+  return Promise.all([
+    knex.schema.createTableIfNotExists('posts',function(table) {
         table.uuid('_id').notNullable().primary();
         table.string('title').notNullable().defaultTo('');
         table.string('slug').notNullable().defaultTo('').unique();
@@ -14,9 +15,12 @@ exports.up = function(knex) {
         table.string('comments_status').notNullable().defaultTo('open');
         table.integer('comments_count').notNullable().defaultTo(0);
         table.timestamps();
-    });
+    })
+   ]);
 };
-exports.down = function(knex) {
-  return knex.schema
-    .dropTable('posts');
+
+exports.down = function(knex,Promise) {
+  return Promise.all([
+    knex.schema.dropTable('posts')
+  ]);
 };
