@@ -4,6 +4,9 @@ const hbs = require('express-hbs');
 const favicon = require('serve-favicon');
 const netjet = require('netjet');
 const chalk = require('chalk');
+const db = require('./core/server/db');
+
+db.knex.migrate.latest();
 
 const app = express();
 
