@@ -1,4 +1,5 @@
 const config = require('./core/server/config');
+const bodyParser = require('body-parser');
 const express = require('express');
 const hbs = require('express-hbs');
 const favicon = require('serve-favicon');
@@ -8,6 +9,8 @@ const chalk = require('chalk');
 const app = express();
 
 app.use(netjet());
+
+app.use(bodyParser.json());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 
