@@ -50,6 +50,24 @@
 
 <!-- End invite modal -->
 
+<!-- Delete user modal -->
+
+<div id="delete-user-modal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<p>Do you really want to revoke the invitation fo this user?</p>
+</div>
+<div class="modal-footer modal-buttons">
+<button type="button" class="btn btn-success">Yes</button>
+<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End delete user modal -->
+
 <!-- Main -->
 
 <main>
@@ -87,7 +105,7 @@
 <p>{{u.sent | date : 'MMMM d, yyyy'}}</p>
 </div>
 <div class="item-right">
-<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-trash-2 hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Revoke</span></button>
+<button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#delete-user-modal"><span class="glyphicon glyphicon-trash-2 hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Revoke</span></button>
 <button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-paperplane hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Resend</span></button>
 </div>
 </div>
