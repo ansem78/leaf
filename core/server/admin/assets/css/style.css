@@ -7,12 +7,6 @@ src: url('../fonts/opensans.eot');
 src: url('../fonts/opensans.eot?#iefix') format('embedded-opentype'),url('../fonts/opensans.woff') format('woff'),url('../fonts/opensans.ttf') format('truetype'),url('../fonts/opensans.svg#webfont') format('svg');
 }
 
-@font-face {
-font-family: 'Glyphicons Halflings';
-src: url('../fonts/glyphicons.eot');
-src: url('../fonts/glyphicons.eot?#iefix') format('embedded-opentype'),url('../fonts/glyphicons.woff') format('woff'),url('../fonts/glyphicons.ttf') format('truetype'),url('../fonts/glyphicons.svg#webfont') format('svg');
-}
-
 /* General */
 
 html {
@@ -103,13 +97,6 @@ padding: 5px;
 border: 1px solid #ccc;
 border-radius: 3px;
 margin: 0;
-}
-
-select {
-padding-right: 20px;
-overflow: hidden;
--moz-appearance: none;
--webkit-appearance: none;
 }
 
 input.textfield:focus,input.textfield:active,textarea:focus,textarea:active,select:focus,select:active {
@@ -1001,10 +988,6 @@ resize: none;
 margin: 15px 0;
 }
 
-.field .caret {
-margin-left: -20px;
-}
-
 .field p {
 font-size: .9em;
 margin: 0;
@@ -1275,10 +1258,6 @@ padding: 10px;
 
 .col-field label {
 font-weight: normal;
-}
-
-.col-field .caret {
-margin-left: -20px;
 }
 
 .col-field p.text-muted {
