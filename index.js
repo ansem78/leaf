@@ -34,6 +34,9 @@ app.use('/',site);
 const admin = require(__dirname + '/core/server/routes/admin');
 app.use('/admin',admin);
 
+const bookshelf = require('./core/server/db/index');
+var Users = require('./core/server/models/users')
+new Users().fetchAll().then((users)=>{console.log(users,'users')})
 const port = process.env.PORT || config.get('server:port');
 
 const server = app.listen(port,config.get('server:host'),function() {

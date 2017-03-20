@@ -4,7 +4,7 @@
 		"client": "sqlite3",
 		"debug": false,
 		"connection": {
-			"filename": "content/data/leaf.db"
+			"filename": "./leaf.sqlite3"
 		},
 		"useNullAsDefault": true
 	},

@@ -30,6 +30,7 @@
     "express": "4.14.0",
     "express-hbs": "1.0.3",
     "fs-extra": "2.0.0",
+    "joi": "^10.2.2",
     "jsonpath": "0.2.9",
     "knex": "0.12.6",
     "knex-migrator": "0.2.0",
