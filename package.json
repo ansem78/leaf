@@ -13,7 +13,8 @@
   "main": "./core/index",
   "scripts": {
     "start": "node index",
-    "migrate": "node_modules/.bin/knex migrate:latest"
+    "migrate": "node_modules/.bin/knex migrate:latest",
+    "develop": "nodemon index.js"
   },
   "dependencies": {
     "bcryptjs": "2.4.0",
