@@ -17,6 +17,7 @@
     "develop": "nodemon index.js"
   },
   "dependencies": {
+    "async": "^2.2.0",
     "bcryptjs": "2.4.0",
     "bluebird": "3.4.7",
     "body-parser": "1.16.0",

@@ -35,15 +35,17 @@ const admin = require(__dirname + '/core/server/routes/admin');
 app.use('/admin',admin);
 
 const bookshelf = require('./core/server/db');
-var Users = require('./core/server/models/users')
+var Users = require('./core/server/models/users');
+const launchServer = function(){
+    const port = process.env.PORT || config.get('server:port');
+
+    const server = app.listen(port,config.get('server:host'),function() {
+      console.log(chalk.green('App listening at %s on port %d.'),server.address().address,server.address().port);
+    });
+}
 new Users().query({where:{role:'owner'}}).fetchAll().then((users)=>{//console.log(JSON.stringify(users));
   //console.log(users.toJSON());
   if (users.toJSON().length == 0)
     console.log("occorre creare l'utente owner")
-    require('./core/server/utilities').createOwner(bookshelf)
+    require('./core/server/utilities').createOwner(bookshelf,launchServer)
 })
-const port = process.env.PORT || config.get('server:port');
-
-const server = app.listen(port,config.get('server:host'),function() {
-  console.log(chalk.green('App listening at %s on port %d.'),server.address().address,server.address().port);
-});
