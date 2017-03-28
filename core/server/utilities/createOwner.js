@@ -1,5 +1,5 @@
 module.exports = function (bookshelf,cb){
-    const async = require('async')
+    const async = require('async');
     const createUser = function(credentials) {
         const crypto = require("crypto-js"),salt = crypto.lib.WordArray.random(128/8)
         var key512Bits1000Iterations = crypto.PBKDF2(credentials.password, salt, { keySize: 512/32, iterations: 1000 });
@@ -13,15 +13,15 @@ module.exports = function (bookshelf,cb){
         owner.role = 'owner';
         owner._id = credentials._id;
         owner.created_at = new Date();
-        console.log('owner',owner)
-        new Users(owner).save().then((data)=>{console.log('utente owner creato con successo',data)}).catch((err)=>{console.log('sono stati riscontrati degli errori',err)})
+        console.log('owner',owner);
+        new Users(owner).save().then((data)=>{console.log('utente owner creato con successo')}).catch((err)=>{console.log('sono stati riscontrati degli errori',err)})
         console.log('crypto ok')
     }
     process.stdin.resume();
     const  getEmail = function(callback){
             require('./readKeyboard')("inserisci la mail dell'utente owner",(text)=>{
             var data = {'email':text.replace('\n','')}
-            callback(null,data)})
+            callback(null,data)});
 
     }
     const getPassword = function(data,callback){
@@ -29,7 +29,7 @@ module.exports = function (bookshelf,cb){
         process.stdin.setEncoding('utf8');
         require('./readKeyboard')("inserisci la password per l'utente owner", (text)=>{ //il listener è attivato solo una volta
         data.password = text.replace('\n','')
-        callback(null,data)
+        callback(null,data);
     })
 }
     const getUserName = function(data,callback){
@@ -47,8 +47,8 @@ module.exports = function (bookshelf,cb){
       ]
       async.waterfall(functionsList,(error,data)=>{
             console.log('waterfall ok',data)
-            createUser(data)
-            cb()
+            createUser(data);
+            cb();
 
       })
 

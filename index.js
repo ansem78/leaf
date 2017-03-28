@@ -35,7 +35,7 @@ const admin = require(__dirname + '/core/server/routes/admin');
 app.use('/admin',admin);
 
 const bookshelf = require('./core/server/db');
-var Users = require('./core/server/models/users');
+const Users = require('./core/server/models/users');
 const launchServer = function(){
     const port = process.env.PORT || config.get('server:port');
 
@@ -45,7 +45,9 @@ const launchServer = function(){
 }
 new Users().query({where:{role:'owner'}}).fetchAll().then((users)=>{//console.log(JSON.stringify(users));
   //console.log(users.toJSON());
-  if (users.toJSON().length == 0)
-    console.log("occorre creare l'utente owner")
-    require('./core/server/utilities').createOwner(bookshelf,launchServer)
+  if (users.toJSON().length == 0){
+        console.log("occorre creare l'utente owner")
+        require('./core/server/utilities').createOwner(bookshelf,launchServer)
+    }
+  else launchServer();
 })
