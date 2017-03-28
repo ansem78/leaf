@@ -1,3 +1,4 @@
 module.exports = {
-    createOwner:require('./createOwner')
+    createOwner:require('./createOwner'),
+    readKeyboard: require('./readKeyboard'),
 }
