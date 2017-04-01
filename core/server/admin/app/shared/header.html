@@ -48,7 +48,7 @@
 <div ng-repeat="g in adminMenu track by $index">
 <h2 ng-if="g.title">{{g.title}}</h2>
 <ul ng-if="g.items.length">
-<li ng-repeat="i in g.items track by $index"><a href="#{{i.url}}/" ng-class="(isActivePage(i.id))? 'active' : ''"><span class="glyphicon glyphicon-{{i.icon}}"></span>{{i.title}}</a></li>
+<li ng-repeat="i in g.items track by $index"><a href="{{i.url}}/" ng-class="(isActivePage(i.id))? 'active' : ''"><span class="glyphicon glyphicon-{{i.icon}}"></span>{{i.title}}</a></li>
 </ul>
 </div>
 
