@@ -27,7 +27,7 @@
 <div id="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<a href="#/editor/" class="btn btn-success"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">New post</span></a>
+<a href="editor/" class="btn btn-success"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">New post</span></a>
 </div>
 </div>
 
@@ -35,7 +35,7 @@
 
 <!-- Content -->
 
-<div id="content">
+<div class="content">
 
 <div class="list">
 
@@ -44,7 +44,7 @@
 <h3>{{p.title}}</h3>
 <p><gravatar email="{{p.author.email}}" size="24" alt="{{p.author.fullname}}" class="img-circle" avatar-default="mm" /> <span ng-if="p.status!=='draft'">{{p.date | date : 'MMMM d, yyyy'}}</span><span class="text-danger" ng-if="p.status==='draft'">Draft</span></p>
 </div>
-<a href="#/editor/{{p.id}}/">Edit</a>
+<a href="editor/{{p.id}}/">Edit</a>
 </div>
 
 </div>
