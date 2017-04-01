@@ -85,9 +85,7 @@
 
 <!-- Content -->
 
-<div id="content">
-
-<div class="wrapper">
+<div class="content">
 
 <div class="padding">
 
@@ -96,7 +94,7 @@
 <div class="list-group">
 <h3 class="list-group-label">Invited users</h3>
 
-<div class="item" ng-repeat="u in invited track by $index">
+<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in invited track by $index">
 <div class="item-left">
 <gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.email}}" />
 </div>
@@ -115,7 +113,7 @@
 <div class="list-group">
 <h3 class="list-group-label">Active users</h3>
 
-<div class="item" ng-repeat="u in users track by $index">
+<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in users track by $index">
 <div class="item-left">
 <gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.fullname}}" />
 </div>
@@ -126,9 +124,7 @@
 <div class="item-right">
 <p class="role role-{{u.role.slug}}">{{u.role.name}}</p>
 </div>
-<a href="#/user/{{u.id}}/">Edit</a>
-</div>
-
+<a href="user/{{u.id}}/">Edit</a>
 </div>
 
 </div>
