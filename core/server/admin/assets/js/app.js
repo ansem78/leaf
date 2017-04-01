@@ -17,7 +17,26 @@ define(['require'],function(require) {
     var modulesUrl = 'app/components/';
 
     $stateProvider
+    
+    // Setup.
+    .state('setup',{
+      url : '/setup',
+      templateUrl : modulesUrl + 'setup/setup.html',
+      title : 'Setup',
+      controller : 'setupController',
+      resolve : {
+        deps : ['$q',function($q) {
+          var q = $q.defer();
+          require(['../../' + modulesUrl + 'setup/setup'],function() {
+            q.resolve();
+          });
+          return q.promise;
+        }]
+      },
+      cache : false
+    })
 
+    // Login.
     .state('login',{
       url : '/login',
       templateUrl : modulesUrl + 'login/login.html',
@@ -34,7 +53,44 @@ define(['require'],function(require) {
       },
       cache : false
     })
+    
+    // Sign up.
+    .state('signup',{
+      url : '/signup/:token',
+      templateUrl : modulesUrl + 'login/signup.html',
+      title : 'Sign up',
+      controller : 'signupController',
+      resolve : {
+        deps : ['$q',function($q) {
+          var q = $q.defer();
+          require(['../../' + modulesUrl + 'login/signup'],function() {
+            q.resolve();
+          });
+          return q.promise;
+        }]
+      },
+      cache : false
+    })
 
+    // Lost password.
+    .state('lostpassword',{
+      url : '/lost-password',
+      templateUrl : modulesUrl + 'login/lost-password.html',
+      title : 'Lost password',
+      controller : 'lostpasswordController',
+      resolve : {
+        deps : ['$q',function($q) {
+          var q = $q.defer();
+          require(['../../' + modulesUrl + 'login/lost-password'],function() {
+            q.resolve();
+          });
+          return q.promise;
+        }]
+      },
+      cache : false
+    })
+
+    // Dashboard.
     .state('dashboard',{
       url : '/dashboard',
       templateUrl : modulesUrl + 'dashboard/dashboard.html',
@@ -53,6 +109,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Editor (new post/page).
     .state('new-post',{
       url : '/editor',
       templateUrl : modulesUrl + 'posts/editor.html',
@@ -71,6 +128,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Editor (edit post/page).
     .state('edit-post',{
       url : '/editor/:id',
       templateUrl : modulesUrl + 'posts/editor.html',
@@ -89,6 +147,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Team.
     .state('users',{
       url : '/users',
       templateUrl : modulesUrl + 'users/users.html',
@@ -107,6 +166,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // User profile.
     .state('user',{
       url : '/user/:user',
       templateUrl : modulesUrl + 'users/user.html',
@@ -125,6 +185,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Posts and pages.
     .state('posts',{
       url : '/posts',
       templateUrl : modulesUrl + 'posts/posts.html',
@@ -143,6 +204,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Comments.
     .state('comments',{
       url : '/comments',
       templateUrl : modulesUrl + 'comments/comments.html',
@@ -161,6 +223,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Media.
     .state('media',{
       url : '/media',
       templateUrl : modulesUrl + 'media/media.html',
@@ -179,6 +242,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Tags.
     .state('tags',{
       url : '/tags',
       templateUrl : modulesUrl + 'tags/tags.html',
@@ -197,6 +261,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Sharing.
     .state('shares',{
       url : '/shares',
       templateUrl : modulesUrl + 'shares/shares.html',
@@ -215,6 +280,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Navigation menu.
     .state('navigation',{
       url : '/navigation',
       templateUrl : modulesUrl + 'navigation/navigation.html',
@@ -233,6 +299,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Themes.
     .state('themes',{url : '/themes',
       templateUrl : modulesUrl + 'themes/themes.html',
       title : 'Themes',
@@ -250,6 +317,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // General settings.
     .state('settings-general',{
       url : '/settings/general',
       templateUrl : modulesUrl + 'settings/general.html',
@@ -268,6 +336,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Contents settings.
     .state('settings-contents',{
       url : '/settings/contents',
       templateUrl : modulesUrl + 'settings/contents.html',
@@ -286,6 +355,7 @@ define(['require'],function(require) {
       cache : false
     })
 
+    // Users settings.
     .state('settings-users',{
       url : '/settings/users',
       templateUrl : modulesUrl + 'settings/users.html',
