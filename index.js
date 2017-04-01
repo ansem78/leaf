@@ -28,11 +28,11 @@ app.set('views',config.get('paths:contentPath') + '/themes/default');
 const api = require(__dirname + '/core/server/routes/api');
 app.use('/api',api);
 
-const site = require(__dirname + '/core/server/routes/site');
-app.use('/',site);
-
 const admin = require(__dirname + '/core/server/routes/admin');
 app.use('/admin',admin);
+
+const site = require(__dirname + '/core/server/routes/site');
+app.use('/',site);
 
 const bookshelf = require('./core/server/db');
 const Users = require('./core/server/models/users');
