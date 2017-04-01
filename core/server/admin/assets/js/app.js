@@ -318,37 +318,37 @@ define(['require'],function(require) {
         id : 'general',
         title : '',
         items : [
-          {id : 'dashboard',title : 'Dashboard',url : '/dashboard',icon : 'pulse',roles : []},
-          {id : 'editor',title : 'Editor',url : '/editor',icon : 'feather',roles : []},
-          {id : 'users',title : 'Team',url : '/users',icon : 'users',roles : []}
+          {id : 'dashboard',title : 'Dashboard',url : 'dashboard',icon : 'pulse',roles : []},
+          {id : 'editor',title : 'Editor',url : 'editor',icon : 'feather',roles : []},
+          {id : 'users',title : 'Team',url : 'users',icon : 'users',roles : []}
         ]
       },
       {
         id : 'contents',
         title : 'Contents',
         items : [
-          {id : 'posts',title : 'Posts',url : '/posts',icon : 'copy',roles : []},
-          {id : 'comments',title : 'Comments',url : '/comments',icon : 'chatbubble',roles : []},
-          {id : 'media',title : 'Media',url : '/media',icon : 'image',roles : []}
+          {id : 'posts',title : 'Posts',url : 'posts',icon : 'copy',roles : []},
+          {id : 'comments',title : 'Comments',url : 'comments',icon : 'chatbubble',roles : []},
+          {id : 'media',title : 'Media',url : 'media',icon : 'image',roles : []}
         ]
       },
       {
         id : 'personalize',
         title : 'Personalize',
         items : [
-          {id : 'tags',title : 'Tags',url : '/tags',icon : 'tags',roles : []},
-          {id : 'navigation',title : 'Navigation',url : '/navigation',icon : 'compass',roles : []},
-          {id : 'shares',title : 'Sharing',url : '/shares',icon : 'marketing',roles : []},
-          {id : 'themes',title : 'Themes',url : '/themes',icon : 'brush',roles : []}
+          {id : 'tags',title : 'Tags',url : 'tags',icon : 'tags',roles : []},
+          {id : 'navigation',title : 'Navigation',url : 'navigation',icon : 'compass',roles : []},
+          {id : 'shares',title : 'Sharing',url : 'shares',icon : 'marketing',roles : []},
+          {id : 'themes',title : 'Themes',url : 'themes',icon : 'brush',roles : []}
         ]
       },
       {
         id : 'settings',
         title : 'Settings',
         items : [
-          {id : 'settings-general',title : 'General',url : '/settings/general',icon : 'gear',roles : []},
-          {id : 'settings-contents',title : 'Contents',url : '/settings/contents',icon : 'folder',roles : []},
-          {id : 'settings-users',title : 'Users',url : '/settings/users',icon : 'user',roles : []}
+          {id : 'settings-general',title : 'General',url : 'settings/general',icon : 'gear',roles : []},
+          {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder',roles : []},
+          {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []}
         ]
       }
     ];
