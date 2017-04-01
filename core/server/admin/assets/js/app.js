@@ -306,8 +306,7 @@ define(['require'],function(require) {
 
     $urlRouterProvider.otherwise('/dashboard');
 
-    $locationProvider.hashPrefix('');
-    //$locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('').html5Mode(true);
 
   }]);
 
