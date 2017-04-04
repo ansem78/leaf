@@ -1,0 +1,10 @@
+console.log('cache')
+const tap = require('tap')
+const cache = require('../core/server/utilities').cache
+cache.setCache('1','uno')
+tap.equal('uno',cache.retrieve('1'),'trovato in cache')
+//console.log(cache.remove(1),'rimosso item')
+console.log('rimosso',cache.remove('1'))
+tap.false(cache.retrieve(1),'oggetto rimosso')
+tap.notEqual('uno',cache.retrieve(1),'non trovato in cache')
+console.log('ok cache')
