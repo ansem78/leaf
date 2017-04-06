@@ -5,7 +5,7 @@ module.exports = function(email,password,cb){
          const salt = {}
          salt.words = user.toJSON()[0].salt.split(',')
          salt.sigBytes = 16
-         const hashed_password = hashed_password = crypto.PBKDF2(password, salt, { keySize: 512/32, iterations: 1000 })
+         const hashed_password = hashed_password = require('./cryptoWrapper').hashPassword(password,salt)//crypto.PBKDF2(password, salt, { keySize: 512/32, iterations: 1000 }) 
          const user_verified = user.toJSON()[0].password === hashed_password.words.join()
          const out = {logged:user_verified};
          if (user_verified){
