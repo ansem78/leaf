@@ -33,6 +33,7 @@
     "downsize": "0.0.8",
     "express": "4.14.0",
     "express-hbs": "1.0.3",
+    "express-redis-cache": "^0.5.1",
     "fs-extra": "2.0.0",
     "joi": "^10.2.2",
     "jsonpath": "0.2.9",
