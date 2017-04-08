@@ -1,6 +1,5 @@
 module.exports = function(email,password,cb){
-             console.log('ok//////////////////////////////////////////////////')
-    const Users = require('../../models/users');
+         const Users = require('../../models/users');
          new Users().query({where:{email:email}}).fetchAll().then((user) =>{
          const crypto = require("crypto-js")
          const salt = {}
@@ -13,8 +12,10 @@ module.exports = function(email,password,cb){
              const Token = randtoken = require('neo-rand-token')
              const token = Token.generate(128)
              out.token = token;
-             const cache = require('../').cache
-             cache.setCache(token,email)                                                                                       )
+             const loggedUser = user.toJSON()[0]
+             const NodeCache = require( "node-cache" );
+             const cache = require('../').cache;
+             cache.setCache(token,user.toJSON()[0])
              out.token = token
          }
          cb(out);
