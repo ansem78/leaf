@@ -11,3 +11,12 @@ tap.test('login',function(t){
     }
     require('../core/server/utilities/user').login('damicogiuseppe77@gmail.com','vilu7240',cb) //login ok
 })
+tap.test('login fallito',function(t){
+    const callback = function(results){
+        t.notOk(results.user_logged,'utente non loggato');
+        t.notOk(results.token,'nessun token generato');
+        t.equal('email  o password non validi',results.msg,'messaggio dal server');
+        t.end();
+    }
+    require('../core/server/utilities/user').login('damicogiusepe77@gmail.com','vilu7240',callback)//  email non registrata
+})
