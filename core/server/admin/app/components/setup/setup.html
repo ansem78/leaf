@@ -8,42 +8,40 @@
 
 <p class="text-muted">Let's get a few things set up so you can get started.</p>
 
-<form name="form" method="post" novalidate>
+<form name="form" method="post" novalidate ng-submit="setup()">
 
-<!--
 <div ng-show="form.$submitted && form.$invalid">
 
-<div class="alert alert-info" role="alert" ng-show="form.sitename.$error.required">
-<span class="icon glyphicon glyphicon-info-2"></span>
-<button type="button" aria-label="Close"><span class="glyphicon glyphicon-delete"></span></button>
+<div class="alert alert-danger" role="alert" ng-show="form.sitename.$error.required">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
 <p>The site name is required.</p>
 </div>
 
-<div class="alert alert-success" role="alert" ng-show="form.fullname.$error.required">
-<span class="icon glyphicon glyphicon-check"></span>
-<button type="button" aria-label="Close"><span class="glyphicon glyphicon-delete"></span></button>
+<div class="alert alert-danger" role="alert" ng-show="form.fullname.$error.required">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
 <p>Your full name is required.</p>
 </div>
 
-<div class="alert alert-warning" role="alert" ng-show="form.email.$error.required || form.email.$error.email">
-<span class="icon glyphicon glyphicon-alert"></span>
-<button type="button" aria-label="Close"><span class="glyphicon glyphicon-delete"></span></button>
-<p>The e-mail address is required and must be valid.</p>
+<div class="alert alert-danger" role="alert" ng-show="form.email.$error.required || form.email.$error.email">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
+<p>The e-mail address is invalid.</p>
 </div>
 
 <div class="alert alert-danger" role="alert" ng-show="form.password.$error.required || form.password.$error.minlength">
-<span class="icon glyphicon glyphicon-alert"></span>
-<button type="button" aria-label="Close"><span class="glyphicon glyphicon-delete"></span></button>
-<p>The password is required and must be at least 8 characters long.</p>
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
+<p>The password must be at least 8 characters long.</p>
 </div>
 
 </div>
--->
 
 <div class="form-field">
 <label for="sitename">Site name</label>
 <div class="input">
-<input type="text" id="sitename" name="sitename" class="textfield" size="40" maxlength="100" ng-model="site_name" required />
+<input type="text" id="sitename" name="sitename" class="textfield" size="40" maxlength="100" ng-model="user.site_name" required />
 </div>
 <p class="text-muted">What would you like to call your site?</p>
 </div>
@@ -51,7 +49,7 @@
 <div class="form-field">
 <label for="fullname">Full name</label>
 <div class="input">
-<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="fullname" required />
+<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="user.fullname" required />
 </div>
 <p class="text-muted">The name you will sign your posts with.</p>
 </div>
@@ -59,7 +57,7 @@
 <div class="form-field">
 <label for="email">E-mail address</label>
 <div class="input">
-<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="email" required />
+<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="user.email" required />
 </div>
 <p class="text-muted">Used for notifications.</p>
 </div>
@@ -67,13 +65,13 @@
 <div class="form-field">
 <label for="password">Password</label>
 <div class="input">
-<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="password" required />
+<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="user.password" required />
 </div>
 <p class="text-muted">Must be at least 8 characters.</p>
 </div>
 
 <div class="form-button">
-<button type="submit" class="btn btn-lg btn-block btn-success" ng-disabled="form.$invalid">OK, let's go</button>
+<button type="submit" class="btn btn-lg btn-block btn-success">OK, let's go</button>
 </div>
 
 </form>
