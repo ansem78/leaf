@@ -12,6 +12,7 @@ exports.up = function (knex, Promise) {
             table.string('location').notNullable().defaultTo('');
             table.text('description').notNullable().defaultTo('');
             table.string('role').notNullable().defaultTo('author');
+            table.string('salt').notNull().defaultTo('');
             table.timestamps();
         })
     ]);
