@@ -372,6 +372,25 @@ define(['require'],function(require) {
         }]
       },
       cache : false
+    })
+
+    // Labs.
+    .state('labs',{
+      url : '/labs',
+      templateUrl : modulesUrl + 'labs.html',
+      title : 'Labs',
+      data : {active : 'labs',nosearch : true},
+      controller : 'labsController',
+      resolve : {
+        deps : ['$q',function($q) {
+          var q = $q.defer();
+          require(['../../' + modulesUrl + 'labs/labs'],function() {
+            q.resolve();
+          });
+          return q.promise;
+        }]
+      },
+      cache : false
     });
 
     $urlRouterProvider.otherwise('/dashboard');
@@ -380,7 +399,7 @@ define(['require'],function(require) {
 
   }]);
 
-  app.run(['$rootScope','$state',function($rootScope,$state) {
+  app.run(['$rootScope','$location','$state',function($rootScope,$location,$state) {
 
     // Admin menu.
     $rootScope.adminMenu = [
@@ -418,10 +437,14 @@ define(['require'],function(require) {
         items : [
           {id : 'settings-general',title : 'General',url : 'settings/general',icon : 'gear',roles : []},
           {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder',roles : []},
-          {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []}
+          {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []},
+          {id : 'labs',title : 'Labs',url : 'labs',icon : 'tools',roles : []}
         ]
       }
     ];
+
+    // Absolute URL for the domain (protocol + host + port).
+    $rootScope.siteUrl = $location.protocol() + '://' + $location.host() + ':' + $location.port();
 
     // Map $state in the $rootScope.
     $rootScope.$state = $state;
@@ -474,6 +497,11 @@ define(['require'],function(require) {
     $rootScope.hideSidebar = function(event) {
       if (event) event.preventDefault();
       $('#sidebar').animate({'right' : '-311px'},300);
+    };
+
+    // Hide an alert.
+    $rootScope.hideAlert = function(event) {
+      $(event.currentTarget).parent().fadeOut();
     };
 
   }]);
