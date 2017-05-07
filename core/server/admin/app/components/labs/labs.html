@@ -1,0 +1,71 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Help modal -->
+
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help-modal-title">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3 id="help-modal-title" class="modal-title">Help</h3>
+</div>
+<div class="modal-body">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- End help modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div id="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="padding">
+
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-label">
+<p class="label">Backup you data</p>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-field">
+<p>You can easily backup your database and your important files.</p>
+<button type="button" class="btn btn-success">Create backup</button>
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-label">
+<label for="import">Import from backup</label>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-field">
+<p>You can use a previously generated backup file to restore your data.</p>
+<input type="file" id="import" class="textfield" size="40" ng-non-bindable value="" /> <button type="button" class="btn btn-success">Import data</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
