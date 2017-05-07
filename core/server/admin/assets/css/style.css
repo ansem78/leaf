@@ -187,19 +187,6 @@ margin: 15px 0;
 position: relative;
 }
 
-.alert span.icon {
-font-size: 16px;
-line-height: 40px;
-color: #fff;
-text-align: center;
-background: rgba(0,0,0,.3);
-width: 40px;
-height: 100%;
-position: absolute;
-top: 0;
-left: 0;
-}
-
 .alert button {
 font-size: 12px;
 line-height: 12px;
@@ -215,10 +202,28 @@ top: 8px;
 right: 8px;
 }
 
+.alert span.alert-icon {
+font-size: 16px;
+line-height: 40px;
+color: #fff;
+text-align: center;
+background: rgba(0,0,0,.3);
+width: 40px;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+}
+
 .alert p {
 color: #fff;
 text-align: left;
 margin: 0;
+}
+
+.alert p a {
+color: #fff;
+text-decoration: underline;
 }
 
 .alert-info {
