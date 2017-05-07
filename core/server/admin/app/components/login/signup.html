@@ -6,31 +6,53 @@
 
 <h1 class="sr-only">Leaf</h1>
 
-<form name="form" method="post" novalidate>
+<form name="form" method="post" novalidate ng-submit="signup()">
+
+<div ng-show="form.$submitted && form.$invalid">
+
+<div class="alert alert-danger" role="alert" ng-show="form.fullname.$error.required">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
+<p>The full name is required.</p>
+</div>
+
+<div class="alert alert-danger" role="alert" ng-show="form.email.$error.required || form.email.$error.email">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
+<p>The e-mail address is invalid.</p>
+</div>
+
+<div class="alert alert-danger" role="alert" ng-show="form.password.$error.required || form.password.$error.minlength">
+<button type="button" aria-label="Close" ng-click="hideAlert($event)"><span class="glyphicon glyphicon-delete"></span><span aria-hidden="true">&times;</span></button>
+<span class="alert-icon glyphicon glyphicon-alert"></span>
+<p>The password must be at least 8 characters long.</p>
+</div>
+
+</div>
 
 <div class="form-field">
 <label for="fullname" class="sr-only">Full name</label>
 <div class="input">
-<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="fullname" placeholder="Full name" required />
+<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="user.fullname" placeholder="Full name" required />
 </div>
 </div>
 
 <div class="form-field">
 <label for="email" class="sr-only">E-mail address</label>
 <div class="input">
-<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="email" placeholder="E-mail address" required />
+<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="user.email" placeholder="E-mail address" required />
 </div>
 </div>
 
 <div class="form-field">
 <label for="password" class="sr-only">Password</label>
 <div class="input">
-<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="password" placeholder="Password" required />
+<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="user.password" placeholder="Password" required />
 </div>
 </div>
 
 <div class="form-field">
-<button type="submit" class="btn btn-block btn-primary" ng-disabled="form.$invalid">Sign up</button>
+<button type="submit" class="btn btn-block btn-primary">Sign up</button>
 </div>
 
 </form>
