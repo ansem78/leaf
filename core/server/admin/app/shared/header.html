@@ -25,7 +25,7 @@
 
 <form method="get" class="search" novalidate>
 <div ng-class="(isSearchDisabled())? 'disabled' : ''">
-<input type="text" class="form-control" size="40" value="" placeholder="Search..." aria-label="Search" ng-disabled="isSearchDisabled()" />
+<input type="text" class="form-control" size="40" ng-model="search" placeholder="Search..." aria-label="Search" ng-disabled="isSearchDisabled()" />
 <button type="submit" ng-disabled="isSearchDisabled()"><span class="glyphicon glyphicon-search"></span></button>
 </div>
 </form>
