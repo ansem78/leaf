@@ -178,20 +178,23 @@ background: #82b541;
 
 /* Alerts */
 
+.close {
+opacity: .4;
+}
+
 .alert {
 min-height: 40px;
 padding: 10px 55px;
 border: none;
-border-radius: 0;
+border-radius: 1px;
 margin: 15px 0;
 position: relative;
 }
 
-.alert button {
-font-size: 12px;
-line-height: 12px;
-color: rgba(0,0,0,.5);
-background: rgba(255,255,255,.5);
+.alert button.close {
+font-size: 19px;
+line-height: 19px;
+background: #fff;
 width: 24px;
 height: 24px;
 padding: 0;
@@ -221,7 +224,7 @@ text-align: left;
 margin: 0;
 }
 
-.alert p a {
+.alert a {
 color: #fff;
 text-decoration: underline;
 }
@@ -269,8 +272,32 @@ display: table-cell;
 
 .form-wrapper .form-content .form-body {
 text-align: left;
+background: #222;
 width: 280px;
 margin: 0 auto;
+}
+
+.form-wrapper .form-content .form-body #alerts {
+width: 100%;
+padding: 0 15px;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+}
+
+#setup-form .form-content .form-body #alerts {
+padding: 0;
+position: static;
+}
+
+@media all and (max-width: 991px) {
+
+  .form-wrapper .form-content .form-body #alerts {
+  padding: 0;
+  position: static;
+  }
+
 }
 
 .form-wrapper .form-content .form-body h1 {
@@ -312,7 +339,7 @@ background: #444;
 width: 100%;
 height: 34px;
 padding: 5px 10px;
-border: 1px solid #444;
+border: none;
 }
 
 .form-wrapper .form-content .form-body .form-field .input input.textfield:focus {
@@ -325,7 +352,7 @@ font-size: .9em;
 margin: 5px 0;
 }
 
-.form-wrapper .form-content .form-body p a {
+.form-wrapper .form-content .form-body p a.form-link {
 color: #777;
 }
 
@@ -1367,6 +1394,10 @@ padding: 10px;
 
 .col-field label {
 font-weight: normal;
+}
+
+.col-field input.textfield,.col-field textarea,.col-field select,.col-field button.btn {
+display: inline-block;
 }
 
 .col-field p.text-muted {
