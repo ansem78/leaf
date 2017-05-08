@@ -300,7 +300,8 @@ define(['require'],function(require) {
     })
 
     // Themes.
-    .state('themes',{url : '/themes',
+    .state('themes',{
+      url : '/themes',
       templateUrl : modulesUrl + 'themes/themes.html',
       title : 'Themes',
       data : {active : 'themes'},
@@ -377,7 +378,7 @@ define(['require'],function(require) {
     // Labs.
     .state('labs',{
       url : '/labs',
-      templateUrl : modulesUrl + 'labs.html',
+      templateUrl : modulesUrl + 'labs/labs.html',
       title : 'Labs',
       data : {active : 'labs',nosearch : true},
       controller : 'labsController',
@@ -438,7 +439,7 @@ define(['require'],function(require) {
           {id : 'settings-general',title : 'General',url : 'settings/general',icon : 'gear',roles : []},
           {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder',roles : []},
           {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []},
-          {id : 'labs',title : 'Labs',url : 'labs',icon : 'tools',roles : []}
+          {id : 'labs',title : 'Labs',url : 'labs',icon : 'flask',roles : []}
         ]
       }
     ];
@@ -499,9 +500,21 @@ define(['require'],function(require) {
       $('#sidebar').animate({'right' : '-311px'},300);
     };
 
-    // Hide an alert.
-    $rootScope.hideAlert = function(event) {
-      $(event.currentTarget).parent().fadeOut();
+    // Show an alert.
+    $rootScope.alert = function(level,message) {
+      const levels = {
+        info : 'info',
+        success : 'check',
+        warning : 'alert',
+        danger : 'alert'
+      };
+      if (!levels[level]) level = 'info';
+      const html = '<div class="alert alert-dismissible alert-' + level + ' fade in" role="alert">' +
+      '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+      '<span class="alert-icon glyphicon glyphicon-' + levels[level] + '"></span>' +
+      message +
+      '</div>';
+      $('#alerts').html(html);
     };
 
   }]);
