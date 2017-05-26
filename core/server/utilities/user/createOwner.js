@@ -15,11 +15,11 @@ module.exports = function (cb){
         const callback = function(user,err){
             if(!err)    {
                 console.log('utente  owner creato con successo')
-                next()
+                next(,owner)
             }
             else {
                 console.log('sono stati riscontrati dei problemi',err)
-                next()
+                next(err,owner)
             }
         }
         require('./createUser')(owner,callback)

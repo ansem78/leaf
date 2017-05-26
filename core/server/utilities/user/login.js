@@ -1,11 +1,14 @@
+const crypto = require('./cryptoWrapper');
 module.exports = function (email, password, cb) {
     const out = {}
+    console.log('login requested for ',email)
     const Users = require('../../models/users');
     new Users().query({
         where: {
             email: email
         }
     }).fetchAll().then((user) => {
+        console.log('found user')
         if (user.length == 0) { //utente non registrat
             out.user_verified = false;
             out.registered_uer = false;
@@ -37,7 +40,7 @@ module.exports = function (email, password, cb) {
                 }
                 cb(out);
             }
-            require('./cryptoWrapper').hashPasswordAsync(password, salt, checkPassword)
+            crypto.hashPasswordAsync(password, salt, checkPassword)
         }
     })
 
