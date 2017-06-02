@@ -1,5 +1,33 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express'),
+//config = require('../../config'),
+dataProvider = require('../../models'),
+
+router = express.Router();
+
+//console.log(dataProvider.User);
+
+// ---- Check if it's installed. ----
+
+router.all('/check',function(req,res,next) {
+  /*dataProvider.User.check().then(function(user) {
+    (user)? res.json(user) : res.redirect(config.get('url') + '/admin/setup/');
+  });*/
+
+});
+
+// ---- Setup. ----
+
+router.post('/setup',function(req,res,next) {
+
+});
+
+// ---- Login. ----
+
+router.post('/login',function(req,res,next) {
+    var email = req.body.email || '';
+    var password = req.body.password || '';
+
+});
 
 // ---- Options. ----
 
@@ -17,19 +45,6 @@ router.post('/options', function (req, res, next) {
 router.put('/options/:name', function (req, res, next) {
 
 });
-//login
-router.post('/login', function (req, res, next) {
-    const email = req.query.email || req.body.email; // postman invia i dati nel campo query della richiesta, ma da angular mi aspetto che siano in body
-    const password = req.query.password || req.body.password;
-    const callback = (out) => {
-
-        res.json(out);
-    }
-    const login = require('../../utilities/user').login;
-
-
-    login(email, password, callback);
-})
 
 // Delete an option.
 router.delete('/options/:name', function (req, res, next) {
@@ -39,7 +54,7 @@ router.delete('/options/:name', function (req, res, next) {
 // ---- Users. ----
 
 // Get list of users.
-router.get('/users', function (req, res, next) {
+router.get('/users',function(req,res,next) {
 
 })
 
@@ -54,23 +69,23 @@ router.get('/users/ownerExists', (req, res, next) => {
     require('../../utilities/user').ownerExists(cb)
 })
 
-// Get a user by ID, slug or e-mail address.
-router.get('/users/:user', function (req, res, next) {
+// Get a user by ID.
+router.get('/users/:id',function(req,res,next) {
 
 });
 
 // Create a new user.
-router.post('/users', function (req, res, next) {
+router.post('/users',function(req,res,next) {
 
 });
 
 // Update a user.
-router.put('/users/:id', function (req, res, next) {
+router.put('/users/:id',function(req,res,next) {
 
 });
 
 // Delete a user.
-router.delete('/users/:id', function (req, res, next) {
+router.delete('/users/:id',function (req,res,next) {
 
 });
 
@@ -81,8 +96,8 @@ router.get('/posts', function (req, res, next) {
 
 });
 
-// Get a post by ID or slug.
-router.get('/posts/:post', function (req, res, next) {
+// Get a post by ID.
+router.get('/posts/:id', function (req, res, next) {
 
 });
 
