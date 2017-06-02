@@ -1,8 +1,21 @@
-const db = require('../db');
+var leafBookshelf = require('./base'),
 
-const Settings = db.Model.extend({
-  tableName : 'settings',
-  hasTimestamps : true
+Setting,
+Settings;
+
+Setting = leafBookshelf.Model.extend({
+
+  tableName : 'settings'
+
+
+
 });
 
-module.exports = Settings;
+Settings = leafBookshelf.Collection.extend({
+  model : Setting
+});
+
+module.exports = {
+  Setting : leafBookshelf.model('Setting',Setting),
+  Settings : leafBookshelf.model('Settings',Settings)
+};

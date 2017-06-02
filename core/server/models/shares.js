@@ -1,6 +1,6 @@
-const db = require('../db');
+const bookshelf = require('../db');
 
-const Shares = db.Model.extend({
+const Shares = bookshelf.Model.extend({
   tableName : 'shares',
   hasTimestamps : true
 });

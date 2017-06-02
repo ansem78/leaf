@@ -1,6 +1,6 @@
-const db = require('../db');
+const bookshelf = require('../db');
 
-const Navigation = db.Model.extend({
+const Navigation = bookshelf.Model.extend({
   tableName : 'navigation',
   hasTimestamps : true
 });

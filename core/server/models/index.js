@@ -1,15 +1,26 @@
-const Users = require('./users');
-const Posts = require('./posts');
-const Tags = require('./tags');
-const Navigation = require('./navigation');
-const Shares = require('./shares');
-const Settings = require('./settings');
+var _ = require('lodash'),
 
-module.exports = {
-  Users : Users,
-  Posts : Posts,
-  Tags : Tags,
-  Navigation : Navigation,
-  Shares : Shares,
-  Settings : Settings
-};
+//exports,
+models;
+
+// Expose all models.
+
+models = [
+  'post',
+  'settings',
+  'tag',
+  'user'
+];
+
+//exports = module.exports;
+
+//function init() {
+  module.exports.Base = require('./base');
+  models.forEach(function(name) {
+    _.extend(module.exports,require('./' + name));
+  });
+/*}
+
+// Expose init().
+
+exports.init = init;*/
