@@ -1,9 +1,3 @@
-'use strict';
+var config = require('./core/server/config');
 
-module.exports = {
-  client : 'sqlite3',
-  connection : {
-    filename : 'core/server/db/content/data/leaf.db'
-  },
-  useNullAsDefault : true
-};
+module.exports = config.get('database');
