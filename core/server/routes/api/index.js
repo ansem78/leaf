@@ -1,17 +1,16 @@
 var express = require('express'),
-//config = require('../../config'),
+config = require('../../config'),
 dataProvider = require('../../models'),
 
 router = express.Router();
 
-//console.log(dataProvider.User);
-
 // ---- Check if it's installed. ----
 
 router.all('/check',function(req,res,next) {
-  /*dataProvider.User.check().then(function(user) {
+  var User = dataProvider.User;
+  new User().check().then(function(user) {
     (user)? res.json(user) : res.redirect(config.get('url') + '/admin/setup/');
-  });*/
+  });
 
 });
 
@@ -56,18 +55,7 @@ router.delete('/options/:name', function (req, res, next) {
 // Get list of users.
 router.get('/users',function(req,res,next) {
 
-})
-
-//verifies  if owner exists
-router.get('/users/ownerExists', (req, res, next) => {
-    const cb = (exists) => {
-        const out = {
-            ownerExists: exists
-        }
-        res.json(out)
-    }
-    require('../../utilities/user').ownerExists(cb)
-})
+});
 
 // Get a user by ID.
 router.get('/users/:id',function(req,res,next) {
