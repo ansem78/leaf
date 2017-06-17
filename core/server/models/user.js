@@ -82,7 +82,7 @@ User = leafBookshelf.Model.extend({
       var userWithRole = users.find(function(user) {
         return user.get('role')==='owner';
       });
-      return (userWithRole)? userWithRole : null;
+      if (userWithRole) return userWithRole;
     });
   }
 
