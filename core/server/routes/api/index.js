@@ -9,7 +9,9 @@ router = express.Router();
 router.all('/check',function(req,res,next) {
   var User = dataProvider.User;
   new User().check().then(function(user) {
-    (user)? res.json(user) : res.redirect(config.get('url') + '/admin/setup/');
+    res.json(user);
+  }).catch(function(error) {
+    res.redirect(config.get('url') + '/admin/setup/');
   });
 
 });
