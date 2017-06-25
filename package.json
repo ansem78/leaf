@@ -14,8 +14,7 @@
   "scripts": {
     "start": "node index",
     "migrate": "node_modules/.bin/knex migrate:latest",
-    "develop": "nodemon index.js",
-    "test": "./node_modules/.bin/multi-tape  tests/*.js "
+    "develop": "nodemon index.js"
   },
   "dependencies": {
     "async": "2.2.0",
