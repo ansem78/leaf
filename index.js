@@ -30,7 +30,7 @@ app.use(i18n.init);
 
 app.use(favicon(__dirname + '/favicon.ico'));
 
-app.use('/admin', express.static(__dirname + '/' + config.get('paths:corePath') + '/server/admin'));
+app.use('/admin',express.static(__dirname + '/' + config.get('paths:corePath') + '/server/admin'));
 
 app.engine('hbs',hbs.express4({
     defaultLayout : config.get('paths:contentPath') + '/themes/default/default',
