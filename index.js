@@ -24,6 +24,7 @@ app = express();
 
 app.use(netjet());
 
+app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 app.use(i18n.init);
