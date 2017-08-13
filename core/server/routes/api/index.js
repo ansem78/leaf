@@ -13,7 +13,6 @@ router.all('/check',function(req,res,next) {
   }).catch(function(error) {
     res.redirect(config.get('url') + '/admin/setup/');
   });
-
 });
 
 // ---- Setup. ----
@@ -102,8 +101,68 @@ router.put('/posts/:id', function (req, res, next) {
 });
 
 // Delete a post.
-router.delete('/posts/:id', function (req, res, next) {
+router.delete('/posts/:id',function(req,res,next) {
 
+});
+
+// ---- Navigation. ----
+
+
+
+// Create a navigation link.
+router.post('/navigation',function(req,res,next) {
+  var Navigation = dataProvider.Navigation;
+  new Navigation().add(req.body).then(function(navigation) {
+    res.json(navigation);
+  }).catch(function(error) {
+    res.json({error : error});
+  });
+});
+
+
+
+// Delete a navigation link.
+router.delete('/navigation/:id',function(req,res,next) {
+  var Navigation = dataProvider.Navigation;
+  new Navigation().remove(req.params.id).then(function(navigation) {
+    res.json(navigation);
+  }).catch(function(error) {
+    res.json({error : error});
+  });
+});
+
+// ---- Shares. ----
+
+// Get all shares.
+router.get('/shares',function(req,res,next) {
+  var Shares = dataProvider.Shares;
+  new Shares().findOne().then(function(shares) {
+    res.json(shares);
+  }).catch(function(error) {
+    res.json([]);
+  });
+});
+
+// Create a share.
+router.post('/shares',function(req,res,next) {
+  var Share = dataProvider.Share;
+  new Share().add(req.body).then(function(share) {
+    res.json(share);
+  }).catch(function(error) {
+    res.json({message : error});
+  });
+});
+
+
+
+// Delete a share.
+router.delete('/shares/:id',function(req,res,next) {
+  var Share = dataProvider.Share;
+  new Share().remove(req.params.id).then(function(share) {
+    res.json(share);
+  }).catch(function(error) {
+    res.json({message : error});
+  });
 });
 
 // ---- Invalid routes. ----
