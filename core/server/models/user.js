@@ -1,6 +1,7 @@
 var _ = require('lodash'),
 Promise = require('bluebird'),
 validator = require('validator'),
+unidecode = require('unidecode'),
 bcrypt = require('bcryptjs'),
 leafBookshelf = require('./base'),
 

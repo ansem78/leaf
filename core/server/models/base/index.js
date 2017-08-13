@@ -27,7 +27,7 @@ leafBookshelf.Model = leafBookshelf.Model.extend({
   fixDatesOnFetching : function(attrs) {
     var table = schema.tables[this.tableName];
 
-    _.each(attrs,function each(value,key) {
+    _.each(attrs,function(value,key) {
       if (value!==null && table.hasOwnProperty(key) && table[key].type==='dateTime') attrs[key] = moment(value).toDate();
     });
 
@@ -38,7 +38,7 @@ leafBookshelf.Model = leafBookshelf.Model.extend({
   fixDatesOnSaving : function(attrs) {
     var table = schema.tables[this.tableName];
 
-    _.each(attrs,function each(value,key) {
+    _.each(attrs,function(value,key) {
       if (value!==null && table.hasOwnProperty(key) && table[key].type==='dateTime') attrs[key] = moment(value).format('YYYY-MM-DD HH:mm:ss');
     });
 

@@ -1,26 +1,26 @@
 var _ = require('lodash'),
 
-//exports,
+exports,
 models;
 
-// Expose all models.
+exports = module.exports;
 
+// Expose all models.
 models = [
-  'post',
+  /*'post',
   'settings',
   'tag',
-  'user'
+  'user',*/
+  'navigation'/*,
+  'share'*/
 ];
 
-//exports = module.exports;
-
-//function init() {
-  module.exports.Base = require('./base');
+function init() {
+  exports.Base = require('./base');
   models.forEach(function(name) {
-    _.extend(module.exports,require('./' + name));
+    _.extend(exports,require('./' + name));
   });
-/*}
+}
 
 // Expose init().
-
-exports.init = init;*/
+exports = init();
