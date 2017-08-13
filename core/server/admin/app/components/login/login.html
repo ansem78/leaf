@@ -1,36 +1,32 @@
-<div id="login-form" class="form-wrapper">
+<div id="login-form" class="credential-form">
 
-<div class="form-content">
+<div class="credential-form-wrapper">
 
-<div class="form-body">
-
-<div id="alerts"></div>
+<div class="credential-form-content">
 
 <h1 class="sr-only">Leaf</h1>
 
+<div id="alerts"></div>
+
 <form name="form" method="post" novalidate ng-submit="login()">
 
-<div class="form-field">
+<div class="form-group">
 <label for="email" class="sr-only">E-mail address</label>
-<div class="input">
 <span class="glyphicon glyphicon-mail"></span>
-<input type="email" id="email" name="email" class="textfield" size="40" ng-model="user.email" placeholder="E-mail address" required />
-</div>
+<input type="email" id="email" name="email" class="form-control" size="40" ng-model="user.email" required placeholder="E-mail address" />
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="password" class="sr-only">Password</label>
-<div class="input">
 <span class="glyphicon glyphicon-locked"></span>
-<input type="password" id="password" name="password" class="textfield" size="40" ng-model="user.password" placeholder="Password" required />
-</div>
-</div>
-
-<div class="form-field">
-<button type="submit" class="btn btn-block btn-success">Login</button>
+<input type="password" id="password" name="password" class="form-control" size="40" ng-model="user.password" required placeholder="Password" />
 </div>
 
-<p><a href="lost-password/" class="form-link">Forgotten password?</a></p>
+<div class="form-group">
+<button type="submit" class="btn btn-block btn-success text-uppercase">Login</button>
+</div>
+
+<p><a href="lost-password/" class="credential-form-link">Forgotten password?</a></p>
 
 </form>
 

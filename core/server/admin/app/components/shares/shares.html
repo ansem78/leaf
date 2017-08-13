@@ -36,46 +36,33 @@
 
 <div class="padding">
 
-<div class="data-item" ng-repeat="i in items | orderBy : 'order' track by $index">
+<div ui-sortable="sortableOptions" ng-model="items">
 
-<div class="data-item-drag">
-<span class="glyphicon glyphicon-more-vertical"></span>
+<div class="form-item" ng-repeat="i in items track by $index">
+<span class="glyphicon glyphicon-braille drag"></span>
+<div class="item-content">
+<input type="text" class="form-control" size="30" ng-model="items[$index].name" placeholder="Name" ng-change="updateItem('shares',items[$index])" />
 </div>
-
-<div class="data-item-input data-item-label">
-<input type="hidden" ng-model="i.id" />
-<input type="hidden" ng-model="i.slug" />
-<input type="hidden" ng-model="i.order" />
-<input type="text" class="textfield text" size="30" ng-model="i.label" placeholder="Name" ng-change="update(i)" />
+<div class="item-content-md">
+<input type="url" class="form-content" size="50" ng-model="items[$index].url" placeholder="URL" ng-change="updateItem('shares',items[$index])" />
 </div>
-
-<div class="data-item-input data-item-url">
-<input type="text" class="textfield url" size="50" ng-model="i.url" placeholder="URL" ng-change="update(i)" />
-</div>
-
-<div class="data-item-controls">
-<button type="button" class="btn btn-sm btn-link" ng-click="remove(i)"><span class="glyphicon glyphicon-trash-2"></span><span class="sr-only">Delete</span></button>
+<button type="button" class="btn btn-sm btn-link" ng-click="removeItem(items,items[$index])"><span class="glyphicon glyphicon-bin-c text-danger"></span><span class="sr-only">Delete</span></button>
 </div>
 
 </div>
 
-<div class="data-item">
-
-<div class="data-item-drag"></div>
-
-<div class="data-item-input data-item-label">
-<input type="text" id="add-text" class="textfield text" size="30" ng-model="item.label" placeholder="Name" />
+<form name="addItemForm" method="post" novalidate ng-submit="addItem(items,item)">
+<div class="form-item">
+<span class="glyphicon empty"></span>
+<div class="item-content">
+<input type="text" class="form-control" size="30" ng-model="item.key" required placeholder="Name" />
 </div>
-
-<div class="data-item-input data-item-url">
-<input type="text" id="add-url" class="textfield url" size="50" ng-model="item.url" placeholder="URL" />
+<div class="item-content-md">
+<input type="url" class="form-control" size="50" ng-model="item.value" required placeholder="URL" />
 </div>
-
-<div class="data-item-controls">
-<button type="button" class="btn btn-sm btn-success" ng-click="add()"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Add</span></button>
+<button type="submit" class="btn btn-sm btn-success" ng-disabled="addItemForm.$invalid"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Add</span></button>
 </div>
-
-</div>
+</form>
 
 </div>
 

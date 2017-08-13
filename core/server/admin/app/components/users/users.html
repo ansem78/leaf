@@ -28,13 +28,13 @@
 <h3 id="invite-modal-title" class="modal-title">Invite a new user</h3>
 </div>
 <div class="modal-body">
-<div class="field">
+<div class="form-group">
 <label for="email">E-mail address</label>
-<input type="email" id="email" class="textfield" size="50" value="" placeholder="E-mail address" />
+<input type="email" id="email" class="form-control" size="50" value="" placeholder="E-mail address" />
 </div>
-<div class="field">
+<div class="form-group">
 <label for="role">Role</label>
-<select id="role" size="1">
+<select id="role" class="form-control" size="1">
 <option value="admin">Administrator</option>
 <option value="editor">Editor</option>
 <option value="author" selected="selected">Author</option>
@@ -42,7 +42,7 @@
 </div>
 </div>
 <div class="modal-footer">
-<button type="submit" class="btn btn-block btn-success">Send invitation</button>
+<button type="submit" class="btn btn-block btn-success text-uppercase">Send invitation</button>
 </div>
 </div>
 </div>
@@ -58,9 +58,9 @@
 <div class="modal-body">
 <p>Do you really want to revoke the invitation fo this user?</p>
 </div>
-<div class="modal-footer modal-buttons">
-<button type="button" class="btn btn-success">Yes</button>
-<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+<div class="modal-footer modal-footer-confirm">
+<button type="button" class="btn btn-success text-uppercase">Yes</button>
+<button type="button" class="btn btn-danger text-uppercase" data-dismiss="modal">No</button>
 </div>
 </div>
 </div>
@@ -77,7 +77,7 @@
 <div id="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#invite-modal"><span class="glyphicon glyphicon-paperplane hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Invite</span></button>
+<button type="button" class="btn btn-success text-uppercase" data-toggle="modal" data-target="#invite-modal"><span class="glyphicon glyphicon-telegram-b hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Invite</span></button>
 </div>
 </div>
 
@@ -89,46 +89,28 @@
 
 <div class="padding">
 
-<div class="list">
+<h3 class="section-title">Invited users</h3>
 
-<div class="list-group">
-<h3 class="list-group-label">Invited users</h3>
-
-<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in invited track by $index">
-<div class="item-left">
+<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in invited | orderBy : 'email' track by $index">
 <gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.email}}" />
-</div>
-<div class="item-body">
+<div class="item-content">
 <h3>{{u.email}}</h3>
 <p>{{u.sent | date : 'MMMM d, yyyy'}}</p>
 </div>
-<div class="item-right">
-<button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#delete-user-modal"><span class="glyphicon glyphicon-trash-2 hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Revoke</span></button>
-<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-paperplane hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Resend</span></button>
-</div>
+<button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#delete-user-modal"><span class="glyphicon glyphicon-bin-c text-danger hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Revoke</span></button>
+<button type="button" class="btn btn-sm btn-link text-uppercase"><span class="glyphicon glyphicon-telegram-b text-default hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Resend</span></button>
 </div>
 
-</div>
+<h3 class="section-title">Active users</h3>
 
-<div class="list-group">
-<h3 class="list-group-label">Active users</h3>
-
-<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in users track by $index">
-<div class="item-left">
+<div class="item" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in users | orderBy : 'fullname' track by $index">
 <gravatar email="{{u.email}}" size="48" avatar-default="mm" class="img-circle" alt="{{u.fullname}}" />
-</div>
-<div class="item-body">
+<div class="item-content">
 <h3>{{u.fullname}}</h3>
 <p>{{u.registered | date : 'MMMM d, yyyy'}}</p>
 </div>
-<div class="item-right">
-<p class="role role-{{u.role.slug}}">{{u.role.name}}</p>
-</div>
-<a href="user/{{u.id}}/">Edit</a>
-</div>
-
-</div>
-
+<p class="status status-{{u.role.slug}}">{{u.role.name}}</p>
+<a href="users/{{u.id}}/">Edit</a>
 </div>
 
 </div>

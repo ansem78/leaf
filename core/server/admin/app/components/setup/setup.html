@@ -1,51 +1,45 @@
-<div id="setup-form" class="form-wrapper">
+<div id="setup-form" class="credential-form">
 
-<div class="form-content">
+<div class="credential-form-wrapper">
 
-<div class="form-body">
-
-<div id="alerts"></div>
+<div class="credential-form-content">
 
 <h1>Welcome to your new site</h1>
 
+<div class="form-group">
 <p class="text-muted">Let's get a few things set up so you can get started.</p>
+</div>
+
+<div id="alerts"></div>
 
 <form name="form" method="post" novalidate ng-submit="setup()">
 
-<div class="form-field">
+<div class="form-group">
 <label for="sitename">Site name</label>
-<div class="input">
-<input type="text" id="sitename" name="sitename" class="textfield" size="40" maxlength="100" ng-model="user.site_name" required />
-</div>
+<input type="text" id="sitename" name="sitename" class="form-control" size="40" maxlength="100" ng-model="user.site_name" required />
 <p class="text-muted">What would you like to call your site?</p>
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="fullname">Full name</label>
-<div class="input">
-<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="user.fullname" required />
-</div>
+<input type="text" id="fullname" name="fullname" class="form-control" size="40" maxlength="100" ng-model="user.fullname" required />
 <p class="text-muted">The name you will sign your posts with.</p>
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="email">E-mail address</label>
-<div class="input">
-<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="user.email" required />
-</div>
+<input type="email" id="email" name="email" class="form-control" size="40" maxlength="100" ng-model="user.email" required />
 <p class="text-muted">Used for notifications.</p>
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="password">Password</label>
-<div class="input">
-<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="user.password" required />
-</div>
+<input type="password" id="password" name="password" class="form-control" size="40" ng-minlength="8" ng-model="user.password" required />
 <p class="text-muted">Must be at least 8 characters.</p>
 </div>
 
-<div class="form-button">
-<button type="submit" class="btn btn-lg btn-block btn-success" ng-disabled="form.$invalid">OK, let's go</button>
+<div class="form-group">
+<button type="submit" class="btn btn-lg btn-block btn-success text-uppercase" ng-disabled="form.$invalid">OK, let's go</button>
 </div>
 
 </form>

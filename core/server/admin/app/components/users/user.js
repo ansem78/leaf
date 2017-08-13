@@ -18,7 +18,7 @@ define(['angular'],function(angular) {
       {
         id : 'stats',
         title : 'Stats',
-        icon : 'bar-chart'
+        icon : 'bars'
       }
     ];
 

@@ -1,6 +1,6 @@
 define(['require'],function(require) {
 
-  var app = angular.module('Leaf',['ui.router','ngSanitize','angular-gravatar']);
+  var app = angular.module('Leaf',['ui.router','ngSanitize','ui.sortable','angular-gravatar']);
 
   app.config(['$urlMatcherFactoryProvider','$controllerProvider','$compileProvider','$filterProvider','$provide','$stateProvider','$urlRouterProvider','$locationProvider',function($urlMatcherFactoryProvider,$controllerProvider,$compileProvider,$filterProvider,$provide,$stateProvider,$urlRouterProvider,$locationProvider) {
 
@@ -168,10 +168,10 @@ define(['require'],function(require) {
 
     // User profile.
     .state('user',{
-      url : '/user/:user',
+      url : '/users/:user',
       templateUrl : modulesUrl + 'users/user.html',
       title : 'Team',
-      data : {active : 'users'},
+      data : {active : 'users',nosearch : true},
       controller : 'userController',
       resolve : {
         deps : ['$q',function($q) {
@@ -409,7 +409,7 @@ define(['require'],function(require) {
         title : '',
         items : [
           {id : 'dashboard',title : 'Dashboard',url : 'dashboard',icon : 'pulse',roles : []},
-          {id : 'editor',title : 'Editor',url : 'editor',icon : 'feather',roles : []},
+          {id : 'editor',title : 'Editor',url : 'editor',icon : 'pen-b',roles : []},
           {id : 'users',title : 'Team',url : 'users',icon : 'users',roles : []}
         ]
       },
@@ -418,7 +418,7 @@ define(['require'],function(require) {
         title : 'Contents',
         items : [
           {id : 'posts',title : 'Posts',url : 'posts',icon : 'copy',roles : []},
-          {id : 'comments',title : 'Comments',url : 'comments',icon : 'chatbubble',roles : []},
+          {id : 'comments',title : 'Comments',url : 'comments',icon : 'bubble-a',roles : []},
           {id : 'media',title : 'Media',url : 'media',icon : 'image',roles : []}
         ]
       },
@@ -428,7 +428,7 @@ define(['require'],function(require) {
         items : [
           {id : 'tags',title : 'Tags',url : 'tags',icon : 'tags',roles : []},
           {id : 'navigation',title : 'Navigation',url : 'navigation',icon : 'compass',roles : []},
-          {id : 'shares',title : 'Sharing',url : 'shares',icon : 'marketing',roles : []},
+          {id : 'shares',title : 'Sharing',url : 'shares',icon : 'share-b',roles : []},
           {id : 'themes',title : 'Themes',url : 'themes',icon : 'brush',roles : []}
         ]
       },
@@ -437,9 +437,9 @@ define(['require'],function(require) {
         title : 'Settings',
         items : [
           {id : 'settings-general',title : 'General',url : 'settings/general',icon : 'gear',roles : []},
-          {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder',roles : []},
+          {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder-open-a',roles : []},
           {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []},
-          {id : 'labs',title : 'Labs',url : 'labs',icon : 'flask',roles : []}
+          {id : 'labs',title : 'Labs',url : 'labs',icon : 'alembic',roles : []}
         ]
       }
     ];
@@ -464,7 +464,7 @@ define(['require'],function(require) {
     $rootScope.initHeader = function() {
 
       $(window).on('resize',function() {
-        $('#header').css('left',($(window).width()>991)? '0' : '-310px');
+        $('header').eq(0).css('left',($(window).width()>990)? '0' : '-310px');
       });
 
       $('.nav-bar').css('overflow','hidden');
@@ -480,24 +480,29 @@ define(['require'],function(require) {
     // Show header.
     $rootScope.showHeader = function() {
       $rootScope.hideSidebar();
-      $('#header').animate({'left' : '0'},300);
+      $('header').eq(0).animate({'left' : '0'},300);
     };
 
     // Hide header.
     $rootScope.hideHeader = function() {
-      $('#header').animate({'left' : '-310px'},300);
+      $('header').eq(0).animate({'left' : '-310px'},300);
     };
 
     // Show sidebar.
     $rootScope.showSidebar = function(event) {
       if (event) event.preventDefault();
-      $('#sidebar').animate({'right' : '0'},300);
+      $('aside').eq(0).animate({'right' : '0'},300);
     };
 
     // Hide sidebar.
     $rootScope.hideSidebar = function(event) {
       if (event) event.preventDefault();
-      $('#sidebar').animate({'right' : '-311px'},300);
+      $('aside').eq(0).animate({'right' : '-311px'},300);
+    };
+
+    // Initialize search.
+    $rootScope.initSearch = function() {
+      $rootScope.search = '';
     };
 
     // Show an alert.

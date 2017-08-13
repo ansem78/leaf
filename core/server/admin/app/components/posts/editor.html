@@ -26,9 +26,9 @@
 <div class="modal-body">
 <p>Do you really want to delete this post?</p>
 </div>
-<div class="modal-footer modal-buttons">
-<button type="button" class="btn btn-success">Yes</button>
-<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+<div class="modal-footer modal-footer-confirm">
+<button type="button" class="btn btn-success text-uppercase">Yes</button>
+<button type="button" class="btn btn-danger text-uppercase" data-dismiss="modal">No</button>
 </div>
 </div>
 </div>
@@ -45,8 +45,8 @@
 <p>Do you really want to delete this media?</p>
 </div>
 <div class="modal-footer modal-buttons">
-<button type="button" class="btn btn-success">Yes</button>
-<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+<button type="button" class="btn btn-success text-uppercase">Yes</button>
+<button type="button" class="btn btn-danger text-uppercase" data-dismiss="modal">No</button>
 </div>
 </div>
 </div>
@@ -149,13 +149,11 @@
 <!-- Title bar -->
 
 <div id="title-bar">
-<div id="title">
-<input type="text" size="50" value="" placeholder="Your post title here" />
-</div>
+<input type="text" id="title" size="50" value="" placeholder="Your post title here" />
 <div id="title-bar-controls">
-<button type="button" class="btn btn-sm btn-link" ng-click="showSidebar($event)"><span class="glyphicon glyphicon-gear"></span><span class="sr-only">Post settings</span></button>
+<button type="button" class="btn btn-sm btn-link" ng-click="showSidebar($event)"><span class="glyphicon glyphicon-gear text-default"></span><span class="sr-only">Post settings</span></button>
 <div class="btn-group">
-<button type="button" class="btn btn-primary">Save draft</button>
+<button type="button" class="btn btn-primary text-uppercase">Save draft</button>
 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right">
 <li><a href="#">Publish</a></li>
@@ -175,9 +173,9 @@
 <!-- Editor left panel -->
 
 <div id="editor-markdown" class="editor-panel editor-panel-left">
-<div class="editor-panel-head hidden-xs hidden-sm clearfix">
+<div class="editor-panel-head clearfix hidden-xs hidden-sm">
 <h3>Markdown</h3>
-<button type="button" class="btn btn-xs btn-link" data-toggle="modal" data-target="#markdown-help-modal"><span class="glyphicon glyphicon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn btn-xs btn-link" data-toggle="modal" data-target="#markdown-help-modal"><span class="glyphicon glyphicon-markdown text-default"></span><span class="sr-only">Markdown help</span></button>
 </div>
 <div class="editor-panel-body syncscroll" data-syncscroll="editor-scroll">
 <div class="editor-panel-content padding code"></div>
@@ -189,7 +187,7 @@
 <!-- Editor right panel -->
 
 <div id="editor-preview" class="editor-panel editor-panel-right">
-<div class="editor-panel-head hidden-xs hidden-sm clearfix">
+<div class="editor-panel-head clearfix hidden-xs hidden-sm">
 <h3>Preview</h3>
 <p>Words: 0</p>
 </div>
@@ -204,11 +202,11 @@
 
 <div id="editor-controls" class="footer-bar hidden-md hidden-lg clearfix">
 <ul>
-<li class="even first"><button type="button" class="btn btn-xs btn-link active">Markdown</button></li>
-<li class="odd last"><button type="button" class="btn btn-xs btn-link">Preview</button></li>
+<li class="even first"><button type="button" class="btn btn-xs btn-link text-default active">Markdown</button></li>
+<li class="odd last"><button type="button" class="btn btn-xs btn-link text-default">Preview</button></li>
 </ul>
 <div>
-<button type="button" class="btn btn-xs btn-link" data-toggle="modal" data-target="#markdown-help-modal"><span class="glyphicon glyphicon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn btn-xs btn-link" data-toggle="modal" data-target="#markdown-help-modal"><span class="glyphicon glyphicon-markdown text-default"></span><span class="sr-only">Markdown help</span></button>
 </div>
 </div>
 
@@ -224,39 +222,38 @@
 
 <!-- Sidebar -->
 
-<aside id="sidebar">
+<aside>
 <div class="title clearfix">
 <button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
 <h3>Post settings</h3>
 </div>
-<div class="side-body">
-<div class="side-body-content">
+<div class="content">
+<div class="padding">
 
-<div class="field">
-<div class="upload">
-<div class="upload-body">
+<div class="upload-box">
+<div class="upload-content">
 <span class="glyphicon glyphicon-image"></span>
 </div>
-<div class="upload-buttons">
-<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-link"></span><span class="sr-only">From URL</span></button>
-<button type="button" class="btn btn-sm btn-link" data-target="#delete-media-modal"><span class="glyphicon glyphicon-trash-2"></span><span class="sr-only">Delete</span></button>
-</div>
+<div class="upload-controls">
+<button type="button" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-link-a text-default"></span><span class="sr-only">From URL</span></button>
+<button type="button" class="btn btn-sm btn-link" data-target="#delete-media-modal"><span class="glyphicon glyphicon-bin-c text-default"></span><span class="sr-only">Delete</span></button>
 </div>
 </div>
 
-<div class="field">
-<label for="slug">Slug</label>
-<input type="text" id="slug" class="textfield" size="50" value="" />
+<div class="form-group">
+<label for="slug" class="control-label">Slug</label>
+<input type="text" id="slug" class="form-control" size="50" value="" />
+<p class="text-muted">http://igiardinidiringford.it/</p>
 </div>
 
-<div class="field">
-<label for="date">Publish date</label>
-<input type="text" id="date" class="textfield" size="19" maxlength="19" value="2017-01-09 23:18:12" />
+<div class="form-group">
+<label for="date" class="control-label">Publish date</label>
+<input type="date" id="date" class="form-control" size="19" maxlength="19" value="2017-01-09 23:18:12" />
 </div>
 
-<div class="field">
-<label for="author">Author</label>
-<select id="author" size="1">
+<div class="form-group">
+<label for="author" class="control-label">Author</label>
+<select id="author" class="form-control" size="1">
 <option value="1" selected="selected">Alexandro Morato</option>
 <option value="3">Benedetta Pini</option>
 <option value="4">Antonio Frattolillo</option>
@@ -264,41 +261,41 @@
 </select>
 </div>
 
-<div class="field">
-<label for="tags">Tags</label>
-<input type="text" id="tags" class="textfield" size="50" value="" />
+<div class="form-group">
+<label for="tags" class="control-label">Tags</label>
+<input type="text" id="tags" class="form-control" size="50" value="" />
 <p class="text-muted">Separate each tag with a comma.</p>
 </div>
 
-<div class="field">
-<label for="excerpt">Excerpt</label>
-<textarea id="excerpt" class="noresize" cols="50" rows="4"></textarea>
+<div class="form-group">
+<label for="excerpt" class="control-label">Excerpt</label>
+<textarea id="excerpt" class="form-control noresize" cols="50" rows="4"></textarea>
 </div>
 
-<div class="field">
+<div class="form-group">
 <div>
 <input type="checkbox" id="type" class="checkbox" value="page" />
-<label for="type">Turn this post into a static page.</label>
+<label for="type">Turn into a static page</label>
 </div>
 <div>
 <input type="checkbox" id="featured" class="checkbox" value="1" />
-<label for="featured">Feature this post.</label>
+<label for="featured">Feature this post</label>
 </div>
 <div>
 <input type="checkbox" id="comment_status" class="checkbox" value="close" />
-<label for="comment_status">Close comments.</label>
+<label for="comment_status">Close comments</label>
 </div>
 </div>
 
-<div class="field">
-<label for="keywords">Meta keywords</label>
-<input type="text" id="keywords" class="textfield" size="50" value="" />
+<div class="form-group">
+<label for="keywords" class="control-label">Meta keywords</label>
+<input type="text" id="keywords" class="form-control" size="50" value="" />
 <p class="text-muted">Meta tag keywords.</p>
 </div>
 
-<div class="field">
-<label for="description">Meta description</label>
-<textarea id="description" class="noresize" cols="50" rows="4"></textarea>
+<div class="form-group">
+<label for="description" class="control-label">Meta description</label>
+<textarea id="description" class="form-control noresize" cols="50" rows="4"></textarea>
 <p class="text-muted">Meta tag description.</p>
 </div>
 

@@ -38,24 +38,24 @@
 
 <div class="container-fluid">
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-label">
-<p class="label">Backup you data</p>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-field">
+<div class="form-horizontal">
+
+<div class="form-group">
+<p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Backup you data</p>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
 <p>You can easily backup your database and your important files.</p>
-<button type="button" class="btn btn-sm btn-success">Create backup</button>
+<button type="button" class="btn btn-success text-uppercase">Create backup</button>
 </div>
 </div>
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-label">
-<label for="import">Import from backup</label>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-field">
+<div class="form-group">
+<label for="import" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Import from backup</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
 <p>You can use a previously generated backup file to restore your data.</p>
-<input type="file" id="import" class="textfield" size="40" ng-non-bindable value="" /> <button type="button" class="btn btn-sm btn-success">Import data</button>
+<input type="file" id="import" size="40" value="" /> <button type="button" class="btn btn-success text-uppercase">Import data</button>
 </div>
+</div>
+
 </div>
 
 </div>

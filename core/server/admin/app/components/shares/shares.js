@@ -2,30 +2,44 @@ define(['angular'],function(angular) {
 
   var app = angular.module('Leaf');
 
-  app.register.controller('sharesController',['$rootScope','$scope',function($rootScope,$scope) {
+  app.register.controller('sharesController',['$rootScope','$scope','$http',function($rootScope,$scope,$http) {
 
-    $scope.initNewItem = function() {
-      $scope.item = {label : '',url : ''};
+    $scope.sortableOptions = {
+      axis : 'y',
+      handle : '.drag',
+      update : function(e,ui) {
+
+      }
     };
 
-    $scope.initNewItem();
+    $scope.initNewItem = function() {
+      $scope.item = null;
+    };
 
     $scope.browse = function() {
       $scope.items = [];
-      $scope.items = [
-        {id : 1,label : 'Twitter',slug : 'twitter',order : 1,url : 'https://twitter.com/share?t={{title}}'},
-        {id : 2,label : 'Facebook',slug : 'facebook',order : 2,url : 'https://fachebook.com/sharer/?t={{title}}&url={{url}}'},
-        {id : 3,label : 'LinkedIn',slug : 'linkedin',order : 3,url : 'https://linkedin.com/share/?title={{title}}'},
-        {id : 4,label : 'Google +',slug : 'google',order : 4,url : 'https://plus.google.com/share/?title={{title}}&url={{url}}'},
-        {id : 5,label : 'Skyrock',slug : 'skyrock',order : 5,url : 'http://skyrock.com/m/blog/share-widget.php?title={{title}}'}
-      ];
+      $scope.initNewItem();
+      $http.get($rootScope.siteUrl + '/api/shares').then(function(response) {
+        $scope.items = response.data;
+      });
+      /*$scope.items = [
+        {id : 'aaaaaaaaaaaaaaaaaaaaaaaa',name : 'Facebook',position : 0,url : 'https://facebook.com/sharer/?t={{title}}&url={{url}}'},
+        {id : 'aaaaaaaaaaaaaaaaaaaaaaab',name : 'LinkedIn',position : 1,url : 'https://linkedin.com/share/?title={{title}}'},
+        {id : 'aaaaaaaaaaaaaaaaaaaaaaac',name : 'Google +',position : 2,url : 'https://plus.google.com/share/?title={{title}}&url={{url}}'},
+        {id : 'aaaaaaaaaaaaaaaaaaaaaaad',name : 'Skyrock',position : 3,url : 'http://skyrock.com/m/blog/share-widget.php?title={{title}}'}
+      ];*/
     };
 
     $scope.browse();
 
     $scope.add = function() {
-      if ($scope.item.label.trim() && $scope.item.slug.trim() && $scope.item.url.trim()) $scope.items.push($scope.item);
-      $scope.initNewItem();
+      $scope.item.position = $scope.items.length;
+      $http.post($rootScope.siteUrl + '/api/shares',$scope.item).then(function(response) {
+        if (response.status==200 && !response.data.message) {
+          $scope.items.push(item);
+          $scope.initNewItem();
+        }
+      });
     };
 
     $scope.update = function(item) {
@@ -33,12 +47,16 @@ define(['angular'],function(angular) {
     };
 
     $scope.remove = function(item) {
-      for (var i=0; i<$scope.items.length; i++) {
-        if ($scope.items[i].id===item.id) {
-          $scope.items.splice(i,1);
-          break;
+      $http.delete($rootScope.siteUrl + '/api/shares/' + item.id).then(function(response) {
+        if (response.status==200 && !response.data.message) {
+          angular.forEach($scope.items,function(i,n) {
+            if (angular.equals(item,i)) {
+              $scope.items.splice(n,1);
+              return;
+            }
+          });
         }
-      }
+      });
     };
 
   }]);

@@ -1,38 +1,32 @@
-<div id="signup-form" class="form-wrapper">
+<div id="signup-form" class="credential-form">
 
-<div class="form-content">
+<div class="credential-form-wrapper">
 
-<div class="form-body">
-
-<div id="alerts"></div>
+<div class="credential-form-content">
 
 <h1 class="sr-only">Leaf</h1>
 
+<div id="alerts"></div>
+
 <form name="form" method="post" novalidate ng-submit="signup()">
 
-<div class="form-field">
+<div class="form-group">
 <label for="fullname" class="sr-only">Full name</label>
-<div class="input">
-<input type="text" id="fullname" name="fullname" class="textfield" size="40" maxlength="100" ng-model="user.fullname" placeholder="Full name" required />
-</div>
+<input type="text" id="fullname" name="fullname" class="form-control" size="40" maxlength="100" ng-model="user.fullname" required placeholder="Full name" />
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="email" class="sr-only">E-mail address</label>
-<div class="input">
-<input type="email" id="email" name="email" class="textfield" size="40" maxlength="100" ng-model="user.email" placeholder="E-mail address" required />
-</div>
+<input type="email" id="email" name="email" class="form-control" size="40" maxlength="100" ng-model="user.email" required placeholder="E-mail address" />
 </div>
 
-<div class="form-field">
+<div class="form-group">
 <label for="password" class="sr-only">Password</label>
-<div class="input">
-<input type="password" id="password" name="password" class="textfield" size="40" ng-minlength="8" ng-model="user.password" placeholder="Password" required />
-</div>
+<input type="password" id="password" name="password" class="form-control" size="40" ng-minlength="8" ng-model="user.password" required placeholder="Password" />
 </div>
 
-<div class="form-field">
-<button type="submit" class="btn btn-block btn-primary">Sign up</button>
+<div class="form-group">
+<button type="submit" class="btn btn-block btn-primary text-uppercase">Sign up</button>
 </div>
 
 </form>

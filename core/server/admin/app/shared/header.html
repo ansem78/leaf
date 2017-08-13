@@ -1,16 +1,16 @@
 <!-- Header -->
 
-<header id="header" ng-init="initHeader()">
+<header ng-init="initHeader()">
 
 <!-- Header bar -->
 
 <div class="header-bar">
-<h1 class="hidden-xs hidden-sm"><span class="glyphicon glyphicon-leaf-1"></span><span class="sr-only">Leaf</span></h1>
-<button type="button" class="hidden-md hidden-lg header-bar-close" ng-click="hideHeader()"><span class="glyphicon glyphicon-arrow-left-1"></span><span class="sr-only">Close</span></button>
+<h1 class="hidden-xs hidden-sm"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">Leaf</span></h1>
+<button type="button" class="hidden-md hidden-lg header-close" ng-click="hideHeader()"><span class="glyphicon glyphicon-arrow-left-a"></span><span class="sr-only">Close</span></button>
 <ul>
-<li class="even first"><a href="#/user/1/"><gravatar email="ale@ffhorizon.it" size="24" class="img-circle" avatar-default="mm" alt="Alexandro Morato" /><span class="sr-only">Your profile</span></a></li>
-<li class="odd"><button type="button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-help"></span><span class="sr-only">Help</span></button></li>
-<li class="even"><button type="button" data-toggle="modal" data-target="#system-info-modal"><span class="glyphicon glyphicon-laptop"></span><span class="sr-only">System</span></button></li>
+<li class="even first"><a href="users/1/"><gravatar email="ale@ffhorizon.it" size="24" class="img-circle" avatar-default="mm" alt="Alexandro Morato" /><span class="sr-only">Your profile</span></a></li>
+<li class="odd"><button type="button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-guide"></span><span class="sr-only">Help</span></button></li>
+<li class="even"><button type="button" data-toggle="modal" data-target="#system-info-modal"><span class="glyphicon glyphicon-laptop-a"></span><span class="sr-only">System</span></button></li>
 <li class="odd last"><button type="button"><span class="glyphicon glyphicon-power"></span><span class="sr-only">Logout</span></button></li>
 </ul>
 </div>
@@ -23,10 +23,10 @@
 
 <!-- Search -->
 
-<form method="get" class="search" novalidate>
-<div ng-class="(isSearchDisabled())? 'disabled' : ''">
-<input type="text" class="form-control" size="40" ng-model="search" placeholder="Search..." aria-label="Search" ng-disabled="isSearchDisabled()" />
-<button type="submit" ng-disabled="isSearchDisabled()"><span class="glyphicon glyphicon-search"></span></button>
+<form method="get" class="search" ng-class="(isSearchDisabled())? 'search-disabled' : ''" novalidate>
+<div>
+<input type="search" size="40" ng-model="$root.search" ng-init="initSearch()" ng-disabled="isSearchDisabled()" placeholder="Search..." aria-label="Search" />
+<button type="submit" ng-disabled="isSearchDisabled()"><span class="glyphicon glyphicon-search-b"></span></button>
 </div>
 </form>
 
@@ -40,7 +40,7 @@
 <!-- Site -->
 
 <div class="site">
-<a href="http://igiardinidiringford.it"><span><img src="../../favicon.ico" alt="I giardini di Ringford" /></span><em><strong>I giardini di Ringford</strong> igiardinidiringford.it</em></a>
+<a href="http://igiardinidiringford.it"><span class="favicon"><img src="../../favicon.ico" alt="I giardini di Ringford" /></span><span><em>I giardini di Ringford</em> igiardinidiringford.it</span></a>
 </div>
 
 <!-- End site -->
@@ -65,7 +65,7 @@
 
 <!-- End header -->
 
-<button type="button" id="toggle-nav" class="hidden-md hidden-lg" ng-click="showHeader()"><span class="glyphicon glyphicon-leaf-1"></span><span class="sr-only">Menu</span></button>
+<button type="button" id="toggle-nav" class="hidden-md hidden-lg" ng-click="showHeader()"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">Menu</span></button>
 
 <!-- System info modal -->
 
