@@ -4,7 +4,7 @@ module.exports = {
     id : {type : 'string',maxlength : 24,nullable : false,primary : true},
     key : {type : 'string',maxlength : 50,nullable : false,unique : true},
     value : {type : 'text',maxlength : 1000000000,fieldtype : 'longtext',nullable : true},
-    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'core',validations : {isIn : [['core','site','private']]}},
+    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'core',validations : {isIn : ['core','site','private']}},
     created_at : {type: 'dateTime',nullable : false},
     created_by : {type: 'string',maxlength : 24,nullable : false},
     updated_at : {type: 'dateTime',nullable : true},
@@ -23,7 +23,7 @@ module.exports = {
     language : {type : 'string',maxlength : 6,nullable : false,defaultTo : 'en_US'},
     status : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'active'},
     avatar : {type : 'string',maxlength : 2000,nullable : false},
-    role : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'author',validations : {isIn : [['author','editor','admin','owner']]}},
+    role : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'author',validations : {isIn : ['author','editor','admin','owner']}},
     last_seen : {type : 'dateTime',nullable : true},
     created_at : {type : 'dateTime',nullable : false},
     created_by : {type : 'string',maxlength : 24,nullable : false},
@@ -34,7 +34,7 @@ module.exports = {
     auth_id : {type : 'string',maxlength : 24,nullable : true},
     facebook : {type : 'string',maxlength : 2000,nullable : true},
     twitter : {type : 'string',maxlength : 2000,nullable : true},
-    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : [['public']]}},
+    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : ['public']}},
     meta_title : {type : 'string',maxlength : 2000,nullable : true},
     meta_description : {type : 'string',maxlength : 2000,nullable : true},
 */
@@ -42,7 +42,7 @@ module.exports = {
 
   invites : {
     id : {type : 'string',maxlength : 24,nullable : false,primary : true},
-    role : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'author',validations : {isIn : [['author','editor','admin']]}},
+    role : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'author',validations : {isIn : ['author','editor','admin']}},
     token : {type : 'string',maxlength : 191,nullable : false,unique : true},
     email : {type : 'string',maxlength : 191,nullable : false,unique : true,validations : {isEmail : true}},
     expires : {type : 'bigInteger',nullable : false},
@@ -51,7 +51,7 @@ module.exports = {
     updated_at : {type : 'dateTime',nullable : true},
     updated_by : {type : 'string',maxlength : 24,nullable : true}
 /*
-    status : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'pending',validations : {isIn : [['pending','sent']]}},
+    status : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'pending',validations : {isIn : ['pending','sent']}},
 */
   },
 
@@ -81,7 +81,7 @@ module.exports = {
     uuid : {type : 'string',maxlength : 36,nullable : false,validations : {isUUID : true}},
     mobiledoc : {type : 'text',maxlength : 1000000000,fieldtype : 'long',nullable : true},
     amp : {type : 'text',maxlength : 1000000000,fieldtype : 'long',nullable : true},
-    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : [['public']]}},
+    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : ['public']}},
 */
   },
 
@@ -99,7 +99,7 @@ module.exports = {
     updated_by : {type : 'string',maxlength : 24,nullable : true}
 /*
     parent_id : {type : 'string',nullable : true},
-    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : [['public','internal']]}},
+    visibility : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'public',validations : {isIn : ['public','internal']}},
 */
   },
 
@@ -108,7 +108,7 @@ module.exports = {
     name : {type : 'string',maxlength : 191,nullable : false,unique : true},
     slug : {type : 'string',maxlength : 191,nullable : false,unique : true},
     url : {type : 'string',maxlength : 2000,nullable : false,unique : true},
-    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'nav',validations : {isIn : [['nav','share']]}},
+    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'nav'}},
     position : {type : 'integer',nullable : false,defaultTo : 0,validations : {isInt : {min : 0}}},
     created_at : {type : 'dateTime',nullable : false},
     created_by : {type : 'string',maxlength : 24,nullable : false},
