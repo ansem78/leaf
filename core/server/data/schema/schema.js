@@ -109,7 +109,7 @@ module.exports = {
     slug : {type : 'string',maxlength : 191,nullable : false,unique : true},
     url : {type : 'string',maxlength : 2000,nullable : false,unique : true},
     type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'nav',validations : {isIn : [['nav','share']]}},
-    position : {type : 'integer',nullable : false,defaultTo : 0,validations : {isInt : {gt : -1}}},
+    position : {type : 'integer',nullable : false,defaultTo : 0,validations : {isInt : {min : 0}}},
     created_at : {type : 'dateTime',nullable : false},
     created_by : {type : 'string',maxlength : 24,nullable : false},
     updated_at : {type : 'dateTime',nullable : true},
