@@ -1,4 +1,3 @@
-
 var express = require('express'),
 bodyParser = require('body-parser'),
 i18n = require('i18n'),
@@ -6,7 +5,7 @@ hbs = require('express-hbs'),
 favicon = require('serve-favicon'),
 netjet = require('netjet'),
 chalk = require('chalk'),
-    
+
 config = require('./core/server/config'),
 
 app;
