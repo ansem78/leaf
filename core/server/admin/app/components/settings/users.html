@@ -22,12 +22,14 @@
 
 <main>
 
+<form name="settingsForm" method="post" novalidate ng-submit="updateUsers()">
+
 <!-- Title bar -->
 
 <div id="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<button type="button" class="btn btn-primary text-uppercase">Save</button>
+<button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
 </div>
 </div>
 
@@ -46,21 +48,9 @@
 <div class="form-group">
 <p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Avatars rating</p>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<div>
-<input type="radio" id="avatar_rating_g" name="avatar_rating" class="radio" value="g" checked="checked" />
-<label for="avatar_rating_g">G: suitable for all audiences.</label>
-</div>
-<div>
-<input type="radio" id="avatar_rating_pg" name="avatar_rating" class="radio" value="pg" />
-<label for="avatar_rating_pg">PG: possibly offensive. Usually for audiences 13 and above.</label>
-</div>
-<div>
-<input type="radio" id="avatar_rating_r" name="avatar_rating" class="radio" value="r" />
-<label for="avatar_rating_r">R: intended for adult audiences above 17.</label>
-</div>
-<div>
-<input type="radio" id="avatar_rating_x" name="avatar_rating" class="radio" value="x" />
-<label for="avatar_rating_x">X: even more mature than above.</label>
+<div ng-repeat="r in ratings track by $index">
+<input type="radio" id="avatar_rating_{{r.id}}" name="avatar_rating" class="radio" value="{{r.id}}" ng-model="settings.avatar_rating" />
+<label for="avatar_rating_{{r.id}}">{{r.name}}</label>
 </div>
 </div>
 </div>
@@ -71,33 +61,9 @@
 <p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Default avatar</p>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
 <p>For users without a custom avatar of their own, you can either display a generic logo or a generated one, based on their e-mail address.</p>
-<div>
-<input type="radio" id="default_avatar_mm" name="default_avatar" class="radio" value="mm" checked="checked" />
-<label for="default_avatar_mm"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Mystery Man" avatar-default="mm" /> Mystery Man</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_gravatar_logo" name="default_avatar" class="radio" value="" />
-<label for="default_avatar_gravatar_logo"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Gravatar logo" /> Gravatar logo</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_blank" name="default_avatar" class="radio" value="blank" />
-<label for="default_avatar_blank"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Blank" avatar-default="blank" /> Blank</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_gravatar_identicon" name="default_avatar" class="radio" value="identicon" />
-<label for="default_avatar_gravatar_identicon"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Identicon" avatar-default="identicon" /> Identicon (generated)</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_gravatar_monsterid" name="default_avatar" class="radio" value="monsterid" />
-<label for="default_avatar_gravatar_monsterid"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="MonsterID" avatar-default="monsterid" /> MonsterID (generated)</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_gravatar_wavatar" name="default_avatar" class="radio" value="wavatar" />
-<label for="default_avatar_gravatar_wavatar"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Wavatar" avatar-default="wavatar" /> Wavatar (generated)</label>
-</div>
-<div>
-<input type="radio" id="default_avatar_gravatar_retro" name="default_avatar" class="radio" value="retro" />
-<label for="default_avatar_gravatar_retro"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="Retro" avatar-default="retro" /> Retro (generated)</label>
+<div ng-repeat="a in avatars track by $index">
+<input type="radio" id="default_avatar_{{a.id}}" name="default_avatar" class="radio" value="{{a.id}}" ng-model="settings.default_avatar" />
+<label for="default_avatar_{{a.id}}"><gravatar email="ale@ffhorizon.it" size="32" force="true" class="img-circle" alt="{{a.name}}" avatar-default="{{a.id}}" /> {{a.name}}</label>
 </div>
 </div>
 </div>
@@ -111,6 +77,8 @@
 </div>
 
 <!-- End content -->
+
+</form>
 
 </main>
 

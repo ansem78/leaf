@@ -41,12 +41,12 @@
 <div class="form-item" ng-repeat="i in items track by $index">
 <span class="glyphicon glyphicon-braille drag"></span>
 <div class="item-content">
-<input type="text" class="form-control" size="30" ng-model="items[$index].name" placeholder="Label" ng-change="update(items[$index])" />
+<input type="text" class="form-control" size="30" ng-model="items[$index].name" placeholder="Label" ng-blur="update(items[$index])" />
 </div>
 <div class="item-content-md">
-<input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="http://igiardinidiringford.it/" ng-change="update(items[$index])" />
+<input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="http://igiardinidiringford.it/" ng-blur="update(items[$index])" />
 </div>
-<button type="button" class="btn btn-sm btn-link" ng-click="remove(items[$index])"><span class="glyphicon glyphicon-bin-c text-danger"></span><span class="sr-only">Delete</span></button>
+<button type="button" class="btn btn-sm btn-link" ng-click="remove(items[$index].id)"><span class="glyphicon glyphicon-bin-c text-danger"></span><span class="sr-only">Delete</span></button>
 </div>
 
 </div>

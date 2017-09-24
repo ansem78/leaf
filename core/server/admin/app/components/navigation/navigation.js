@@ -2,74 +2,77 @@ define(['angular'],function(angular) {
 
   var app = angular.module('Leaf');
 
-  app.register.controller('navigationController',['$rootScope','$scope','$http','$timeout',function($rootScope,$scope,$http,$timeout) {
+  app.register.controller('navigationController',['$rootScope','$scope','$filter','$timeout','navigationService',function($rootScope,$scope,$filter,$timeout,navigationService) {
 
     // Configure Angular UI Sortable.
     $scope.sortableOptions = {
       axis : 'y',
       handle : '.drag',
       update : function(event,ui) {
-
+        for (var i=0; i<$scope.items.length; i++) $scope.update({id : $scope.items[i].id,position : i});
       }
     };
 
-    // Set the new navigation link URL to the site URL when pressing TAB.
+    // Set the new navigation link URL to the site URL when the URL field is focused.
     $('#item-url').on('focus',function() {
-      var e = $(this);
-      var v = e.attr('placeholder');
-      e.val(v);
-      $scope.newItem.url = v;
-      $timeout(function() {
-        var p = v.length;
-        document.getElementById('item-url').setSelectionRange(p,p);
-      },50);
+      var t = $(this);
+      if (!$.trim(t.val())) {
+        var v = t.attr('placeholder');
+        t.val(v);
+        $scope.newItem.url = v;
+        $timeout(function() {
+          var p = v.length;
+          document.getElementById('item-url').setSelectionRange(p,p);
+        },50);
+      }
     });
 
     // Initialize a new navigation link.
-    $scope.initNewItem = function() {
-      $scope.newItem = {name : '',url : ''};
+    $scope.initItem = function() {
+      $scope.newItem = navigationService.init();
     };
 
-    $scope.initNewItem();
+    $scope.initItem();
 
     // Load all navigation links.
-    $scope.browse = function() {
+    $scope.load = function() {
       $scope.items = [];
-      /*$scope.items = [
-        {id : 1,name : 'Home',slug : 'home',position: 1,url : 'http://igiardinidiringford.it/'},
-        {id : 2,name : 'About',slug : 'about',position : 2,url : 'http://igiardinidiringford.it/about/'},
-        {id : 3,name : 'Lifestream',slug : 'lifestream',position : 3,url : 'http://igiardinidiringford.it/lifestream/'},
-        {id : 4,name : 'Contatti',slug : 'contacts',position : 4,url : 'http://igiardinidiringford.it/contacts/'}
-      ];*/
+      navigationService.all().then(function(navigations) {
+        $scope.items = $filter('orderBy')(navigations,'position');
+      });
     };
 
-    $scope.browse();
+    $scope.load();
 
     // Add a navigation link.
     $scope.add = function() {
-      if ($scope.newItem.name && $scope.newItem.url) {
-        $http.post($rootScope.siteUrl + '/api/navigation',$scope.newItem).then(function(response) {
-          if (!response.data.error) {
-            $scope.items.push(response.data);
-            $scope.initNewItem();
-          }
-        });
-      }
+      $scope.newItem.position = $scope.items.length || 0;
+      navigationService.add($scope.newItem).then(function(navigation) {
+        if (navigation) {
+          $scope.items.push(navigation);
+          $scope.initItem();
+          $('#item-name').focus();
+        }
+      });
     };
 
     // Update a navigation link.
-    $scope.update = function(item) {
-
+    $scope.update = function(navigation) {
+      navigationService.update(navigation);
     };
 
     // Delete a navigation link.
-    $scope.remove = function(item) {
-      for (var i=0; i<$scope.items.length; i++) {
-        if ($scope.items[i].id===item.id) {
-          $scope.items.splice(i,1);
-          break;
+    $scope.remove = function(id) {
+      navigationService.remove(id).then(function(id) {
+        if (id) {
+          for (var i=0; i<$scope.items.length; i++) {
+            if ($scope.items[i].id===id) {
+              $scope.items.splice(i,1);
+              return;
+            }
+          }
         }
-      }
+      });
     };
 
 

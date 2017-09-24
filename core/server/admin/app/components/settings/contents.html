@@ -22,12 +22,14 @@
 
 <main>
 
+<form name="settingsForm" method="post" novalidate ng-submit="updateContents()">
+
 <!-- Title bar -->
 
 <div id="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<button type="button" class="btn btn-primary text-uppercase">Save</button>
+<button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
 </div>
 </div>
 
@@ -46,7 +48,7 @@
 <div class="form-group">
 <label for="posts_per_page" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Posts per page</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="number" id="posts_per_page" class="form-control" size="5" value="10" min="1" />
+<input type="number" id="posts_per_page" name="posts_per_page" class="form-control" size="5" ng-model="settings.posts_per_page" min="1" required />
 <p class="text-muted">How many posts should be displayed in each page.</p>
 </div>
 </div>
@@ -54,7 +56,7 @@
 <div class="form-group">
 <label for="posts_per_feed" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Posts per feed</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="number" id="posts_per_feed" class="form-control" size="5" value="10" min="1" />
+<input type="number" id="posts_per_feed" name="posts_per_feed" class="form-control" size="5" ng-model="settings.posts_per_feed" min="1" required />
 <p class="text-muted">How many posts should be displayed in each feed.</p>
 </div>
 </div>
@@ -62,7 +64,7 @@
 <div class="form-group">
 <label for="posts_per_page" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Comments per page</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="number" id="comments_per_page" class="form-control" size="5" value="50" min="1" />
+<input type="number" id="comments_per_page" name="comments_per_page" class="form-control" size="5" ng-model="settings.comments_per_page" min="1" required />
 <p class="text-muted">How many comments should be displayed in each page.</p>
 </div>
 </div>
@@ -76,6 +78,8 @@
 </div>
 
 <!-- End content -->
+
+</form>
 
 </main>
 

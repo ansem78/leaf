@@ -22,12 +22,14 @@
 
 <main>
 
+<form name="settingsForm" method="post" novalidate ng-submit="updateGeneral()">
+
 <!-- Title bar -->
 
 <div id="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<button type="button" class="btn btn-primary text-uppercase">Save</button>
+<button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
 </div>
 </div>
 
@@ -46,7 +48,7 @@
 <div class="form-group">
 <label for="site_name" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Site name</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="text" id="site_name" class="form-control" size="40" value="I giardini di Ringford" />
+<input type="text" id="site_name" name="site_name" class="form-control" size="40" ng-model="settings.site_name" required />
 <p class="text-muted">The name of your site.</p>
 </div>
 </div>
@@ -54,7 +56,7 @@
 <div class="form-group">
 <label for="site_description" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Site description</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<textarea id="site_description" class="form-control" cols="40" rows="4">Fantasy, web e tecnologia</textarea>
+<textarea id="site_description" name="site_description" class="form-control" cols="40" rows="4" ng-model="settings.site_description"></textarea>
 <p class="text-muted">Describe what your site is about.</p>
 </div>
 </div>
@@ -62,7 +64,7 @@
 <div class="form-group">
 <label for="admin_email" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">E-mail address</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="email" id="admin_email" class="form-control" size="40" value="admin@igiardinidiringford.it" />
+<input type="email" id="admin_email" name="admin_email" class="form-control" size="40" ng-model="settings.admin_email" required />
 <p class="text-muted">Address to use for administrative notifications.</p>
 </div>
 </div>
@@ -70,7 +72,7 @@
 <div class="form-group">
 <p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Dated permalinks</p>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<input type="checkbox" id="dated_permalinks" class="checkbox" />
+<input type="checkbox" id="dated_permalinks" name="dated_permalinks" class="checkbox" ng-model="settings.dated_permalink" />
 <label for="dated_permalinks">Include the date in your post URLs.</label>
 </div>
 </div>
@@ -78,8 +80,8 @@
 <div class="form-group">
 <label for="current_theme" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Theme</label>
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
-<select id="current_theme" class="form-control" size="1">
-<option value="default" selected="selected">Default</option>
+<select id="current_theme" name="current_theme" class="form-control" size="1" ng-model="settings.current_theme" required>
+<option value="default">Default</option>
 </select>
 <p class="text-muted">Select a theme for your site.</p>
 </div>
@@ -94,6 +96,8 @@
 </div>
 
 <!-- End content -->
+
+</form>
 
 </main>
 
