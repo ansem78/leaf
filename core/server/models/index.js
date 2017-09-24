@@ -1,5 +1,22 @@
 var _ = require('lodash'),
 
+models,
+exported;
+
+models = [
+  'navigation',
+  'settings'
+];
+
+exported = {};
+
+exported.Base = require('./base');
+models.forEach(function(name) {
+  _.extend(exported,require('./' + name));
+});
+
+module.exports = exported;
+/*
 exports,
 models;
 
@@ -7,12 +24,12 @@ exports = module.exports;
 
 // Expose all models.
 models = [
-  /*'post',
+  'post',
   'settings',
   'tag',
-  'user',*/
-  'navigation'/*,
-  'share'*/
+  'user',
+  'navigation',
+  'share'
 ];
 
 function init() {
@@ -24,3 +41,4 @@ function init() {
 
 // Expose init().
 exports = init();
+*/

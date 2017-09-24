@@ -1,30 +1,41 @@
 var _ = require('lodash'),
+Promise = require('bluebird'),
 objectId = require('bson-objectid'),
 validator = require('validator'),
 utils = require('../utils'),
 leafBookshelf = require('./base'),
 schema = require('../data/schema'),
 
-Navigation,
-Navigations;
+Navigation/*,
+Navigations*/;
 
 Navigation = leafBookshelf.Model.extend({
 
     tableName : 'links',
 
+    initialize : function() {
+      //this.on('fetching',this.fixDatesOnFetching);
+      this.on('saving',this.validateSave);
+    },
+
     // Validate a navigation link object.
     validateSave : function() {
-      /*var table = schema.tables[this.tableName];
-
-      _.each(attrs,function(value,key) {
-        if (table.hasOwnProperty(key) && table[key].hasOwnProperty('validations')) {
-          _.each(table[key].validations,function(options,fx) {
-            if (!validator[fx](value,options)) attrs[key] = (table[key].hasOwnProperty('defaultTo'))? table[key].defaultTo : null;
-          });
-        }
-      });*/
 
       var attrs = this.attributes;
+
+      var table = schema.tables[this.tableName];
+
+      _.each(attrs,function(value,key) {
+        if (table.hasOwnProperty(key)) {
+          if (table[key].hasOwnProperty('validations')) {
+            _.each(table[key].validations,function(options,fx) {
+              if (!validator[fx](value.toString(),options)) attrs[key] = (table[key].hasOwnProperty('defaultTo'))? table[key].defaultTo : null;
+            });
+          }
+          else if (!attrs[key]) attrs[key] = (table[key].hasOwnProperty('defaultTo'))? table[key].defaultTo : null;
+        }
+        else delete attrs[key];
+      });
 
       attrs.type = 'nav';
 
@@ -33,69 +44,78 @@ Navigation = leafBookshelf.Model.extend({
 
       attrs.slug = utils.slugify(attrs.name);
 
-      attrs.position = (!_.isEmpty(attrs.position) && validator.isInt(attrs.position.toString(),{min : 0}))? parseInt(attrs.position) : 0;
-
       if (!_.isEmpty(attrs.url) && !validator.isURL(attrs.url,{require_protocol : true,protocols : ['http','https']})) attrs.url = 'http://' + attrs.url;
 
-      attrs.created_by = 'aaaaaaaaaaaaaaaaaaaaaaaa'; // Should be the logged in user ID.
+      if (attrs.id) {
+        attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
+        attrs.updated_at = true;
+      }
+      else {
+        attrs.created_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
+        attrs.updated_at = null;
+      }
+
+      if (!attrs.id) attrs.id = objectId().str;
+
+      //attrs = this.fixDatesOnSaving(attrs);
 
       //leafBookshelf.Model.prototype.format.call(this,attrs);
 
-      return attrs;
-    },
+      //console.log(attrs);
 
-    initialize : function() {
-      this.on('fetching',this.fixDatesOnFetching);
-      this.on('saving',this.validateSave);
+      //return attrs;
     }
 
   },
 
   {
 
+    // Get all navigation links.
+    all : Promise.method(function() {
+      return new this({require : false}).where({type : 'nav'}).fetchAll().then(function(navigations) {
+          return (navigations)? navigations : [];
+      });
+    }),
+
     // Insert a navigation link.
-    add : function(attrs) {
+    add : Promise.method(function(data) {
       var options = {require : true,method : 'insert'};
 
-      attrs.id = objectId().str;
-
-      return this.forge(options).save(attrs,options).then(function(navigation) {
+      return new this(options).save(data,options).then(function(navigation) {
           if (!navigation) throw new Error('Error inserting navigation link.');
           else return navigation;
       });
-    },
+    }),
 
     // Update a navigation link.
-    update : function(attrs) {
+    update : Promise.method(function(data) {
       var options = {require : true,method : 'update',patch : true};
 
-      return this.forge(options).save(attrs,options).then(function(navigation) {
+      return new this(options).save(data,options).then(function(navigation) {
           if (!navigation) throw new Error('Error updating navigation link.');
           else return navigation;
       });
-    },
+    }),
 
     // Delete a navigation link.
-    remove : function(id) {
+    remove : Promise.method(function(id) {
       var options = {require : true};
 
-      return this.forge(options).where({id : id,type : 'nav'}).fetch(options).then(function(model) {
-        return model.destroy().then(function(navigation) {
-          if (!navigation) throw new Error('Error deleting navigation link.');
-          else return navigation;
-        });
+      return new this(options).where({id : id,type : 'nav'}).destroy(options).then(function(navigation) {
+        if (!navigation) throw new Error('Error deleting navigation link.');
+        else return navigation;
       });
-    }
+    })
 
   }
 
 );
 
-Navigations = leafBookshelf.Collection.extend({
+/*Navigations = leafBookshelf.Collection.extend({
   model : Navigation
-});
+});*/
 
 module.exports = {
-  Navigation : leafBookshelf.model('Navigation',Navigation),
-  Navigations : leafBookshelf.collection('Navigations',Navigations)
+  Navigation : leafBookshelf.model('Navigation',Navigation)/*,
+  Navigations : leafBookshelf.collection('Navigations',Navigations)*/
 };
