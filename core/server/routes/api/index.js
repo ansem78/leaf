@@ -29,25 +29,30 @@ router.post('/login',function(req,res,next) {
 
 });
 
-// ---- Options. ----
+// ---- Settings. ----
 
-// Get all options.
-router.get('/options', function (req, res, next) {
+// Get all settings.
+router.get('/settings',function(req,res,next) {
+  var Setting = dataProvider.Setting;
+  Setting.all().then(function(settings) {
+    res.json(settings);
+  }).catch(function(error) {
+    res.json({error : error});
+  });
+});
+
+// Insert a new setting.
+router.post('/settings',function(req,res,next) {
 
 });
 
-// Insert a new option.
-router.post('/options', function (req, res, next) {
+// Update a setting.
+router.put('/settings/:name',function(req,res,next) {
 
 });
 
-// Update an option.
-router.put('/options/:name', function (req, res, next) {
-
-});
-
-// Delete an option.
-router.delete('/options/:name', function (req, res, next) {
+// Delete a setting.
+router.delete('/settings/:name',function(req,res,next) {
 
 });
 
@@ -107,24 +112,40 @@ router.delete('/posts/:id',function(req,res,next) {
 
 // ---- Navigation. ----
 
-
+// Get all navigation links.
+router.get('/navigation',function(req,res,next) {
+  var Navigation = dataProvider.Navigation;
+  Navigation.all().then(function(navigations) {
+    res.json(navigations);
+  }).catch(function(error) {
+    res.json({error : error});
+  });
+});
 
 // Create a navigation link.
 router.post('/navigation',function(req,res,next) {
   var Navigation = dataProvider.Navigation;
-  new Navigation().add(req.body).then(function(navigation) {
+  Navigation.add(req.body).then(function(navigation) {
     res.json(navigation);
   }).catch(function(error) {
     res.json({error : error});
   });
 });
 
-
+// Update a navigation link.
+router.put('/navigation/:id',function(req,res,next) {
+  var Navigation = dataProvider.Navigation;
+  Navigation.update(req.body).then(function(navigation) {
+    res.json(navigation);
+  }).catch(function(error) {
+    res.json({error : error});
+  });
+});
 
 // Delete a navigation link.
 router.delete('/navigation/:id',function(req,res,next) {
   var Navigation = dataProvider.Navigation;
-  new Navigation().remove(req.params.id).then(function(navigation) {
+  Navigation.remove(req.params.id).then(function(navigation) {
     res.json(navigation);
   }).catch(function(error) {
     res.json({error : error});
