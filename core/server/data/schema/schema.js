@@ -4,7 +4,7 @@ module.exports = {
     id : {type : 'string',maxlength : 24,nullable : false,primary : true},
     key : {type : 'string',maxlength : 50,nullable : false,unique : true},
     value : {type : 'text',maxlength : 1000000000,fieldtype : 'longtext',nullable : true},
-    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'core',validations : {isIn : ['core','site','private']}},
+    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'core',validations : {isIn : ['core','site']}},
     created_at : {type: 'dateTime',nullable : false},
     created_by : {type: 'string',maxlength : 24,nullable : false},
     updated_at : {type: 'dateTime',nullable : true},
@@ -105,10 +105,10 @@ module.exports = {
 
   links : {
     id : {type : 'string',maxlength : 24,nullable : false,primary : true},
-    name : {type : 'string',maxlength : 191,nullable : false,unique : true},
-    slug : {type : 'string',maxlength : 191,nullable : false,unique : true},
-    url : {type : 'string',maxlength : 2000,nullable : false,unique : true},
-    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'nav'}},
+    name : {type : 'string',maxlength : 191,nullable : false},
+    slug : {type : 'string',maxlength : 191,nullable : false},
+    url : {type : 'string',maxlength : 2000,nullable : false},
+    type : {type : 'string',maxlength : 50,nullable : false,defaultTo : 'nav'},
     position : {type : 'integer',nullable : false,defaultTo : 0,validations : {isInt : {min : 0}}},
     created_at : {type : 'dateTime',nullable : false},
     created_by : {type : 'string',maxlength : 24,nullable : false},
