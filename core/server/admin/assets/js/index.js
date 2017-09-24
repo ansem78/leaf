@@ -37,7 +37,7 @@ require.config({
       deps : ['angular']
     },
     angular_sortable : {
-      deps : ['jquery_ui','angular']
+      deps : ['jquery','jquery_ui','angular']
     },
     angular_gravatar : {
       deps : ['angular']

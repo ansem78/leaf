@@ -280,7 +280,7 @@ define(['require'],function(require) {
       cache : false
     })
 
-    // Navigation menu.
+    // Navigation.
     .state('navigation',{
       url : '/navigation',
       templateUrl : modulesUrl + 'navigation/navigation.html',
@@ -290,7 +290,7 @@ define(['require'],function(require) {
       resolve : {
         deps : ['$q',function($q) {
           var q = $q.defer();
-          require(['../../' + modulesUrl + 'navigation/navigation'],function() {
+          require(['../../' + modulesUrl + 'navigation/navigation-service','../../' + modulesUrl + 'navigation/navigation'],function() {
             q.resolve();
           });
           return q.promise;
@@ -328,7 +328,7 @@ define(['require'],function(require) {
       resolve : {
         deps : ['$q',function($q) {
           var q = $q.defer();
-          require(['../../' + modulesUrl + 'settings/settings'],function() {
+          require(['../../' + modulesUrl + 'settings/setting-service','../../' + modulesUrl + 'settings/settings'],function() {
             q.resolve();
           });
           return q.promise;
@@ -347,7 +347,7 @@ define(['require'],function(require) {
       resolve : {
         deps : ['$q',function($q) {
           var q = $q.defer();
-          require(['../../' + modulesUrl + 'settings/settings'],function() {
+          require(['../../' + modulesUrl + 'settings/setting-service','../../' + modulesUrl + 'settings/settings'],function() {
             q.resolve();
           });
           return q.promise;
@@ -366,7 +366,7 @@ define(['require'],function(require) {
       resolve : {
         deps : ['$q',function($q) {
           var q = $q.defer();
-          require(['../../' + modulesUrl + 'settings/settings'],function() {
+          require(['../../' + modulesUrl + 'settings/setting-service','../../' + modulesUrl + 'settings/settings'],function() {
             q.resolve();
           });
           return q.promise;
