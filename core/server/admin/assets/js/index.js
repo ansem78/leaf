@@ -12,7 +12,7 @@ require.config({
     angular_sanitize : 'angular/angular-sanitize.min',
     angular_sortable : 'angular/ui-sortable/src/sortable',
     angular_gravatar : 'angular/angular-gravatar',
-    app : '../js/app'
+    app : '../../app/app'
   },
   shim : {
     jquery : {

@@ -888,6 +888,10 @@ content: '\e9ef';
 content: '\e13c';
 }
 
+.glyphicon-wind:before {
+content: '\e901';
+}
+
 .glyphicon-moon:before {
 content: '\e13d';
 }
@@ -1004,6 +1008,10 @@ content: '\e99c';
 content: '\e99d';
 }
 
+.glyphicon-bars-chart-c:before {
+content: '\f043';
+}
+
 .glyphicon-trend-up:before {
 content: '\e0f8';
 }
@@ -1066,6 +1074,10 @@ content: '\e9b2';
 
 .glyphicon-address:before {
 content: '\e002';
+}
+
+.glyphicon-steering-wheel:before {
+content: '\e902';
 }
 
 .glyphicon-rocket:before {
@@ -1200,8 +1212,16 @@ content: '\e0ba';
 content: '\e1c2';
 }
 
+.glyphicon-gem:before {
+content: '\f047';
+}
+
 .glyphicon-crown:before {
 content: '\e1c4';
+}
+
+.glyphicon-button:before {
+content: '\e904';
 }
 
 .glyphicon-skull:before {
@@ -1274,6 +1294,10 @@ content: '\e1c6';
 
 .glyphicon-boxes:before {
 content: '\e1cf';
+}
+
+.glyphicon-circuit-board:before {
+content: '\f0d6';
 }
 
 .glyphicon-flow-cross:before {
@@ -1349,7 +1373,7 @@ content: '\e001';
 }
 
 .glyphicon-alert-triangle:before {
-content: '\e19c';
+content: '\e905';
 }
 
 .glyphicon-alert-circle:before {
@@ -1392,7 +1416,7 @@ content: '\e027';
 content: '\e043';
 }
 
-.glyphicon-flame:before {
+.glyphicon-fire:before {
 content: '\e056';
 }
 
@@ -1460,8 +1484,12 @@ content: '\e19d';
 content: '\e9a8';
 }
 
-.glyphicon-wallet:before {
+.glyphicon-wallet-a:before {
 content: '\e18f';
+}
+
+.glyphicon-wallet-b:before {
+content: '\e906';
 }
 
 .glyphicon-telescope:before {
@@ -1477,7 +1505,7 @@ content: '\e9aa';
 }
 
 .glyphicon-atom:before {
-content: '\e010';
+content: '\e909';
 }
 
 .glyphicon-svg:before {
@@ -1494,6 +1522,10 @@ content: '\e9b3';
 
 .glyphicon-target-c:before {
 content: '\e0ee';
+}
+
+.glyphicon-target-d:before {
+content: '\e90c';
 }
 
 .glyphicon-nuclear:before {
@@ -1528,8 +1560,16 @@ content: '\e1a3';
 content: '\e104';
 }
 
-.glyphicon-external:before {
+.glyphicon-frame:before {
+content: '\e912';
+}
+
+.glyphicon-external-a:before {
 content: '\ea7e';
+}
+
+.glyphicon-external-b:before {
+content: '\f07f';
 }
 
 .glyphicon-label:before {
@@ -1540,12 +1580,20 @@ content: '\e082';
 content: '\e083';
 }
 
-.glyphicon-tags:before {
+.glyphicon-tags-a:before {
 content: '\e12f';
 }
 
-.glyphicon-tag:before {
+.glyphicon-tags-b:before {
+content: '\e936';
+}
+
+.glyphicon-tag-a:before {
 content: '\e0c1';
+}
+
+.glyphicon-tag-b:before {
+content: '\e935';
 }
 
 .glyphicon-magnet:before {
@@ -1590,6 +1638,14 @@ content: '\e00f';
 
 .glyphicon-hash:before {
 content: '\e06e';
+}
+
+.glyphicon-ampersand-a:before {
+content: '\e913';
+}
+
+.glyphicon-ampersand-b:before {
+content: '\e914';
 }
 
 .glyphicon-infinite:before {
@@ -1737,6 +1793,10 @@ content: '\e14a';
 }
 
 .glyphicon-share-c:before {
+content: '\e91e';
+}
+
+.glyphicon-share-c2:before {
 content: '\e1b9';
 }
 
@@ -1920,6 +1980,14 @@ content: '\e9b5';
 content: '\e118';
 }
 
+.glyphicon-split-a:before {
+content: '\f0c6';
+}
+
+.glyphicon-split-b:before {
+content: '\e922';
+}
+
 .glyphicon-grid-a:before {
 content: '\e06b';
 }
@@ -2036,8 +2104,12 @@ content: '\ea6b';
 content: '\ea6c';
 }
 
-.glyphicon-spellcheck:before {
+.glyphicon-spell-check-a:before {
 content: '\e0e0';
+}
+
+.glyphicon-spell-check-b:before {
+content: '\ea12';
 }
 
 .glyphicon-language:before {
@@ -2180,7 +2252,19 @@ content: '\ea6e';
 content: '\e17e';
 }
 
-.glyphicon-blocked:before {
+.glyphicon-new-window:before {
+content: '\e923';
+}
+
+.glyphicon-cancel:before {
+content: '\e924';
+}
+
+.glyphicon-cancel-outline:before {
+content: '\ea0d';
+}
+
+.glyphicon-ban:before {
 content: '\ea0e';
 }
 
@@ -2460,59 +2544,59 @@ content: '\ea2b';
 content: '\ea2c';
 }
 
-.glyphicon-play:before {
+.glyphicon-player-play:before {
 content: '\ea1c';
 }
 
-.glyphicon-pause:before {
+.glyphicon-player-pause:before {
 content: '\ea1d';
 }
 
-.glyphicon-stop:before {
+.glyphicon-player-stop:before {
 content: '\ea1e';
 }
 
-.glyphicon-eject:before {
+.glyphicon-player-eject:before {
 content: '\ea25';
 }
 
-.glyphicon-record:before {
+.glyphicon-player-record:before {
 content: '\e0c7';
 }
 
-.glyphicon-backward:before {
+.glyphicon-player-backward:before {
 content: '\ea1f';
 }
 
-.glyphicon-forward:before {
+.glyphicon-player-forward:before {
 content: '\ea20';
 }
 
-.glyphicon-previous:before {
+.glyphicon-player-previous:before {
 content: '\ea23';
 }
 
-.glyphicon-next:before {
+.glyphicon-player-next:before {
 content: '\ea24';
 }
 
-.glyphicon-first:before {
+.glyphicon-player-first:before {
 content: '\ea21';
 }
 
-.glyphicon-last:before {
+.glyphicon-player-last:before {
 content: '\ea22';
 }
 
-.glyphicon-loop:before {
+.glyphicon-player-loop:before {
 content: '\ea2d';
 }
 
-.glyphicon-shuffle:before {
+.glyphicon-player-shuffle:before {
 content: '\ea30';
 }
 
-.glyphicon-track:before {
+.glyphicon-player-track:before {
 content: '\e0a3';
 }
 
@@ -2682,6 +2766,10 @@ content: '\e1bc';
 
 .glyphicon-drive-c:before {
 content: '\e963';
+}
+
+.glyphicon-server:before {
+content: '\f097';
 }
 
 .glyphicon-download-b:before {
