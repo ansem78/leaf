@@ -37,8 +37,8 @@ define(['angular'],function(angular) {
     // Load all navigation links.
     $scope.load = function() {
       $scope.items = [];
-      navigationService.all().then(function(navigations) {
-        $scope.items = $filter('orderBy')(navigations,'position');
+      navigationService.all().then(function(res) {
+        $scope.items = $filter('orderBy')(res,'position');
       });
     };
 
@@ -46,10 +46,11 @@ define(['angular'],function(angular) {
 
     // Add a navigation link.
     $scope.add = function() {
-      $scope.newItem.position = $scope.items.length || 0;
-      navigationService.add($scope.newItem).then(function(navigation) {
-        if (navigation) {
-          $scope.items.push(navigation);
+      $scope.newItem.position = $scope.items.length;
+      navigationService.add($scope.newItem).then(function(res) {
+        if (res.error) console.log(res.error);
+        else if (res) {
+          $scope.items.push(res);
           $scope.initItem();
           $('#item-name').focus();
         }
@@ -58,13 +59,16 @@ define(['angular'],function(angular) {
 
     // Update a navigation link.
     $scope.update = function(navigation) {
-      navigationService.update(navigation);
+      navigationService.update(navigation).then(function(res) {
+        if (res.error) console.log(res.error);
+      });
     };
 
     // Delete a navigation link.
     $scope.remove = function(id) {
-      navigationService.remove(id).then(function(id) {
-        if (id) {
+      navigationService.remove(id).then(function(res) {
+        if (res.error) console.log(res.error);
+        else if (res) {
           for (var i=0; i<$scope.items.length; i++) {
             if ($scope.items[i].id===id) {
               $scope.items.splice(i,1);
