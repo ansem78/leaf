@@ -1,0 +1,39 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<a href="editor/" class="btn btn-success text-uppercase"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">New post</span></a>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="list">
+
+<a href="editor/{{p.id}}/" class="item" ng-class="($first)? 'item-active' : ''" ng-repeat="p in posts | filter : $root.search | orderBy : 'created_at' track by $index">
+<div class="item-body">
+<h3>{{p.title}}</h3>
+<p><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=24&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar" alt="{{p.author.fullname}}" /> <span ng-if="p.status!=='draft'">{{p.created_at | date : 'MMMM d, yyyy'}}</span><span class="text-danger" ng-if="p.status==='draft'">Draft</span></p>
+</div>
+</a>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->

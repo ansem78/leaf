@@ -1,0 +1,40 @@
+<form name="updateTagForm" method="post" novalidate ng-submit="(activeTag.id)? updateTag() : addTag()">
+
+<aside id="sidebar">
+<div class="title-bar">
+<button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
+<h3>Tag settings</h3>
+</div>
+<div class="content">
+<div class="padding">
+
+<div class="form-group">
+<label for="tag_name">Name</label>
+<input type="text" id="tag_name" name="tag_name" class="form-control" size="50" maxlength="191" ng-model="activeTag.name" required ng-keyup="slugify($event)" />
+</div>
+
+<div class="form-group">
+<label for="tag_slug">URL</label>
+<input type="text" id="tag_slug" name="tag_slug" class="form-control" size="50" maxlength="191" ng-model="activeTag.slug" required ng-pattern="/^[a-z0-9_-]+$/i" />
+<p class="text-muted">http://igiardinidiringford.it/tags/<span ng-if="activeTag.slug">{{activeTag.slug}}/</span></p>
+</div>
+
+<div class="form-group">
+<label for="tag_description">Description</label>
+<textarea id="tag_description" name="tag_description" class="form-control noresize" cols="50" rows="4" ng-model="activeTag.description" max-input="200"></textarea>
+<div class="clearfix">
+<p class="text-muted pull-left">Maximum <strong>200 characters</strong>.</p>
+<p class="text-muted pull-right">{{activeTag.description.length || '0'}}</p>
+</div>
+</div>
+
+<div class="field clearfix">
+<button type="button" class="btn btn-link pull-left" data-toggle="modal" data-target="#delete-tag-modal" ng-if="activeTag.id"><span class="text-danger"><span class="glyphicon glyphicon-bin-b"></span> Delete</span></button>
+<button type="submit" class="btn btn-primary pull-right" ng-disabled="updateTagForm.$invalid">Save</button>
+</div>
+
+</div>
+</div>
+</aside>
+
+</form>

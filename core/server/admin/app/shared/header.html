@@ -1,0 +1,104 @@
+<!-- Loading modal -->
+
+<div ng-include="'app/shared/loading-modal.html'"></div>
+
+<!-- End loading modal -->
+
+<!-- Message modal -->
+
+<div ng-include="'app/shared/message-modal.html'"></div>
+
+<!-- End message modal -->
+
+<!-- Help modal -->
+
+<div ng-include="'app/shared/help-modal.html'"></div>
+
+<!-- End help modal -->
+
+<!-- System info modal -->
+
+<div ng-include="'app/shared/system-info-modal.html'"></div>
+
+<!-- End system info modal -->
+
+<!-- Logout modal -->
+
+<div ng-include="'app/shared/logout-modal.html'"></div>
+
+<!-- End logout modal -->
+
+<!-- Header -->
+
+<header id="header" ng-init="initHeader()">
+
+<!-- Logo & close button -->
+
+<h1 class="hidden-xs hidden-sm"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">{{$root.settings.platform.name}}</span></h1>
+<button type="button" id="header-close" class="btn hidden-md hidden-lg" ng-click="$root.hideHeader()" title="Hide menu"><span class="glyphicon glyphicon-menu-a"></span><span class="sr-only">Close</span></button>
+
+<!-- End logo & close button -->
+
+<!-- Header buttons -->
+
+<ul id="header-buttons">
+<li><a href="users/xxxxxxxxxxxxxxxxxxxxxxxx/" title="Your profile"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=24&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar" alt="Alexandro Morato" /><span class="sr-only">Your profile</span></a></li>
+<li><button type="button" class="btn" data-toggle="modal" data-target="#help-modal" title="Help"><span class="glyphicon glyphicon-guide"></span><span class="sr-only">Help</span></button></li>
+<li><button type="button" class="btn" data-toggle="modal" data-target="#system-info-modal" title="System"><span class="glyphicon glyphicon-laptop-a"></span><span class="sr-only">System</span></button></li>
+<li><button type="button" id="logout" class="btn" data-toggle="modal" data-target="#logout-modal" title="Logout"><span class="glyphicon glyphicon-power"></span><span class="sr-only">Logout</span></button></li>
+</ul>
+
+<!-- End header buttons -->
+
+<!-- Header main content -->
+
+<div id="header-main">
+
+<!-- Search -->
+
+<form id="search" method="get" novalidate>
+<div class="form-group">
+<div class="input-group">
+<input type="search" class="form-control" size="40" ng-model="$root.search" ng-disabled="$root.isSearchDisabled()" placeholder="Search..." aria-label="Search" />
+<div class="input-group-btn">
+<button type="submit" class="btn hidden-xs hidden-sm" ng-click="$root.initSearch()" ng-disabled="$root.isSearchDisabled()"><span class="glyphicon" ng-class="($root.search)? 'glyphicon-cancel' : 'glyphicon-search-b'"></span></button>
+<button type="submit" class="btn hidden-md hidden-lg" ng-click="$root.hideHeader()" ng-disabled="$root.isSearchDisabled()"><span class="glyphicon glyphicon-search-b"></span></button>
+</div>
+</div>
+</div>
+</form>
+
+<!-- End search -->
+
+<!-- Site -->
+
+<div id="site">
+<a href="http://{{$root.systemInfo.server.host}}:{{$root.systemInfo.server.port}}"><span><img src="../../favicon.ico" alt="{{$root.settings.site_name.value}}" /></span><em>{{$root.settings.site_name.value}}</em> <strong>{{$root.systemInfo.server.host}}:{{$root.systemInfo.server.port}}</strong></a>
+</div>
+
+<!-- End site -->
+
+<!-- Navigation -->
+
+<nav>
+<div id="nav-content">
+<div ng-repeat="g in adminMenu track by $index">
+<h2 ng-if="g.title">{{g.title}}</h2>
+<ul ng-if="g.items.length">
+<li ng-repeat="i in g.items track by $index"><a href="{{i.url}}/" ng-class="($root.isActivePage(i.id))? 'active' : ''"><span class="glyphicon glyphicon-{{i.icon}}"></span>{{i.title}}</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- End navigation -->
+
+</div>
+
+<!-- End header main content -->
+
+</header>
+
+<!-- End header -->
+
+<button type="button" id="header-toggle" class="hidden-md hidden-lg" ng-click="$root.showHeader()"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">Menu</span></button>

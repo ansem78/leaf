@@ -1,0 +1,80 @@
+<aside id="sidebar">
+<div class="title-bar">
+<button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
+<h3>Post settings</h3>
+</div>
+<div class="content">
+<div class="padding">
+
+<div class="drop-area">
+<div class="drop-content">
+<span class="glyphicon glyphicon-image"></span>
+</div>
+<div class="drop-controls">
+<button type="button"><span class="glyphicon glyphicon-link-a text-default"></span><span class="sr-only">From URL</span></button>
+<button type="button" data-target="#delete-media-modal"><span class="glyphicon glyphicon-bin-c text-default"></span><span class="sr-only">Delete</span></button>
+</div>
+</div>
+
+<div class="form-group">
+<label for="slug">Slug</label>
+<input type="text" id="slug" class="form-control" size="50" value="" />
+<p class="text-muted">http://igiardinidiringford.it/</p>
+</div>
+
+<div class="form-group">
+<label for="date">Publish date</label>
+<input type="date" id="date" class="form-control" size="19" maxlength="19" value="2017-01-09 23:18:12" />
+</div>
+
+<div class="form-group">
+<label for="author">Author</label>
+<select id="author" class="form-control" size="1">
+<option value="1" selected="selected">Alexandro Morato</option>
+<option value="3">Benedetta Pini</option>
+<option value="4">Antonio Frattolillo</option>
+<option value="2">Ilaria Carli</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="tags">Tags</label>
+<input type="text" id="tags" class="form-control" size="50" value="" />
+<p class="text-muted">Separate each tag with a comma.</p>
+</div>
+
+<div class="form-group">
+<label for="excerpt">Excerpt</label>
+<textarea id="excerpt" class="form-control noresize" cols="50" rows="4"></textarea>
+</div>
+
+<div class="form-group">
+<div>
+<input type="checkbox" id="type" class="checkbox" value="page" />
+<label for="type">Turn into a static page</label>
+</div>
+<div>
+<input type="checkbox" id="featured" class="checkbox" value="1" />
+<label for="featured">Feature this post</label>
+</div>
+<div>
+<input type="checkbox" id="comment_status" class="checkbox" value="close" />
+<label for="comment_status">Close comments</label>
+</div>
+</div>
+
+<div class="form-group">
+<label for="keywords">Meta keywords</label>
+<input type="text" id="keywords" class="form-control" size="50" value="" />
+<p class="text-muted">Meta tag keywords.</p>
+</div>
+
+<div class="form-group">
+<label for="description">Meta description</label>
+<textarea id="description" class="form-control noresize" cols="50" rows="4"></textarea>
+<p class="text-muted">Meta tag description.</p>
+</div>
+
+</div>
+</div>
+</aside>

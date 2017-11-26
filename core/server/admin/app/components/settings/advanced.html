@@ -1,0 +1,94 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Main -->
+
+<main>
+
+<form name="settingsForm" method="post" novalidate ng-submit="updateSettings()">
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="padding">
+
+<div class="container-fluid">
+
+<div class="form-horizontal">
+
+<div class="form-group">
+<label for="mailserver_host" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Mail server host</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<input type="text" id="mailserver_host" name="mailserver_host" class="form-control" size="40" ng-model="settings.mailserver_host.value" />
+<p class="text-muted">SMTP server hostname or IP address. If empty, localhost will be used.</p>
+</div>
+</div>
+
+<div class="form-group">
+<label for="mailserver_port" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Mail server port</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<input type="number" id="mailserver_port" name="mailserver_port" class="form-control" size="10" ng-model="settings.mailserver_port.value" min="1" step="1" />
+<p class="text-muted">SMTP server port. If empty, port 25 will be used.</p>
+</div>
+</div>
+
+<div class="form-group">
+<label for="mailserver_user" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Mail server user</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<input type="text" id="mailserver_user" name="mailserver_user" class="form-control" size="40" ng-model="settings.mailserver_user.value" />
+<p class="text-muted">Username for SMTP authentication. If empty, no authentication will be used.</p>
+</div>
+</div>
+
+<div class="form-group">
+<label for="mailserver_password" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Mail server password</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<input type="password" id="mailserver_password" name="mailserver_password" class="form-control" size="40" ng-model="settings.mailserver_password.value" />
+<p class="text-muted">Password for SMTP authentication. If empty, no authentication will be used.</p>
+</div>
+</div>
+
+<hr />
+
+<div class="form-group">
+<p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Backup you data</p>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<button type="button" class="btn btn-sm btn-success text-uppercase">Create backup</button>
+<p class="text-muted">You can easily backup your database and your important files.</p>
+</div>
+</div>
+
+<div class="form-group">
+<label for="import" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Import from backup</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<p class="text-muted">You can use a previously generated backup file to restore your data.</p>
+<input type="file" id="import" size="50" value="" /> <button type="button" class="btn btn-sm btn-success text-uppercase">Import data</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</form>
+
+</main>
+
+<!-- End main -->

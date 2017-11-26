@@ -1,0 +1,51 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Delete tag modal -->
+
+<div ng-include="'app/components/tags/delete-tag-modal.html'"></div>
+
+<!-- End delete tag modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-success text-uppercase" ng-click="initTag(); showSidebar($event)"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">New tag</span></button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="list">
+
+<a href="#" class="item" ng-repeat="t in tags | filter : filterTag track by $index" ng-click="setActiveTag(t); showSidebar($event)">
+<div class="item-body">
+<h3>{{t.name}} <span class="badge hidden-xs hidden-sm">/{{t.slug}}</span></h3>
+</div>
+<p class="count">{{t.postsCount || '0'}}</p>
+</a>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
+
+<!-- Sidebar -->
+
+<div ng-include="'app/components/tags/tag-sidebar.html'"></div>
+
+<!-- End sidebar -->

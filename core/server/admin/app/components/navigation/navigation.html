@@ -1,0 +1,56 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="padding">
+
+<div ui-sortable="sortableOptions" ng-model="items">
+
+<div class="item-form" ng-repeat="i in items track by $index">
+<span class="glyphicon glyphicon-braille drag"></span>
+<div class="item-body">
+<input type="text" class="form-control" size="50" ng-model="items[$index].name" placeholder="Label" ng-blur="update(items[$index])" />
+</div>
+<div class="item-body">
+<input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="http://igiardinidiringford.it/" ng-blur="update(items[$index])" />
+</div>
+<button type="button" class="btn btn-sm btn-link text-uppercase" ng-click="remove(items[$index].id)"><span class="text-danger"><span class="glyphicon glyphicon-bin-b"></span><span class="sr-only">Delete</span></span></button>
+</div>
+
+</div>
+
+<form name="addItemForm" method="post" novalidate ng-submit="add()">
+<div class="item-form">
+<div class="item-body">
+<input type="text" id="item_name" name="item_name" class="form-control" size="50" ng-model="newItem.name" required placeholder="Label" />
+</div>
+<div class="item-body">
+<input type="url" id="item_url" name="item_url" class="form-control" size="50" ng-model="newItem.url" required placeholder="http://igiardinidiringford.it/" />
+</div>
+<button type="submit" class="btn btn-sm btn-success text-uppercase" ng-disabled="addItemForm.$invalid"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Add</span></button>
+</div>
+</form>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->

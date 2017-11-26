@@ -1,0 +1,79 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Main -->
+
+<main>
+
+<form name="settingsForm" method="post" novalidate ng-submit="updateSettings()">
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="padding">
+
+<div class="container-fluid">
+
+<div class="form-horizontal">
+
+<div class="form-group">
+<label for="default_role" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Default role</label>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<select id="default_role" name="default_role" class="form-control" size="1" ng-model="settings.default_role.value" required>
+<option value="{{r.id}}" ng-if="r.slug!=='owner'" ng-repeat="r in roles track by $index">{{r.name}}</option>
+</select>
+<p class="text-muted">The default role for invited users.</p>
+</div>
+</div>
+
+<hr />
+
+<div class="form-group">
+<p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Avatars rating</p>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<div ng-repeat="r in ratings track by $index">
+<input type="radio" id="avatar_rating_{{r.id}}" name="avatar_rating" class="radio" value="{{r.id}}" ng-model="settings.avatar_rating.value" />
+<label for="avatar_rating_{{r.id}}">{{r.id | uppercase}}: {{r.description}}</label>
+</div>
+</div>
+</div>
+
+<hr />
+
+<div class="form-group">
+<p class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Default avatar</p>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<p>For users without a custom avatar of their own, you can either display a generic logo or a generated one, based on their e-mail address.</p>
+<div ng-repeat="a in avatars track by $index">
+<input type="radio" id="default_avatar_{{a.id}}" name="default_avatar" class="radio" value="{{a.id}}" ng-model="settings.default_avatar.value" />
+<label for="default_avatar_{{a.id}}"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d={{a.id}}" class="avatar" alt="{{a.name}}" /> {{a.name}} <span ng-if="a.generated">(generated)</span></label>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</form>
+
+</main>
+
+<!-- End main -->

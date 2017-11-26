@@ -1,0 +1,104 @@
+<div ng-include="'app/shared/header.html'"></div>
+
+<!-- Send invite modal -->
+
+<div ng-include="'app/components/users/send-invite-modal.html'"></div>
+
+<!-- End send invite modal -->
+
+<!-- Renew invite modal -->
+
+<div ng-include="'app/components/users/renew-invite-modal.html'"></div>
+
+<!-- End renew invite modal -->
+
+<!-- Revoke invite modal -->
+
+<div ng-include="'app/components/users/revoke-invite-modal.html'"></div>
+
+<!-- End revoke invite modal -->
+
+<!-- Main -->
+
+<main>
+
+<!-- Title bar -->
+
+<div class="title-bar">
+<h2 id="title">{{$state.current.title}}</h2>
+<div id="title-bar-controls">
+<button type="button" class="btn btn-success text-uppercase" ng-click="initInvite()" data-toggle="modal" data-target="#send-invite-modal"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Invite</span></button>
+</div>
+</div>
+
+<!-- End title bar -->
+
+<!-- Content -->
+
+<div class="content">
+
+<div class="padding">
+
+<div ng-if="invites.length">
+
+<section>
+<h3 class="section-title">Invited users</h3>
+
+<div class="item item-avatar" ng-class="($last)? 'item-noborder' : ''" ng-repeat="i in invites | filter : filterInvite track by $index">
+
+<div class="avatar">
+<span class="glyphicon glyphicon-mail"></span>
+</div>
+
+<div class="item-body">
+<h3>{{i.email}}</h3>
+<p>Sent: {{i.created_at | elapsedTime}}, <span ng-if="i.expires | remainingTime"> expires {{i.expires | remainingTime}}</span><span ng-if="!(i.expires | remainingTime)">expired</span></p>
+<div class="hidden-md hidden-lg">
+<p class="status status-author">Author</p>
+<button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#revoke-invite-modal" ng-click="setActiveInvite(i)">Revoke</button>
+<button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#renew-invite-modal" ng-click="setActiveInvite(i)">Resend</button>
+</div>
+</div>
+
+<div class="hidden-xs hidden-sm">
+<button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#revoke-invite-modal" ng-click="setActiveInvite(i)">Revoke</button>
+<button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#renew-invite-modal" ng-click="setActiveInvite(i)">Resend</button>
+</div>
+
+<p class="hidden-xs hidden-sm status status-author">Author</p>
+
+</div>
+</section>
+
+</div>
+
+<section>
+<h3 class="section-title">Active users</h3>
+
+<a href="users/{{u.id}}/" class="item item-avatar" ng-class="($last)? 'item-noborder' : ''" ng-repeat="u in users | filter : filterUser track by $index">
+
+<img ng-src="{{u.avatar}}?s=48&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar" alt="{{u.name}}" />
+
+<div class="item-body">
+<h3>{{u.name}}</h3>
+<p>Last seen: {{u.last_seen | elapsedTime : 'never'}}</p>
+<p class="hidden-md hidden-lg status status-owner">Owner</p>
+</div>
+
+<div>
+<p class="hidden-xs hidden-sm status status-owner">Owner</p>
+</div>
+
+</a>
+
+</section>
+
+</div>
+
+</div>
+
+<!-- End content -->
+
+</main>
+
+<!-- End main -->
