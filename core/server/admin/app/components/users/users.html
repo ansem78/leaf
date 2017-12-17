@@ -27,7 +27,7 @@
 <div class="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
 <div id="title-bar-controls">
-<button type="button" class="btn btn-success text-uppercase" ng-click="initInvite()" data-toggle="modal" data-target="#send-invite-modal"><span class="glyphicon glyphicon-plus hidden-md hidden-lg"></span><span class="hidden-xs hidden-sm">Invite</span></button>
+<button type="button" class="btn btn-success text-uppercase" ng-click="initInvite()" data-toggle="modal" data-target="#send-invite-modal"><span class="icon icon-plus d-inline d-lg-none"></span><span class="d-none d-lg-inline">Invite</span></button>
 </div>
 </div>
 
@@ -47,25 +47,25 @@
 <div class="item item-avatar" ng-class="($last)? 'item-noborder' : ''" ng-repeat="i in invites | filter : filterInvite track by $index">
 
 <div class="avatar">
-<span class="glyphicon glyphicon-mail"></span>
+<span class="icon icon-mail"></span>
 </div>
 
 <div class="item-body">
 <h3>{{i.email}}</h3>
 <p>Sent: {{i.created_at | elapsedTime}}, <span ng-if="i.expires | remainingTime"> expires {{i.expires | remainingTime}}</span><span ng-if="!(i.expires | remainingTime)">expired</span></p>
-<div class="hidden-md hidden-lg">
+<div class="d-block d-md-none">
 <p class="status status-author">Author</p>
 <button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#revoke-invite-modal" ng-click="setActiveInvite(i)">Revoke</button>
 <button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#renew-invite-modal" ng-click="setActiveInvite(i)">Resend</button>
 </div>
 </div>
 
-<div class="hidden-xs hidden-sm">
+<div class="d-none d-lg-block">
 <button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#revoke-invite-modal" ng-click="setActiveInvite(i)">Revoke</button>
 <button type="button" class="btn btn-sm btn-link text-uppercase" data-toggle="modal" data-target="#renew-invite-modal" ng-click="setActiveInvite(i)">Resend</button>
 </div>
 
-<p class="hidden-xs hidden-sm status status-author">Author</p>
+<p class="d-none d-lg-block status status-author">Author</p>
 
 </div>
 </section>
@@ -82,11 +82,11 @@
 <div class="item-body">
 <h3>{{u.name}}</h3>
 <p>Last seen: {{u.last_seen | elapsedTime : 'never'}}</p>
-<p class="hidden-md hidden-lg status status-owner">Owner</p>
+<p class="d-block d-lg-none status status-owner">Owner</p>
 </div>
 
 <div>
-<p class="hidden-xs hidden-sm status status-owner">Owner</p>
+<p class="d-none d-lg-block status status-owner">Owner</p>
 </div>
 
 </a>

@@ -9,25 +9,25 @@
 <div ng-if="$root.message.text" class="alert alert-{{$root.message.status}}" role="alert">
 <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
 <div class="alert-icon">
-<span class="glyphicon glyphicon-{{$root.message.icon}}"></span>
+<span class="icon icon-{{$root.message.icon}}"></span>
 </div>
 <p>{{$root.message.text}}</p>
 </div>
 
 <div class="form-group">
 <label for="email" class="sr-only">E-mail address</label>
-<span class="glyphicon glyphicon-mail"></span>
-<input type="email" id="email" name="email" class="form-control" size="40" ng-model="credentials.email" placeholder="E-mail address" required />
+<span class="icon icon-mail"></span>
+<input type="email" id="email" name="email" class="form-control form-control-lg" size="40" ng-model="credentials.email" placeholder="E-mail address" required />
 </div>
 
 <div class="form-group">
 <label for="password" class="sr-only">Password</label>
-<span class="glyphicon glyphicon-locked"></span>
-<input type="password" id="password" name="password" class="form-control" size="40" ng-model="credentials.password" placeholder="Password" required />
+<span class="icon icon-locked"></span>
+<input type="password" id="password" name="password" class="form-control form-control-lg" size="40" ng-model="credentials.password" placeholder="Password" required />
 </div>
 
 <div class="form-group">
-<button type="submit" class="btn btn-block btn-success text-uppercase" ng-disabled="loginForm.$invalid">Login</button>
+<button type="submit" class="btn btn-lg btn-block btn-success text-uppercase" ng-disabled="loginForm.$invalid">Login</button>
 </div>
 
 <p><a href="lost-password/">Forgotten password?</a></p>

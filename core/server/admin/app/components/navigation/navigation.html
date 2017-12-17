@@ -20,28 +20,28 @@
 
 <div ui-sortable="sortableOptions" ng-model="items">
 
-<div class="item-form" ng-repeat="i in items track by $index">
-<span class="glyphicon glyphicon-braille drag"></span>
-<div class="item-body">
+<div class="row justify-content-center align-items-center no-gutters items-form" ng-repeat="i in items track by $index">
+<span class="icon icon-braille drag"></span>
+<div class="col">
 <input type="text" class="form-control" size="50" ng-model="items[$index].name" placeholder="Label" ng-blur="update(items[$index])" />
 </div>
-<div class="item-body">
+<div class="col">
 <input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="http://igiardinidiringford.it/" ng-blur="update(items[$index])" />
 </div>
-<button type="button" class="btn btn-sm btn-link text-uppercase" ng-click="remove(items[$index].id)"><span class="text-danger"><span class="glyphicon glyphicon-bin-b"></span><span class="sr-only">Delete</span></span></button>
+<button type="button" class="btn btn-default" ng-click="remove(items[$index].id)"><span class="icon icon-bin-b text-danger"></span><span class="sr-only">Delete</span></button>
 </div>
 
 </div>
 
 <form name="addItemForm" method="post" novalidate ng-submit="add()">
-<div class="item-form">
-<div class="item-body">
+<div class="row justify-content-center align-items-center no-gutters items-form">
+<div class="col">
 <input type="text" id="item_name" name="item_name" class="form-control" size="50" ng-model="newItem.name" required placeholder="Label" />
 </div>
-<div class="item-body">
+<div class="col">
 <input type="url" id="item_url" name="item_url" class="form-control" size="50" ng-model="newItem.url" required placeholder="http://igiardinidiringford.it/" />
 </div>
-<button type="submit" class="btn btn-sm btn-success text-uppercase" ng-disabled="addItemForm.$invalid"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Add</span></button>
+<button type="submit" class="btn btn-success text-uppercase" ng-disabled="addItemForm.$invalid"><span class="icon icon-plus"></span><span class="sr-only">Add</span></button>
 </div>
 </form>
 

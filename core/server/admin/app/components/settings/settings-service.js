@@ -39,16 +39,6 @@ angular.module('Leaf')
       });
     },
 
-    // Update all settings.
-    updateAll : function(settings) {
-      return $http.put(this.apiUrl(),settings).then(function(res) {
-        return res;
-      },
-      function(err) {
-        return err;
-      });
-    },
-
     // Delete a setting.
     remove : function(id) {
       return $http.delete(this.apiUrl() + '/' + id).then(function(res) {

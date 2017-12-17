@@ -27,24 +27,27 @@
 <div class="title-bar">
 <input type="text" id="title" size="50" value="" placeholder="Your post title here" />
 <div id="title-bar-controls">
-<button type="button" class="btn btn-default hidden-xs hidden-sm" ng-click="showSidebar($event)"><span class="glyphicon glyphicon-gear"></span><span class="sr-only">Post settings</span></button>
-<div class="btn-group hidden-xs hidden-sm">
-<button type="button" class="btn btn-primary text-uppercase">Save draft</button>
-<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right">
+<button type="button" class="btn btn-default d-none d-lg-inline-flex" ng-click="showSidebar($event)"><span class="icon icon-gear"></span><span class="sr-only">Post settings</span></button>
+<div class="btn-group d-none d-lg-inline-flex" role="group" aria-label="Save options">
+<button type="button" class="btn btn-primary text-uppercase">Save draft</button><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle menu</span></button>
+<div class="dropdown-menu dropdown-menu-right">
+<ul>
 <li><button type="button">Publish</button></li>
 <li><button type="button">Save draft</button></li>
 <li class="separate"><button type="button" data-toggle="modal" data-target="#delete-post-modal">Delete post</button></li>
 </ul>
 </div>
-<div class="dropdown hidden-md hidden-lg">
-<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-gear"></span> <span class="sr-only">Post settings</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right">
+</div>
+<div class="dropdown d-inline-flex d-lg-none">
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icon icon-gear"></span><span class="sr-only">Post settings</span></button>
+<div class="dropdown-menu dropdown-menu-right">
+<ul>
 <li><button type="button" ng-click="showSidebar($event)">Post settings</button></li>
 <li class="separate"><button type="button">Publish</button></li>
 <li><button type="button">Save draft</button></li>
 <li class="separate"><button type="button" data-toggle="modal" data-target="#delete-post-modal">Delete post</button></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -58,9 +61,9 @@
 <!-- Editor left panel -->
 
 <div id="editor-markdown" class="editor-panel editor-panel-left">
-<div class="editor-panel-head clearfix hidden-xs hidden-sm">
+<div class="editor-panel-head clearfix d-none d-lg-block">
 <h3>Markdown</h3>
-<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="glyphicon glyphicon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
 </div>
 <div class="editor-panel-body syncscroll" data-syncscroll="editor-scroll">
 <div class="editor-panel-content padding code"></div>
@@ -72,7 +75,7 @@
 <!-- Editor right panel -->
 
 <div id="editor-preview" class="editor-panel editor-panel-right">
-<div class="editor-panel-head clearfix hidden-xs hidden-sm">
+<div class="editor-panel-head clearfix d-none d-lg-block">
 <h3>Preview</h3>
 <p>Words: 0</p>
 </div>
@@ -85,11 +88,11 @@
 
 <!-- Editor controls -->
 
-<div id="footer-bar" class="hidden-md hidden-lg clearfix">
+<div id="footer-bar" class="d-block d-lg-none clearfix">
 <ul>
 <li ng-class="($first)? 'first' : ''" ng-repeat="v in views track by $index"><button type="button" ng-class="(activeView.id===v.id)? 'active' : ''" ng-click="setActiveView(v)">{{v.name}}</button></li>
 </ul>
-<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="glyphicon glyphicon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
 </div>
 
 <!-- End editor controls -->

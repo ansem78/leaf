@@ -2,8 +2,8 @@
 
 <aside id="sidebar">
 <div class="title-bar">
-<button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
 <h3>Tag settings</h3>
+<button type="button" class="close" aria-label="Close" ng-click="hideSidebar($event)"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="content">
 <div class="padding">
@@ -23,14 +23,14 @@
 <label for="tag_description">Description</label>
 <textarea id="tag_description" name="tag_description" class="form-control noresize" cols="50" rows="4" ng-model="activeTag.description" max-input="200"></textarea>
 <div class="clearfix">
-<p class="text-muted pull-left">Maximum <strong>200 characters</strong>.</p>
-<p class="text-muted pull-right">{{activeTag.description.length || '0'}}</p>
+<p class="text-muted float-left">Maximum <strong>200 characters</strong>.</p>
+<p class="text-muted float-right">{{activeTag.description.length || '0'}}</p>
 </div>
 </div>
 
-<div class="field clearfix">
-<button type="button" class="btn btn-link pull-left" data-toggle="modal" data-target="#delete-tag-modal" ng-if="activeTag.id"><span class="text-danger"><span class="glyphicon glyphicon-bin-b"></span> Delete</span></button>
-<button type="submit" class="btn btn-primary pull-right" ng-disabled="updateTagForm.$invalid">Save</button>
+<div class="clearfix">
+<button type="button" class="btn btn-default text-danger float-left" data-toggle="modal" data-target="#delete-tag-modal" ng-if="activeTag.id"><span class="icon icon-bin-b"></span> Delete</button>
+<button type="submit" class="btn btn-primary float-right" ng-disabled="updateTagForm.$invalid">Save</button>
 </div>
 
 </div>

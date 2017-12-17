@@ -1,26 +1,6 @@
 angular.module('Leaf')
 
-.controller('settingsController',['$rootScope','$scope','$filter','$timeout','rolesService','themesService','settingsService',function($rootScope,$scope,$filter,$timeout,rolesService,themesService,settingsService) {
-
-  // Define all avatars.
-  $scope.avatars = [
-    {id : 'mm',name : 'Mistery man'},
-    {id : '',name : 'Gravatar logo'},
-    {id : 'identicon',name : 'Identicon',generated : true},
-    {id : 'monsterid',name : 'MonsterID',generated : true},
-    {id : 'wavatar',name : 'Wavatar',generated : true},
-    {id : 'robohash',name : 'Robohash',generated : true},
-    {id : 'retro',name : 'Retro',generated : true},
-    {id : 'blank',name : 'Blank'}
-  ];
-
-  // Define all avatar ratings.
-  $scope.ratings = [
-    {id : 'g',description : 'Suitable for all audiences.'},
-    {id : 'pg',description : 'Possibly offensive. Usually for audiences 13 and above.'},
-    {id : 'r',description : 'Intended for adult audiences above 17.'},
-    {id : 'x',description : 'Even more mature than above.'}
-  ];
+.controller('settingsController',['$rootScope','$scope','$filter','$timeout','$q','rolesService','themesService','settingsService',function($rootScope,$scope,$filter,$timeout,$q,rolesService,themesService,settingsService) {
 
   $scope.loadRoles = function() {
     $scope.roles = [];
@@ -41,22 +21,37 @@ angular.module('Leaf')
 
   $scope.loadThemes();
 
-  // Copy all settings into $scope.
-  $scope.settings = angular.copy($rootScope.settings);
+    // Load all settings.
+    $scope.loadSettings = function() {
+        $scope.settings = {};
+        settingsService.find().then(function(res) {
+          if (res.status===200) for (var i=0; i<res.data.length; i++) $scope.settings[res.data[i].name] = res.data[i];
+        });
+    };
 
-  // Update settings.
-  $scope.updateSettings = function() {
+    $scope.loadSettings();
+
+  // Update one or more settings.
+  $scope.updateSettings = function(settings) {
     $rootScope.showLoading('Saving...');
-    var settings = [];
-    for (var k in $scope.settings) settings.push($scope.settings[k]);
+
+    var promises = [];
+
     $timeout(function() {
-      settingsService.updateAll(settings).then(function(res) {
-        if (res.status===200) {
-          $rootScope.loadSettings();
-          $rootScope.hideLoading();
-        }
-        else $rootScope.showMessage(res.data.message);
-      });
+
+        for (var i=0; i<settings.length; i++) promises.push(settingsService.update($scope.settings[settings[i]]));
+
+        $q.all(promises).then(function(res) {
+            for (var i=0; i<res.length; i++) {
+                if (res[i].status!==200) {
+                  $rootScope.showMessage(res[i].data.message);
+                  return;
+                }
+                else $scope.settings[res[i].data.name] = res[i].data;
+            }
+            $rootScope.loadSettings();
+            $rootScope.hideLoading();
+        });
     },1000);
   };
 

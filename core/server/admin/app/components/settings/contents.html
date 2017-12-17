@@ -4,7 +4,7 @@
 
 <main>
 
-<form name="settingsForm" method="post" novalidate ng-submit="updateSettings()">
+<form name="settingsForm" method="post" novalidate ng-submit="updateSettings(['posts_per_page','posts_per_feed','comments_per_page'])">
 
 <!-- Title bar -->
 
@@ -23,36 +23,29 @@
 
 <div class="padding">
 
-<div class="container-fluid">
 
-<div class="form-horizontal">
-
-<div class="form-group">
-<label for="posts_per_page" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Posts per page</label>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<div class="form-group row">
+<label for="posts_per_page" class="col-md-12 col-lg-4 col-form-label">Posts per page</label>
+<div class="col-md-12 col-lg-8 input-control">
 <input type="number" id="posts_per_page" name="posts_per_page" class="form-control" size="5" ng-model="settings.posts_per_page.value" min="1" step="1" required />
 <p class="text-muted">How many posts should be displayed in each page.</p>
 </div>
 </div>
 
-<div class="form-group">
-<label for="posts_per_feed" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Posts per feed</label>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<div class="form-group row">
+<label for="posts_per_feed" class="col-md-12 col-lg-4 col-form-label">Posts per feed</label>
+<div class="col-md-12 col-lg-8 input-control">
 <input type="number" id="posts_per_feed" name="posts_per_feed" class="form-control" size="5" ng-model="settings.posts_per_feed.value" min="1" step="1" required />
 <p class="text-muted">How many posts should be displayed in each feed.</p>
 </div>
 </div>
 
-<div class="form-group">
-<label for="posts_per_page" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 control-label">Comments per page</label>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 input-control">
+<div class="form-group row">
+<label for="posts_per_page" class="col-md-12 col-lg-4 col-form-label">Comments per page</label>
+<div class="col-md-12 col-lg-8 input-control">
 <input type="number" id="comments_per_page" name="comments_per_page" class="form-control" size="5" ng-model="settings.comments_per_page.value" min="1" step="1" required />
 <p class="text-muted">How many comments should be displayed in each page.</p>
 </div>
-</div>
-
-</div>
-
 </div>
 
 </div>
