@@ -1,10 +1,10 @@
-@import url(../libs/bootstrap/css/bootstrap.css);
+@import url(../libs/bootstrap/css/bootstrap.min.css);
 @import url(../icons/glyphicons.css);
 
 @font-face {
 font-family: 'OpenSans';
 src: url('../fonts/opensans.eot');
-src: url('../fonts/opensans.eot?#iefix') format('embedded-opentype'),url('../fonts/opensans.woff') format('woff'),url('../fonts/opensans.ttf') format('truetype'),url('../fonts/opensans.svg#webfont') format('svg');
+src: url('../fonts/opensans.eot?#iefix') format('embedded-opentype'),url('../fonts/opensans.woff2') format('woff2'),url('../fonts/opensans.woff') format('woff'),url('../fonts/opensans.ttf') format('truetype'),url('../fonts/opensans.svg#webfont') format('svg');
 }
 
 /* General */
@@ -15,6 +15,7 @@ height: 100%;
 
 body {
 font-family: 'OpenSans',Arial,Helvetica,Sans-serif;
+font-size: .9em;
 color: #222;
 background: #fff;
 height: 100%;
@@ -47,17 +48,29 @@ textarea.noresize {
 resize: none;
 }
 
+.form-group > label {
+font-size: .95em;
+margin-bottom: 3px;
+}
+
 .form-control {
+font-size: .95em;
 border-radius: 3px;
 }
 
 .text-muted {
-font-size: .9em;
+font-size: .85em;
 margin: 3px 0;
 }
 
-.btn {
+button,.btn {
+font-size: .95em;
 border-radius: 3px;
+cursor: pointer;
+}
+
+button[disabled],.btn[disabled],.disabled {
+cursor: not-allowed;
 }
 
 .btn-default {
@@ -66,12 +79,16 @@ background: #fff;
 border: 1px solid #fff;
 }
 
-.btn span.glyphicon {
+.btn span.icon {
 font-size: 16px;
 }
 
 button.close {
 font-size: 28px;
+}
+
+.btn-group .dropdown-toggle-split {
+border-left: 1px solid rgba(255,255,255,.5);
 }
 
 table.table thead tr th {
@@ -83,6 +100,11 @@ border: none;
 
 .modal .modal-dialog .modal-content {
 border-radius: 3px;
+}
+
+.modal .modal-header .modal-title {
+font-size: 1.25rem;
+font-weight: normal;
 }
 
 .avatar {
@@ -105,7 +127,7 @@ font-weight: bold;
 }
 
 .modal-confirm .modal-footer {
-text-align: center;
+justify-content: center;
 }
 
 .modal-confirm .modal-footer .btn {
@@ -123,7 +145,7 @@ display: none;
 
 input.checkbox + label,input.radio + label {
 font-weight: normal;
-padding-left: 24px;
+padding-left: 20px;
 margin-right: 15px;
 position: relative;
 display: inline-block;
@@ -135,7 +157,7 @@ content: '';
 background: #fff;
 width: 16px;
 height: 16px;
-border: 1px solid #ccc;
+border: 1px solid #999;
 margin: -8px 10px 0 0;
 display: inline-block;
 position: absolute;
@@ -155,7 +177,7 @@ input.checkbox:checked + label:before,input.radio:checked + label:before {
 content: '\e029';
 font-size: 12px;
 font-family: 'Glyphicons Halflings';
-line-height: 12px;
+line-height: 14px;
 color: #fff;
 background: #449d44;
 text-align: center;
@@ -174,18 +196,25 @@ color: #aaa;
 
 .dropdown-menu {
 background: #fff;
-padding: 10px;
+padding: 5px;
 border: none;
 border-radius: 0;
+box-shadow: 0 0 5px #444;
 }
 
-.dropdown-menu li.separate {
+.dropdown-menu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.dropdown-menu ul li.separate {
 padding-top: 5px;
 border-top: 1px solid #ccc;
 margin-top: 5px;
 }
 
-.dropdown-menu li a,.dropdown-menu li a:visited,.dropdown-menu li button {
+.dropdown-menu ul li a,.dropdown-menu ul li a:visited,.dropdown-menu ul li button {
 color: #222;
 line-height: 30px;
 text-align: left;
@@ -201,7 +230,7 @@ display: block;
 outline: 0;
 }
 
-.dropdown-menu li a:hover,.dropdown-menu li a:focus,.dropdown-menu li a:active,.dropdown-menu li button:hover,.dropdown-menu li button:focus,.dropdown-menu li button:active {
+.dropdown-menu ul li a:hover,.dropdown-menu ul li a:focus,.dropdown-menu li a:active,.dropdown-menu ul li button:hover,.dropdown-menu ul li button:focus,.dropdown-menu ul li button:active {
 color: #fff;
 background: #449d44;
 }
@@ -262,6 +291,10 @@ border-radius: 0;
 display: block;
 }
 
+#header #header-close:focus {
+box-shadow: none;
+}
+
 #header #header-close:active {
 color: #fff;
 background: #333;
@@ -296,6 +329,10 @@ border: none;
 border-radius: 0;
 margin: 0;
 display: block;
+}
+
+#header #header-buttons li a:focus,#header #header-buttons li button.btn:focus {
+box-shadow: none;
 }
 
 #header #header-buttons li a:active,#header #header-buttons li button.btn:active {
@@ -363,6 +400,7 @@ box-shadow: none;
 /* Site */
 
 #header #header-main #site {
+font-size: .95em;
 height: 48px;
 margin: 0 15px 8px 15px;
 }
@@ -431,7 +469,7 @@ margin-left: 25px;
 }
 
 #header #header-main nav #nav-content h2 {
-font-size: .75em;
+font-size: .7em;
 font-weight: normal;
 line-height: 1.8;
 color: #777;
@@ -444,7 +482,7 @@ margin-bottom: 10px;
 }
 
 #header #header-main nav #nav-content ul li {
-font-size: .95em;
+font-size: .9em;
 margin: 1px 0;
 }
 
@@ -509,7 +547,6 @@ main {
 height: 100%;
 margin-left: 304px;
 position: relative;
-z-index: 1;
 overflow: hidden;
 }
 
@@ -520,6 +557,15 @@ overflow: hidden;
   }
 
 }
+
+/*main.ng-enter {
+transition: .5s;
+opacity: 0;
+}
+
+main.ng-enter-active {
+opacity: 1;
+}*/
 
 /* Title bar */
 
@@ -537,7 +583,7 @@ align-items: center;
 }
 
 .title-bar #title {
-font-size: 1.6em;
+font-size: 1.5em;
 font-weight: bold;
 line-height: 44px;
 text-overflow: ellipsis;
@@ -572,7 +618,7 @@ color: #555;
 @media all and (max-width: 991px) {
 
   .title-bar #title {
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-left: 40px;
   }
 
@@ -710,14 +756,16 @@ margin-right: 5px;
 }
 
 .item .count {
-font-size: 1.3em;
+font-size: 1.1em;
+color: #777;
 margin: 0 10px;
 }
 
 .item h3 .badge {
+font-size: .65em;
 font-weight: normal;
 border-radius: 3px;
-margin: -3px 0 0 5px;
+margin-left: 5px;
 }
 
 .item p.status {
@@ -778,84 +826,55 @@ background: #ccc;
 
 /* Form items */
 
-.item-form {
-white-space: nowrap;
-background: #fff;
-padding: 5px 0;
-display: flex;
-flex-direction: row;
-align-items: center;
+.items-form .col {
+padding: 5px;
 }
 
-.item-form .drag {
+.items-form .drag {
 font-size: 16px;
 color: #777;
 text-align: center;
 width: 20px;
+display: block;
 }
 
-.item-form .item-body {
-margin: 0 5px;
-flex: 1;
-}
-
-.item-form .btn {
-text-decoration: none;
-margin-left: 5px;
-}
-
-form .item-form {
+form .items-form {
 padding-left: 20px;
 }
 
 @media all and (max-width: 991px) {
 
-  .item-form {
-  margin: 10px 0;
-  display: block;
-  position: relative;
-  }
+    .items-form {
+    padding: 0 45px 0 20px;
+    margin: 10px 0;
+    display: block;
+    position: relative;
+    }
 
-  .item-form .drag {
-  display: block;
-  position: absolute;
-  top: 30px;
-  left: 0;
-  }
+    .items-form .col {
+    padding: 3px 5px;
+    }
 
-  .item-form .item-body {
-  margin: 5px 0;
-  flex: none;
-  }
+    .items-form .drag {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    }
 
-  .item-form .btn {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  }
-
-  .item-form,form .item-form {
-  padding: 0 45px 0 25px;
-  }
+    .items-form .btn {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    }
 
 }
 
 /* Settings */
 
-.form-group label,.form-group label.control-label,.form-group p.control-label {
-font-size: 1em;
-font-weight: normal;
-color: #222;
-}
-
-.form-group p.control-label {
-padding: 0 15px;
+.col-form-label {
+text-align: right;
 margin: 0;
-}
-
-.form-group .input-control label {
-font-weight: normal;
 }
 
 .form-group .input-control .form-control,.form-group .input-control .btn {
@@ -864,7 +883,7 @@ display: inline-block;
 }
 
 .form-group .input-control div {
-margin-bottom: 5px;
+margin-top: 6px;
 }
 
 .form-group .input-control div label img {
@@ -873,11 +892,8 @@ margin: 0 5px;
 
 @media all and (max-width: 991px) {
 
-    .form-group .control-label {
+    .col-form-label {
     text-align: left;
-    width: auto;
-    padding: 0;
-    margin-left: 15px;
     }
 
     .form-group .input-control .form-control {
@@ -932,7 +948,7 @@ left: 0;
 }
 
 .editor-panel-head h3,.editor-panel-head p {
-font-size: .85em;
+font-size: .75em;
 line-height: 40px;
 color: #777;
 text-transform: uppercase;
@@ -1021,7 +1037,7 @@ border: none;
 }
 
 #footer-bar ul li button {
-font-size: .9em;
+font-size: .8em;
 color: #222;
 background: transparent;
 height: 30px;
@@ -1070,13 +1086,18 @@ display: block;
 }
 
 #sidebar .title-bar button {
-margin-top: 8px;
+line-height: 44px;
+width: 44px;
+height: 44px;
+position: absolute;
+top: 10px;
+right: 0;
 }
 
 #sidebar .title-bar h3 {
 font-size: 1.3em;
 line-height: 44px;
-margin: 0 25px 0 5px;
+margin: 0 50px 0 5px;
 }
 
 /* Drop area */
@@ -1311,11 +1332,11 @@ color: #fff;
 margin: 0;
 }
 
-.auth-page .auth-body form .form-group span.glyphicon {
+.auth-page .auth-body form .form-group span.icon {
 font-size: 16px;
 color: #999;
 position: absolute;
-top: 9px;
+top: 11px;
 left: 10px;
 }
 
