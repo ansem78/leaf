@@ -34,8 +34,8 @@
 
 <!-- Logo & close button -->
 
-<h1 class="hidden-xs hidden-sm"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">{{$root.settings.platform.name}}</span></h1>
-<button type="button" id="header-close" class="btn hidden-md hidden-lg" ng-click="$root.hideHeader()" title="Hide menu"><span class="glyphicon glyphicon-menu-a"></span><span class="sr-only">Close</span></button>
+<h1 class="d-none d-lg-block"><span class="icon icon-leaf-a"></span><span class="sr-only">{{$root.settings.platform.name}}</span></h1>
+<button type="button" id="header-close" class="btn d-block d-lg-none" ng-click="$root.hideHeader()" title="Hide menu"><span class="icon icon-menu-a"></span><span class="sr-only">Close</span></button>
 
 <!-- End logo & close button -->
 
@@ -43,9 +43,9 @@
 
 <ul id="header-buttons">
 <li><a href="users/xxxxxxxxxxxxxxxxxxxxxxxx/" title="Your profile"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=24&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar" alt="Alexandro Morato" /><span class="sr-only">Your profile</span></a></li>
-<li><button type="button" class="btn" data-toggle="modal" data-target="#help-modal" title="Help"><span class="glyphicon glyphicon-guide"></span><span class="sr-only">Help</span></button></li>
-<li><button type="button" class="btn" data-toggle="modal" data-target="#system-info-modal" title="System"><span class="glyphicon glyphicon-laptop-a"></span><span class="sr-only">System</span></button></li>
-<li><button type="button" id="logout" class="btn" data-toggle="modal" data-target="#logout-modal" title="Logout"><span class="glyphicon glyphicon-power"></span><span class="sr-only">Logout</span></button></li>
+<li><button type="button" class="btn" data-toggle="modal" data-target="#help-modal" title="Help"><span class="icon icon-guide"></span><span class="sr-only">Help</span></button></li>
+<li><button type="button" class="btn" data-toggle="modal" data-target="#system-info-modal" title="System"><span class="icon icon-laptop-a"></span><span class="sr-only">System</span></button></li>
+<li><button type="button" id="logout" class="btn" data-toggle="modal" data-target="#logout-modal" title="Logout"><span class="icon icon-power"></span><span class="sr-only">Logout</span></button></li>
 </ul>
 
 <!-- End header buttons -->
@@ -61,8 +61,8 @@
 <div class="input-group">
 <input type="search" class="form-control" size="40" ng-model="$root.search" ng-disabled="$root.isSearchDisabled()" placeholder="Search..." aria-label="Search" />
 <div class="input-group-btn">
-<button type="submit" class="btn hidden-xs hidden-sm" ng-click="$root.initSearch()" ng-disabled="$root.isSearchDisabled()"><span class="glyphicon" ng-class="($root.search)? 'glyphicon-cancel' : 'glyphicon-search-b'"></span></button>
-<button type="submit" class="btn hidden-md hidden-lg" ng-click="$root.hideHeader()" ng-disabled="$root.isSearchDisabled()"><span class="glyphicon glyphicon-search-b"></span></button>
+<button type="submit" class="btn d-none d-lg-block" ng-click="$root.initSearch()" ng-disabled="$root.isSearchDisabled()"><span class="icon" ng-class="($root.search)? 'icon-cancel' : 'icon-search-b'"></span></button>
+<button type="submit" class="btn d-block d-lg-none" ng-click="$root.hideHeader()" ng-disabled="$root.isSearchDisabled()"><span class="icon icon-search-b"></span></button>
 </div>
 </div>
 </div>
@@ -85,7 +85,7 @@
 <div ng-repeat="g in adminMenu track by $index">
 <h2 ng-if="g.title">{{g.title}}</h2>
 <ul ng-if="g.items.length">
-<li ng-repeat="i in g.items track by $index"><a href="{{i.url}}/" ng-class="($root.isActivePage(i.id))? 'active' : ''"><span class="glyphicon glyphicon-{{i.icon}}"></span>{{i.title}}</a></li>
+<li ng-repeat="i in g.items track by $index"><a href="{{i.url}}/" ng-class="($root.isActivePage(i.id))? 'active' : ''"><span class="icon icon-{{i.icon}}"></span>{{i.title}}</a></li>
 </ul>
 </div>
 </div>
@@ -101,4 +101,4 @@
 
 <!-- End header -->
 
-<button type="button" id="header-toggle" class="hidden-md hidden-lg" ng-click="$root.showHeader()"><span class="glyphicon glyphicon-leaf-a"></span><span class="sr-only">Menu</span></button>
+<button type="button" id="header-toggle" class="d-block d-lg-none" ng-click="$root.showHeader()"><span class="icon icon-leaf-a"></span><span class="sr-only">Menu</span></button>
