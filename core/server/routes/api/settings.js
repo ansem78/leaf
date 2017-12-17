@@ -32,27 +32,16 @@ router
 })
 
 // Update a setting.
-/*.put('/',function(req,res,next) {
+.put('/',function(req,res,next) {
   var Setting = dataProvider.Setting;
   Setting.update(req.body).then(function(setting) {
     res.json(setting);
-  }).catch(Setting.NoRowsUpdatedError,function() {
-    var err = new Error('Error updating this option.');
+  }).catch(Setting.NotFoundError,function() {
+    var err = new Error('No option found.');
     console.error(err);
     res.status(400).json(err);
-  }).catch(function(err) {
-    console.error(err);
-    res.status(400).end();
-  });
-})*/
-
-// Update all given settings.
-.put('/',function(req,res,next) {
-  var Setting = dataProvider.Setting;
-  Setting.updateAll(req.body).then(function(settings) {
-    res.json(settings);
   }).catch(Setting.NoRowsUpdatedError,function() {
-    var err = new Error('Error updating options.');
+    var err = new Error('Error updating this option.');
     console.error(err);
     res.status(400).json(err);
   }).catch(function(err) {

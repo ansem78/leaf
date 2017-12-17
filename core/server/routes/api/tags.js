@@ -50,6 +50,10 @@ router
   var Tag = dataProvider.Tag;
   Tag.update(req.body).then(function(tag) {
     res.json(tag);
+  }).catch(Tag.NotFoundError,function() {
+    var err = new Error('No tag found.');
+    console.error(err);
+    res.status(400).json(err);
   }).catch(Tag.NoRowsUpdatedError,function() {
     var err = new Error('Error updating this tag.');
     console.error(err);

@@ -50,6 +50,10 @@ router
   var Share = dataProvider.Share;
   Share.update(req.body).then(function(share) {
     res.json(share);
+  }).catch(Share.NotFoundError,function() {
+    var err = new Error('No share found.');
+    console.error(err);
+    res.status(400).json(err);
   }).catch(Share.NoRowsUpdatedError,function() {
     var err = new Error('Error updating this share.');
     console.error(err);

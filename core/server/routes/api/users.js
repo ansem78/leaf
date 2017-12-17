@@ -53,6 +53,9 @@ router.get('/',function(req,res,next) {
   var User = dataProvider.User;
   User.update(req.body).then(function(user) {
     res.json(user.omit('password'));
+  }).catch(User.NotFoundError,function() {
+    var err = new Error('No user found.');
+    res.status(400).json(err);
   }).catch(User.NoRowsUpdatedError,function() {
     var err = new Error('Error updating this user.');
     console.error(err);

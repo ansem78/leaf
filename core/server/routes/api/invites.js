@@ -50,6 +50,9 @@ router
   var Invite = dataProvider.Invite;
   Invite.update(req.body).then(function(invite) {
     res.json(invite);
+  }).catch(Invite.NotFoundError,function() {
+    var err = new Error('No invited user found.');
+    res.status(400).json(err);
   }).catch(Invite.NoRowsUpdatedError,function() {
     var err = new Error('Error updating this invited user.');
     console.error(err);

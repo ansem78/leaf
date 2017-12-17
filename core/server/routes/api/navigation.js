@@ -50,6 +50,10 @@ router
   var Navigation = dataProvider.Navigation;
   Navigation.update(req.body).then(function(navigation) {
     res.json(navigation);
+  }).catch(Navigation.NotFoundError,function() {
+    var err = new Error('No navigation link found.');
+    console.error(err);
+    res.status(400).json(err);
   }).catch(Navigation.NoRowsUpdatedError,function() {
     var err = new Error('Error updating this navigation link.');
     console.error(err);
