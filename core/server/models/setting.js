@@ -29,6 +29,9 @@ function parseCoreSetting(name,value) {
     case 'dated_permalinks':
     return validator.toBoolean(value);
 
+    case 'default_avatar':
+    return (validator.isIn(value,['mm','','blank','identicon','monsterid','wavatar','robohash','retro']))? value : '';
+
     default:
     return value;
   }
@@ -108,7 +111,7 @@ Setting = leafBookshelf.Model.extend({
 
       if (!attrs.name) throw new Error('Setting name is required.');
 
-      attrs.value = attrs.value || null;
+      attrs.value = attrs.value || '';
 
       attrs.type = attrs.type || null;
 
@@ -188,39 +191,24 @@ Setting = leafBookshelf.Model.extend({
 
     update : Promise.method(function(attrs) {
 
-      attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
+        var t = this;
 
-      var options = {require : true,method : 'update',patch : false,defaults : false};
+        var options = {require : true};
 
-      return this.forge({id : attrs.id}).save(attrs,options).then(function(setting) {
-        return setting;
-      });
+        return t.forge().where({id : attrs.id}).fetch(options).then(function(setting) {
 
-    }),
+          attrs = _.extend(setting.serialize(),attrs);
+          attrs = _.omit(attrs,'updated_at');
 
-    /**
-     * Update all given settings.
-     */
+          attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
 
-    updateAll : Promise.method(function(settings) {
+          var options = {require : true,method : 'update',patch : false,defaults : false};
 
-      var t = this;
+          return t.forge({id : attrs.id}).save(attrs,options).then(function(setting) {
+            return setting;
+          });
 
-      var options = {require : true,method : 'update',patch : false,defaults : false};
-
-      var saved = _.map(settings,function(attrs) {
-
-        attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
-
-        return t.forge({id : attrs.id}).save(attrs,options).then(function(setting) {
-          return setting;
         });
-
-      });
-
-      return Promise.all(saved).then(function(res) {
-        return res;
-      });
 
     }),
 

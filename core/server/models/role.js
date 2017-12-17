@@ -95,13 +95,24 @@ Role = leafBookshelf.Model.extend({
 
     update : Promise.method(function(attrs) {
 
-      attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
+        var t = this;
 
-      var options = {require : true,method : 'update',patch : false,defaults : false};
+        var options = {require : true};
 
-      return this.forge({id : attrs.id}).save(attrs,options).then(function(role) {
-          return role;
-      });
+        return t.forge().where({id : attrs.id}).fetch(options).then(function(role) {
+
+          attrs = _.extend(role.serialize(),attrs);
+          attrs = _.omit(attrs,'updated_at');
+
+          attrs.updated_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.
+
+          var options = {require : true,method : 'update',patch : false,defaults : false};
+
+          return t.forge({id : attrs.id}).save(attrs,options).then(function(role) {
+              return role;
+          });
+
+        });
 
     }),
 
