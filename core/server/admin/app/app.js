@@ -1,4 +1,4 @@
-angular.module('Leaf',['ui.router','ngSanitize','oc.lazyLoad','ui.sortable'])
+angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.sortable'])
 
 .config(['$urlMatcherFactoryProvider','$stateProvider','$urlRouterProvider','$locationProvider','$ocLazyLoadProvider',function($urlMatcherFactoryProvider,$stateProvider,$urlRouterProvider,$locationProvider,$ocLazyLoadProvider) {
 
@@ -529,11 +529,6 @@ angular.module('Leaf',['ui.router','ngSanitize','oc.lazyLoad','ui.sortable'])
     $rootScope.search = '';
   };
 
-  // When a route changes, initialize search string.
-  $rootScope.$on('$stateChangeStart',function(event) {
-    $rootScope.initSearch();
-  });
-
   // Load all settings.
   $rootScope.loadSettings = function() {
     $rootScope.settings = {};
@@ -542,7 +537,12 @@ angular.module('Leaf',['ui.router','ngSanitize','oc.lazyLoad','ui.sortable'])
     });
   };
 
-  $rootScope.loadSettings();
+  // When a route changes, initialize search string.
+  $rootScope.$on('$stateChangeSuccess',function(event) {
+    //if ($rootScope.isMobile()) $rootScope.hideHeader();
+    $rootScope.initSearch();
+    $rootScope.loadSettings();
+  });
 
   // Initialize system info.
   $rootScope.loadSystemInfo = function() {
@@ -582,11 +582,16 @@ angular.module('Leaf',['ui.router','ngSanitize','oc.lazyLoad','ui.sortable'])
     return $state.current.data.nosearch || false;
   };
 
+  // Check if the viewport size is a mobile device one.
+  $rootScope.isMobile = function() {
+      return $(window).width()<992;
+  };
+
   // Initialize header.
   $rootScope.initHeader = function() {
 
     $(window).on('resize',function() {
-      $('#header').eq(0).css('left',($(window).width()>990)? '0' : '-304px');
+      $('#header').eq(0).css('left',($rootScope.isMobile())? '-304px' : '0');
     });
 
     $('#header nav').css('overflow','hidden');
