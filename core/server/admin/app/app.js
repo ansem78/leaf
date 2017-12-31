@@ -1,11 +1,13 @@
 angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.sortable'])
 
 .config(['$urlMatcherFactoryProvider','$stateProvider','$urlRouterProvider','$locationProvider','$ocLazyLoadProvider',function($urlMatcherFactoryProvider,$stateProvider,$urlRouterProvider,$locationProvider,$ocLazyLoadProvider) {
+
   $urlMatcherFactoryProvider.strictMode(false);
 
   var modulesUrl = 'app/components/';
-  $stateProvider
 
+  $stateProvider
+  
   // Setup.
   .state('setup',{
     url : '/setup',
@@ -40,7 +42,7 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
     },
     cache : false
   })
-
+  
   // Sign up.
   .state('signup',{
     url : '/signup/:token',
@@ -393,6 +395,7 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
 }])
 
 .run(['$rootScope','$location','$state','$http','$ocLazyLoad',function($rootScope,$location,$state,$http,$ocLazyLoad) {
+
   var deps = [
     'app/shared/filters.js',
     'app/shared/directives.js'

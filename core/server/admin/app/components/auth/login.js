@@ -1,7 +1,7 @@
 angular.module('Leaf')
 
 .controller('loginController',['$rootScope','$scope','$http','$state',function($rootScope,$scope,$http,$state) {
-console.log('login controller')
+
   $scope.error = false;
 
   // Esegue il login.

@@ -173,6 +173,7 @@ Setting = leafBookshelf.Model.extend({
      */
 
     create : Promise.method(function(attrs) {
+
       attrs.id = objectId().str;
 
       attrs.created_by = 'xxxxxxxxxxxxxxxxxxxxxxxx'; // Should be the logged in user ID.

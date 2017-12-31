@@ -27,13 +27,9 @@ function validatePasswordLength(password) {
  * Generate a random salt and hash the password with it.
  */
 
-function generatePasswordHash(password,cb) {
-    console.log('model/user.js', 'genero password',password)
+function generatePasswordHash(password) {
   return bcryptGenSalt().then(function(salt) {
-      console.log('password ok! genero salt',salt)
     return bcryptHash(password,salt).then(function(hash) {
-        console.log('ecco il mio hash',hash)
-        cb(hash)
       return hash;
     });
   });
@@ -115,18 +111,15 @@ User = leafBookshelf.Model.extend({
      */
 
     format : function(attrs) {
-        console.log('formatto',attrs)
-        attrs.password = generatePasswordHash(attrs.password,(hash)=>{
-                attrs.password = hash
-                console.log('callback****************************************************************',h)
-        });
+
+        attrs.password = generatePasswordHash(attrs.password);
 
         attrs.name = utils.plaintext(attrs.name);
 
         attrs.slug = utils.slugify((_.isEmpty(attrs.slug))? attrs.name : attrs.slug);
 
         attrs.avatar = generateGravatar(attrs.email);
-        console.log('fortmattazione finita',attrs)
+
         return leafBookshelf.Model.prototype.format.call(this,attrs);
     }
 
