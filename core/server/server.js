@@ -17,7 +17,7 @@ LeafServer.prototype.start = function(app) {
     var port = process.env.PORT || config.get('server:port');
 
     self.httpServer = app.listen(port,config.get('server:host'),function() {
-        console.log(chalk.green('App listening at %s on port %d.'),self.httpServer.address().address,self.httpServer.address().port);
+        console.log(chalk.green('App listening at http://%s:%d.'),self.httpServer.address().address,self.httpServer.address().port);
     });
 };
 

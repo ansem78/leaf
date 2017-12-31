@@ -9,7 +9,6 @@ router = express.Router(),
 
 roles,
 options;
-
 // Roles.
 roles = {
   owner : 'Owner',
@@ -41,9 +40,9 @@ router
 
 // Setup.
 .post('/',function(req,res,next) {
-
+    console.log('setting up db',req.body)
   if (!req.body.site_name) res.status(400).json(new Error('Site name is required.'));
-
+  console.log('inizio setup')
   var owner_id,
   author_id,
   promises = [],
@@ -53,31 +52,44 @@ router
 
   // Populate roles.
   _.each(roles,function(name,slug) {
+      console.log('inserisco promise ',name,slug)
     promises.push(Role.create({name : name,slug : slug}));
-  });
-
+});
   // When all the roles are created, populate settings and create the owner.
-  Promise.all(promises).then(function(responses) {
 
+  Promise.all(promises).then(function(responses) {
+      console.log('responses',responses)
     // Get owner and author role IDs.
     _.each(responses,function(role) {
+        console.log('responses for ')
+        console.log(role)
+        console.log('----------------------------------------')
+        //console.log('ho ricevuto responses',responses)
       if (role.get('slug')==='owner') owner_id = role.get('id');
       else if (role.get('slug')==='author') author_id = role.get('id');
       if (owner_id && author_id) return;
     });
+    req.body.site_name='lol';
+    req.body.email= "arpho@iol.it"
+    req.body.password = '12345678'
+    req.body.name = 'arpho'
 
     // Populate settings.
     options.site_name = req.body.site_name;
     options.admin_email = req.body.email;
     options.default_role = author_id;
-
+    options.password = 'ciaciao'
+    //options.password = 'ciaciao';
     _.each(options,function(value,name) {
+        console.log('creating',name,'value',value)
       Setting.create({name : name,value : value});
     });
-
     // Create the owner.
+
     User.create({name : req.body.name,email : req.body.email,password : req.body.password,role_id : owner_id}).then(function(user) {
+        console.log('creato user',user)
       res.json(user);
+      console.log('user ok',user);
     }).catch(User.NoRowsUpdatedError,function() {
       var err = new Error('Error creating owner.');
       console.error(err);
@@ -87,7 +99,7 @@ router
       res.status(400).json(err);
     });
 
-  });
+})
 
 });
 
