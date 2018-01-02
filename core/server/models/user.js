@@ -120,7 +120,6 @@ User = leafBookshelf.Model.extend({
         attrs.slug = utils.slugify((_.isEmpty(attrs.slug))? attrs.name : attrs.slug);
 
         attrs.avatar = generateGravatar(attrs.email);
-
         return leafBookshelf.Model.prototype.format.call(this,attrs);
     }
 

@@ -65,10 +65,8 @@ router
       else if (role.get('slug')==='author') author_id = role.get('id');
       if (owner_id && author_id) return;
     });
-    console.log(req.body,'req.body')
     // Populate settings.
     options.site_name = req.body.site_name;
-    options.admin_email = req.body.email='arpgo@iol.it';
     options.default_role = author_id;
 
 
