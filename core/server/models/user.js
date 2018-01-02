@@ -27,9 +27,10 @@ function validatePasswordLength(password) {
  * Generate a random salt and hash the password with it.
  */
 
-function generatePasswordHash(password) {
+function generatePasswordHash(password,cb) {
   return bcryptGenSalt().then(function(salt) {
     return bcryptHash(password,salt).then(function(hash) {
+        cb(hash);
       return hash;
     });
   });
@@ -112,7 +113,7 @@ User = leafBookshelf.Model.extend({
 
     format : function(attrs) {
 
-        attrs.password = generatePasswordHash(attrs.password);
+        attrs.password = generatePasswordHash(attrs.password,hash=>attrs.password = hash);/* il metodo è asincrono, bcript esegue i calcoli in un thred parallelo*/
 
         attrs.name = utils.plaintext(attrs.name);
 
