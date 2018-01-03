@@ -477,28 +477,6 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
     $('#message-modal').modal({show : false});
   };
 
-  // Set message.
-  $rootScope.setMessage = function(message,severity) {
-    $rootScope.hideLoading();
-    severity = severity || '';
-    severity = severity.toLowerCase();
-
-    var icons = {
-      info : 'info-a',
-      success : 'check',
-      warning : 'alert-circle',
-      danger : 'alert-triangle'
-    };
-
-    if (!icons.hasOwnProperty(severity)) severity = 'danger';
-
-    $rootScope.message = {
-      text : message,
-      icon : icons[severity],
-      severity : severity
-    };
-  };
-
   // Show message modal.
   $rootScope.showMessage = function(message,severity) {
     $rootScope.hideLoading();
@@ -539,7 +517,6 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
 
   // When a route changes, initialize search string.
   $rootScope.$on('$stateChangeSuccess',function(event) {
-    //if ($rootScope.isMobile()) $rootScope.hideHeader();
     $rootScope.initSearch();
     $rootScope.loadSettings();
   });
@@ -591,42 +568,37 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
   $rootScope.initHeader = function() {
 
     $(window).on('resize',function() {
-      $('#header').eq(0).css('left',($rootScope.isMobile())? '-304px' : '0');
-    });
-
-    $('#header nav').css('overflow','hidden');
-
-    $('#header nav').on('mouseover',function() {
-        $(this).css('overflow','auto');
-    }).on('mouseout',function() {
-        $(this).css('overflow','hidden');
+      $('#header').eq(0).css('left',($rootScope.isMobile())? '-18.75rem' : '0');
     });
 
   };
 
   // Show header.
-  $rootScope.showHeader = function() {
+  $rootScope.showHeader = function(event) {
+    if (event) event.preventDefault();
     $rootScope.hideSidebar();
     $('#header nav').scrollTop(0);
-    $('#header').eq(0).animate({left : '0'},300);
+    $('#header').eq(0).animate({left : '0'},240);
   };
 
   // Hide header.
-  $rootScope.hideHeader = function() {
-    $('#header').eq(0).animate({left : '-304px'},300);
+  $rootScope.hideHeader = function(event) {
+    if (event) event.preventDefault();
+    $('#header').eq(0).animate({left : '-18.75rem'},240);
   };
 
   // Show sidebar.
   $rootScope.showSidebar = function(event) {
     if (event) event.preventDefault();
+    if ($rootScope.isMobile()) $rootScope.hideHeader();
     $('#sidebar .content').scrollTop(0);
-    $('#sidebar').eq(0).animate({right : '0'},300);
+    $('#sidebar').eq(0).animate({right : '0'},240);
   };
 
   // Hide sidebar.
   $rootScope.hideSidebar = function(event) {
     if (event) event.preventDefault();
-    $('#sidebar').eq(0).animate({right : '-309px'},300);
+    $('#sidebar').eq(0).animate({right : '-19.0625rem'},240);
   };
 
 
