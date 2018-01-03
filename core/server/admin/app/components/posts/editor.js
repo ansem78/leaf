@@ -8,19 +8,21 @@ angular.module('Leaf')
       {id : 'preview',name : 'Preview'}
     ];
 
-    // Set active editor view.
-    $scope.setActiveView = function(view) {
-      $scope.activeView = view;
+    // Check if a view is the active one.
+    $scope.isActiveView = function(id) {
+        return $scope.activeView===id;
+    };
+
+    // Set the active view.
+    $scope.setActiveView = function(id) {
+      $scope.activeView = id;
       $('.editor-panel').css('z-index','1');
-      $('#editor-' + $scope.activeView.id).css('z-index','2');
+      $('#editor-' + $scope.activeView).css('z-index','2');
     };
 
-    $scope.setActiveView($scope.views[0]);
+    $scope.setActiveView($scope.views[0].id);
 
-    // Initialize editor content editable.
-    $scope.initEditor = function() {
-      $('#editor-markdown .editor-panel-content').prop('contenteditable',true);
-    };
+
 
 
 

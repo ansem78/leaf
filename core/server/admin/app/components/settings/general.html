@@ -10,9 +10,7 @@
 
 <div class="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
-<div id="title-bar-controls">
 <button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
-</div>
 </div>
 
 <!-- End title bar -->
@@ -60,7 +58,7 @@
 <div class="form-group row">
 <label for="current_theme" class="col-md-12 col-lg-4 col-form-label">Theme</label>
 <div class="col-md-12 col-lg-8 input-control">
-<select id="current_theme" name="current_theme" class="form-control" size="1" ng-model="settings.current_theme.value" required>
+<select id="current_theme" name="current_theme" class="form-control custom-select" size="1" ng-model="settings.current_theme.value" required>
 <option value="{{t.id}}" ng-repeat="t in themes | orderBy : 'name' track by $index">{{t.name}}</option>
 </select>
 <p class="text-muted">Select a theme for your site.</p>

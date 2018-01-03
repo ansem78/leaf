@@ -28,9 +28,13 @@
 </div>
 </div>
 
-<div class="clearfix">
-<button type="button" class="btn btn-default text-danger float-left" data-toggle="modal" data-target="#delete-tag-modal" ng-if="activeTag.id"><span class="icon icon-bin-b"></span> Delete</button>
-<button type="submit" class="btn btn-primary float-right" ng-disabled="updateTagForm.$invalid">Save</button>
+<div class="row no-gutters align-items-center">
+<div class="col order-1 text-right">
+<button type="submit" class="btn btn-primary" ng-disabled="updateTagForm.$invalid">Save</button>
+</div>
+<div class="col">
+<button type="button" class="btn btn-outline-danger border-0" data-toggle="modal" data-target="#delete-tag-modal" ng-if="activeTag.id"><span class="icon icon-bin-b"></span> Delete</button>
+</div>
 </div>
 
 </div>

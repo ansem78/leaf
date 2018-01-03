@@ -15,35 +15,36 @@
 <!-- Title bar -->
 
 <div class="title-bar">
-<h2 id="title"><a href="users/"><span class="glyphicon glyphicon-chevron-left"></span> {{$state.current.title}}</a></h2>
-<div id="title-bar-controls">
+<h2 id="title"><a href="users/"><span class="icon icon-chevron-left"></span> {{$state.current.title}}</a></h2>
 <button type="submit" class="btn btn-primary text-uppercase" ng-disabled="userForm.$invalid">Save</button>
-</div>
 </div>
 
 <!-- End title bar -->
 
 <!-- Content -->
 
-<div class="content content-dark">
-<div id="user-content">
+<div class="content">
 
-<div class="user-sidebar">
-<div class="user-sidebar-head">
-<img ng-src="{{user.avatar}}?s=124&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar hidden-xs hidden-sm" alt="{{user.name}}" />
-<img ng-src="{{user.avatar}}?s=64&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar hidden-md hidden-lg" alt="{{user.name}}" />
+<div class="user-profile">
+
+<div class="user-header">
+<div class="user-avatar">
+<img ng-src="{{user.avatar}}?s=96&amp;r={{$root.settings.avatar_rating.value}}&amp;d={{$root.settings.default_avatar.value}}" class="avatar" alt="{{user.name}}" />
+</div>
 <h3>{{user.name}}</h3>
-<p>Registered on {{user.created_at | date : 'MMMM d, yyyy'}}</p>
-</div>
-<div class="user-sidebar-body clearfix">
-<h4 class="hidden-xs hidden-sm"><span>Profile</span></h4>
+<p class="text-muted">Registered on {{user.created_at | date : 'MMMM d, yyyy'}}</p>
+
+<nav class="d-none d-lg-block">
 <ul>
-<li ng-repeat="v in views track by $index"><button type="button" ng-class="(isActiveView(v.id))? 'active' : ''" ng-click="setActiveView(v.id)"><span class="glyphicon glyphicon-{{v.icon}}"></span><em class="hidden-xs hidden-sm">{{v.title}}</em></button></li>
+<li ng-repeat="v in views track by $index"><button type="button" ng-class="(isActiveView(v.id))? 'active' : ''" ng-click="setActiveView(v.id)"><span class="icon icon-{{v.icon}}"></span>{{v.name}}</button></li>
 </ul>
-</div>
+</nav>
+
 </div>
 
-<div class="user-data" ng-show="isActiveView('profile')">
+<div class="user-data">
+
+<div ng-show="isActiveView('profile')">
 
 <div class="form-group">
 <label for="fullname">Full name</label>
@@ -71,7 +72,7 @@
 
 </div>
 
-<div class="user-data" ng-show="isActiveView('account')">
+<div ng-show="isActiveView('account')">
 
 <div class="form-group">
 <label for="slug">Display name</label>
@@ -87,7 +88,7 @@
 
 <div class="form-group">
 <label for="language">Language</label>
-<select id="language" class="form-control" size="1" ng-model="user.language" required>
+<select id="language" class="form-control custom-select" size="1" ng-model="user.language" required>
 <option value="en_US">English (United States)</option>
 <option value="it_IT">Italian (Italy)</option>
 </select>
@@ -96,7 +97,7 @@
 
 <div class="form-group">
 <label for="role_id">Role</label>
-<select id="role_id" class="form-control" size="1" ng-model="user.role_id" required>
+<select id="role_id" class="form-control custom-select" size="1" ng-model="user.role_id" required>
 <option value="{{r.id}}" ng-repeat="r in roles track by $index">{{r.name}}</option>
 </select>
 <p class="text-muted">Your preferred language.</p>
@@ -105,23 +106,36 @@
 <hr />
 
 <div class="row">
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<div class="col">
 <p>If you delete your account, all your data will be lost forever.</p>
 </div>
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
-<button type="button" class="btn btn-sm btn-danger text-uppercase" data-toggle="modal" data-target="#delete-user-modal">Delete account</button>
+<div class="col text-right">
+<button type="button" class="btn btn-outline-danger border-0" data-toggle="modal" data-target="#delete-user-modal"><span class="icon icon-bin-b"></span> Delete account</button>
 </div>
 </div>
 
 </div>
 
-<div class="user-data" ng-show="isActiveView('stats')">
+<div ng-show="isActiveView('stats')">
 
 
 
 </div>
 
 </div>
+
+</div>
+
+<!-- Footer bar -->
+
+<div id="footer-bar" class="d-block d-lg-none clearfix">
+<ul>
+<li ng-class="($first)? 'first' : ''" ng-repeat="v in views track by $index"><button type="button" ng-class="(isActiveView(v.id))? 'active' : ''" ng-click="setActiveView(v.id)">{{v.name}}</button></li>
+</ul>
+</div>
+
+<!-- End footer bar -->
+
 </div>
 
 <!-- End content -->

@@ -32,11 +32,9 @@ angular.module('Leaf')
 
   // Get the slug based on tag name.
   $scope.slugify = function(event) {
-    if (!$filter('isNpc')(event.keyCode)) {
       tagsService.slugify($scope.activeTag.name).then(function(res) {
         if (res.status===200) $scope.activeTag.slug = res.data;
       });
-    }
   };
 
   // Add a tag.

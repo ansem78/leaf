@@ -3,32 +3,22 @@ angular.module('Leaf')
 .controller('userController',['$rootScope','$scope','$stateParams','$filter','rolesService','usersService',function($rootScope,$scope,$stateParams,$filter,rolesService,usersService) {
 
   $scope.views = [
-    {
-      id : 'profile',
-      title : 'Profile',
-      icon : 'user'
-    },
-    {
-      id : 'account',
-      title : 'Account settings',
-      icon : 'gear'
-    },
-    {
-      id : 'stats',
-      title : 'Stats',
-      icon : 'pie-chart-c'
-    }
+    {id : 'profile',name : 'Profile',icon : 'user'},
+    {id : 'account',name : 'Account',icon : 'gear'},
+    {id : 'stats',name : 'Stats',icon : 'pie-chart-c'}
   ];
 
+  // Check if a view is the active one.
+  $scope.isActiveView = function(id) {
+    return $scope.activeView===id;
+  };
+
+  // Set the active view.
   $scope.setActiveView = function(id) {
     $scope.activeView = id;
   };
 
   $scope.setActiveView($scope.views[0].id);
-
-  $scope.isActiveView = function(id) {
-    return $scope.activeView===id;
-  };
 
   // Load all roles.
   $scope.loadRoles = function() {

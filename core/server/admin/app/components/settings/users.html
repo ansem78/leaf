@@ -10,9 +10,7 @@
 
 <div class="title-bar">
 <h2 id="title">{{$state.current.title}}</h2>
-<div id="title-bar-controls">
 <button type="submit" class="btn btn-primary text-uppercase" ng-disabled="settingsForm.$invalid">Save</button>
-</div>
 </div>
 
 <!-- End title bar -->
@@ -26,7 +24,7 @@
 <div class="form-group row">
 <label for="default_role" class="col-md-12 col-lg-4 col-form-label">Default role</label>
 <div class="col-md-12 col-lg-8 input-control">
-<select id="default_role" name="default_role" class="form-control" size="1" ng-model="settings.default_role.value" required>
+<select id="default_role" name="default_role" class="form-control custom-select" size="1" ng-model="settings.default_role.value" required>
 <option value="{{r.id}}" ng-if="r.slug!=='owner'" ng-repeat="r in roles track by $index">{{r.name}}</option>
 </select>
 <p class="text-muted">The default role for invited users.</p>
@@ -71,42 +69,42 @@
 
 <div>
 <input type="radio" id="default_avatar_mm" name="default_avatar" class="radio" value="mm" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_mm"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=mm" class="avatar" alt="Mistery man" /> Mistery man</label>
+<label for="default_avatar_mm"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=mm" class="avatar" alt="Mistery man" /> Mistery man</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_gravatar" name="default_avatar" class="radio" value="" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_gravatar"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=" class="avatar" alt="Gravatar logo" /> Gravatar logo</label>
+<label for="default_avatar_gravatar"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=" class="avatar" alt="Gravatar logo" /> Gravatar logo</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_identicon" name="default_avatar" class="radio" value="identicon" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_identicon"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=identicon" class="avatar" alt="Identicon" /> Identicon (generated)</label>
+<label for="default_avatar_identicon"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=identicon" class="avatar" alt="Identicon" /> Identicon (generated)</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_monsterid" name="default_avatar" class="radio" value="monsterid" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_monsterid"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=monsterid" class="avatar" alt="MonsterID" /> MonsterID (generated)</label>
+<label for="default_avatar_monsterid"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=monsterid" class="avatar" alt="MonsterID" /> MonsterID (generated)</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_wavatar" name="default_avatar" class="radio" value="wavatar" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_wavatar"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=wavatar" class="avatar" alt="Wavatar" /> Wavatar (generated)</label>
+<label for="default_avatar_wavatar"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=wavatar" class="avatar" alt="Wavatar" /> Wavatar (generated)</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_retro" name="default_avatar" class="radio" value="retro" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_retro"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=retro" class="avatar" alt="Retro" /> Retro (generated)</label>
+<label for="default_avatar_retro"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=retro" class="avatar" alt="Retro" /> Retro (generated)</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_robohash" name="default_avatar" class="radio" value="robohash" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_robohash"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=robohash" class="avatar" alt="Robohash" /> Robohash (generated)</label>
+<label for="default_avatar_robohash"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=robohash" class="avatar" alt="Robohash" /> Robohash (generated)</label>
 </div>
 
 <div>
 <input type="radio" id="default_avatar_blank" name="default_avatar" class="radio" value="blank" ng-model="settings.default_avatar.value" />
-<label for="default_avatar_blank"><img ng-src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=blank" class="avatar" alt="Blank" /> Blank</label>
+<label for="default_avatar_blank"><img src="http://www.gravatar.com/avatar/6fd1aecf716d0f9b41e8dfc13fb1958d?s=32&amp;f=y&amp;d=blank" class="avatar" alt="Blank" /> Blank</label>
 </div>
 
 </div>

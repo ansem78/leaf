@@ -26,8 +26,7 @@
 
 <div class="title-bar">
 <input type="text" id="title" size="50" value="" placeholder="Your post title here" />
-<div id="title-bar-controls">
-<button type="button" class="btn btn-default d-none d-lg-inline-flex" ng-click="showSidebar($event)"><span class="icon icon-gear"></span><span class="sr-only">Post settings</span></button>
+<button type="button" class="btn btn-default d-none d-lg-inline" ng-click="showSidebar($event)"><span class="icon icon-gear"></span><span class="sr-only">Post settings</span></button>
 <div class="btn-group d-none d-lg-inline-flex" role="group" aria-label="Save options">
 <button type="button" class="btn btn-primary text-uppercase">Save draft</button><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle menu</span></button>
 <div class="dropdown-menu dropdown-menu-right">
@@ -38,7 +37,7 @@
 </ul>
 </div>
 </div>
-<div class="dropdown d-inline-flex d-lg-none">
+<div class="dropdown d-inline d-lg-none">
 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icon icon-gear"></span><span class="sr-only">Post settings</span></button>
 <div class="dropdown-menu dropdown-menu-right">
 <ul>
@@ -50,23 +49,22 @@
 </div>
 </div>
 </div>
-</div>
 
 <!-- End title bar -->
 
 <!-- Content -->
 
-<div class="content" ng-init="initEditor()">
+<div class="content">
 
 <!-- Editor left panel -->
 
 <div id="editor-markdown" class="editor-panel editor-panel-left">
 <div class="editor-panel-head clearfix d-none d-lg-block">
 <h3>Markdown</h3>
-<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
 </div>
-<div class="editor-panel-body syncscroll" data-syncscroll="editor-scroll">
-<div class="editor-panel-content padding code"></div>
+<div class="editor-panel-body">
+<div class="editor-panel-content"><textarea class="code" cols="50" rows="50"></textarea></div>
 </div>
 </div>
 
@@ -79,23 +77,23 @@
 <h3>Preview</h3>
 <p>Words: 0</p>
 </div>
-<div class="editor-panel-body syncscroll" data-syncscroll="editor-scroll">
-<div class="editor-panel-content padding"></div>
+<div class="editor-panel-body">
+<div class="editor-panel-content"></div>
 </div>
 </div>
 
 <!-- End editor right panel -->
 
-<!-- Editor controls -->
+<!-- Footer bar -->
 
 <div id="footer-bar" class="d-block d-lg-none clearfix">
 <ul>
-<li ng-class="($first)? 'first' : ''" ng-repeat="v in views track by $index"><button type="button" ng-class="(activeView.id===v.id)? 'active' : ''" ng-click="setActiveView(v)">{{v.name}}</button></li>
+<li ng-class="($first)? 'first' : ''" ng-repeat="v in views track by $index"><button type="button" ng-class="(isActiveView(v.id))? 'active' : ''" ng-click="setActiveView(v.id)">{{v.name}}</button></li>
 </ul>
-<button type="button" class="btn" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#markdown-modal"><span class="icon icon-markdown"></span><span class="sr-only">Markdown help</span></button>
 </div>
 
-<!-- End editor controls -->
+<!-- End footer bar -->
 
 </div>
 
