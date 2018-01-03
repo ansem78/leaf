@@ -1,7 +1,7 @@
 <div id="system-info-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="system-info-modal-title">
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
-<div class="modal-header d-flex d-sm-none">
+<div class="modal-header d-flex d-lg-none">
 <h3 id="system-info-modal-title" class="modal-title">System</h3>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
@@ -13,7 +13,7 @@
 <p>{{$root.systemInfo.platform.description}}</p>
 <p class="version">Version {{$root.systemInfo.platform.version}} ({{$root.systemInfo.platform.codename}})</p>
 </div>
-<div id="system-info-logo" class="d-none d-md-block">
+<div id="system-info-logo" class="d-none d-lg-block">
 <span class="icon icon-leaf-a"></span>
 </div>
 </div>
@@ -21,37 +21,37 @@
 <h4>Server informations</h4>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Hostname:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.server.hostname}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Host:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.server.host}} (on port {{$root.systemInfo.server.port}})</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Operating system:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.server.os.name}} (ver. {{$root.systemInfo.server.os.release}})</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>CPUs:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <ul>
 <li ng-repeat="c in $root.systemInfo.server.cpus track by $index">{{c.model}}</li>
 </ul>
@@ -59,19 +59,19 @@
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Available memory:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.server.memory.total | bytesFormat : 2}} ({{$root.systemInfo.server.memory.free | bytesFormat : 2}} free)</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Database:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p ng-if="$root.systemInfo.server.database==='sqlite3'">SQLite</p>
 <p ng-if="$root.systemInfo.server.database==='mysql'">MySQL</p>
 <p ng-if="$root.systemInfo.server.database==='pg'">PostgreSQL</p>
@@ -83,19 +83,19 @@
 <h4>Node.js environment</h4>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Version:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.env.version}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>NPM modules:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <ul class="modules clearfix">
 <li ng-repeat="(key,value) in $root.systemInfo.env.modules track by $index"><span class="icon icon-npm"></span> <a href="https://www.npmjs.com/package/{{key}}">{{key}}</a> <small>({{value}})</small></li>
 </ul>
@@ -107,46 +107,46 @@
 <h4>Client informations</h4>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>User-agent:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.client.useragent}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Rendering engine:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{$root.systemInfo.client.engine}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Status:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{($root.systemInfo.client.online)? 'Online' : 'Offline'}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Cookies:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{($root.systemInfo.client.cookies)? 'Enabled' : 'Disabled'}}</p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-label col-sm-12 col-md-3">
+<div class="col-label col-md-12 col-lg-3">
 <p>Geolocation:</p>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-md-12 col-lg-9">
 <p>{{($root.systemInfo.client.geolocation)? 'Enabled' : 'Disabled'}}</p>
 </div>
 </div>

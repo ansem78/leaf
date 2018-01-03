@@ -1,9 +1,13 @@
 <div id="loading-modal" class="modal" tabindex="-1" role="dialog" ng-init="$root.initLoading()">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 <div class="modal-content">
 <div class="modal-body">
-<span class="icon icon-spinner-i spinner spinner-md spinner-block"></span>
-<p>{{$root.loading}}</p>
+<div class="container-fluid">
+<div class="row align-items-center">
+<div><span class="icon icon-spinner-b spinner"></span></div>
+<div class="col">{{$root.loading}}</div>
+</div>
+</div>
 </div>
 </div>
 </div>
