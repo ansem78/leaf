@@ -44,19 +44,17 @@ app.set('view engine','hbs');
 app.set('views',config.get('paths:contentPath') + '/themes/default');
 
 // App API routes.
-var api = require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/api');
-app.use('/api',api);
+app.use('/api',require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/api'));
 
-// App static administration routes.
+// App static administration & modules routes.
 app.use('/admin/app',express.static(__dirname + '/' + config.get('paths:corePath') + '/server/admin/app'));
 app.use('/admin/assets',express.static(__dirname + '/' + config.get('paths:corePath') + '/server/admin/assets'));
+app.use('/node_modules',express.static(__dirname + '/node_modules'));
 
 // App administration routes.
-var admin = require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/admin');
-app.use('/admin',admin);
+app.use('/admin',require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/admin'));
 
 // App public (site) routes.
-var site = require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/site');
-app.use('/',site);
+app.use('/',require(__dirname + '/' + config.get('paths:corePath') + '/server/routes/site'));
 
 var server = new LeafServer().start(app);
