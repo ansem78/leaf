@@ -1,4 +1,6 @@
-var chalk = require('chalk'),
+var https = require('https'),
+http = require('http'),
+chalk = require('chalk'),
 
 config = require('./config');
 
@@ -14,11 +16,19 @@ LeafServer.prototype.start = function(app) {
 
     var self = this;
 
+    var listening = function() {
+        console.log(chalk.green('App listening at %s on port %d.'),self.httpServer.address().address,self.httpServer.address().port);
+    };
+
+    var protocol = /^https?/i.exec(config.get('url')) || 'http';
+
     var port = process.env.PORT || config.get('server:port');
 
-    self.httpServer = app.listen(port,config.get('server:host'),function() {
-        console.log(chalk.green('App listening at %s on port %d.'),self.httpServer.address().address,self.httpServer.address().port);
-    });
+    var host = config.get('server:host');
+
+    var options = {};
+
+    self.httpServer = (protocol==='https')? https.createServer(options,app).listen(port,host,listening) : http.createServer(app).listen(port,host,listening);
 };
 
 module.exports = LeafServer;
