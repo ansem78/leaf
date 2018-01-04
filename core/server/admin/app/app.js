@@ -537,6 +537,7 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
     };
     $http.get($rootScope.siteUrl + '/api/misc/system').then(function(res) {
       if (res.status===200) {
+        $rootScope.systemInfo.url = res.data.url;
         $rootScope.systemInfo.env = res.data.env;
         $rootScope.systemInfo.platform = res.data.platform;
         $rootScope.systemInfo.server = res.data.server;
