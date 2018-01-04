@@ -16,7 +16,7 @@
 <div class="form-group">
 <label for="tag_slug">URL</label>
 <input type="text" id="tag_slug" name="tag_slug" class="form-control" size="50" maxlength="191" ng-model="activeTag.slug" required ng-pattern="/^[a-z0-9_-]+$/i" />
-<p class="text-muted">http://igiardinidiringford.it/tags/<span ng-if="activeTag.slug">{{activeTag.slug}}/</span></p>
+<p class="text-muted">{{$root.systemInfo.url}}/tags/<span ng-if="activeTag.slug">{{activeTag.slug}}/</span></p>
 </div>
 
 <div class="form-group">
