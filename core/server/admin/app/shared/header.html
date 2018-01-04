@@ -69,14 +69,14 @@
 <!-- Site -->
 
 <div id="site">
-<a href="http://{{$root.systemInfo.server.host}}:{{$root.systemInfo.server.port}}">
+<a href="{{$root.systemInfo.url}}">
 <div id="site-info">
 <div id="site-icon">
 <img src="../../favicon.ico" alt="{{$root.settings.site_name.value}}" />
 </div>
 <div id="site-data">
 <h2>{{$root.settings.site_name.value}}</h2>
-<p>{{$root.systemInfo.server.host}}:{{$root.systemInfo.server.port}}</p>
+<p>{{$root.systemInfo.url}}</p>
 </div>
 </div>
 </a>
