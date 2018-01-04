@@ -49,6 +49,7 @@ router
     break;
   }
   var info = {
+    url : config.get('url'),
     env : {
       version : semver.valid(process.version),
       modules : packageData.dependencies
