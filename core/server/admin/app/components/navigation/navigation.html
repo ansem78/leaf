@@ -26,7 +26,7 @@
 <input type="text" class="form-control" size="50" ng-model="items[$index].name" placeholder="Label" ng-blur="update(items[$index])" />
 </div>
 <div class="col">
-<input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="http://igiardinidiringford.it/" ng-blur="update(items[$index])" />
+<input type="url" class="form-control" size="50" ng-model="items[$index].url" placeholder="{{$root.systemInfo.url}}/" ng-blur="update(items[$index])" />
 </div>
 <button type="button" class="btn btn-outline-danger border-0" ng-click="remove(items[$index].id)"><span class="icon icon-bin-b"></span><span class="sr-only">Delete</span></button>
 </div>
@@ -39,7 +39,7 @@
 <input type="text" id="item_name" name="item_name" class="form-control" size="50" ng-model="newItem.name" required placeholder="Label" />
 </div>
 <div class="col">
-<input type="url" id="item_url" name="item_url" class="form-control" size="50" ng-model="newItem.url" required placeholder="http://igiardinidiringford.it/" />
+<input type="url" id="item_url" name="item_url" class="form-control" size="50" ng-model="newItem.url" required placeholder="{{$root.systemInfo.url}}/" />
 </div>
 <button type="submit" class="btn btn-success text-uppercase" ng-disabled="addItemForm.$invalid"><span class="icon icon-plus"></span><span class="sr-only">Add</span></button>
 </div>
