@@ -319,15 +319,15 @@ margin: 0;
 /* Logo & close button */
 
 #header h1,#header #header-close {
-line-height: 4rem;
+line-height: 3.75rem;
 color: #777;
 text-align: center;
-width: 4rem;
-height: 4rem;
+width: 3.75rem;
+height: 3.75rem;
 padding: 0;
 margin: 0;
 position: absolute;
-top: 0;
+top: .125rem;
 left: 0;
 }
 
@@ -354,7 +354,7 @@ background: #434857;
 
 #header #header-buttons {
 text-align: center;
-width: 4rem;
+width: 3.75rem;
 margin-top: 4rem;
 position: absolute;
 bottom: 0;
@@ -369,12 +369,12 @@ margin: 0;
 
 #header #header-buttons li a,#header #header-buttons li button {
 font-size: 1rem
-line-height: 3.5rem;
+line-height: 3.75rem;
 color: #777;
 text-decoration: none;
 background: transparent;
 width: 100%;
-height: 3.5rem;
+height: 3.75rem;
 padding: 0;
 border: none;
 border-radius: 0;
@@ -398,14 +398,14 @@ width: 1.5rem;
 height: 1.5rem;
 display: block;
 position: relative;
-top: 1rem;
-left: 1.25rem;
+top: 1.125rem;
+left: 1.125rem;
 }
 
 /* Header main content */
 
 #header #header-main {
-width: 14.75rem;
+width: 15rem;
 height: 100%;
 margin-left: auto;
 position: relative;
