@@ -9,6 +9,7 @@ router
 router.get('/',function(req,res,next) {
   var User = dataProvider.User;
   User.find({withRelated : ['role']}).then(function(users) {
+
     users.each(function(user) {
       user.omit('password');
     });
@@ -35,6 +36,7 @@ router.get('/',function(req,res,next) {
 
 // Create a user.
 .post('/',function(req,res,next) {
+    console.log('creating user')
   var User = dataProvider.User;
   User.create(req.body).then(function(user) {
     res.json(user.omit('password'));
@@ -50,6 +52,7 @@ router.get('/',function(req,res,next) {
 
 // Update a user.
 .put('/',function(req,res,next) {
+    console.log('updating user')
   var User = dataProvider.User;
   User.update(req.body).then(function(user) {
     res.json(user.omit('password'));
@@ -68,6 +71,7 @@ router.get('/',function(req,res,next) {
 
 // Delete a user.
 .delete('/:id',function(req,res,next) {
+    console.log('deleting user')
   var User = dataProvider.User;
   User.remove(req.params.id).then(function(user) {
     res.json(user);

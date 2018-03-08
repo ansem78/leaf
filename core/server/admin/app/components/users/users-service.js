@@ -11,6 +11,7 @@ angular.module('Leaf')
 
     // Get all users.
     find : function() {
+        console.log('api',this.apiUrl())
       return $http.get(this.apiUrl()).then(function(res) {
         return res;
       },

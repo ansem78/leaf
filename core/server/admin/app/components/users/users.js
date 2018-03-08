@@ -119,9 +119,11 @@ angular.module('Leaf')
   // Load all users.
   $scope.loadUsers = function() {
     $scope.users = [];
+    console.log('******************************************************************************************loadusers')
     usersService.find().then(function(res) {
+        console.log('ok users', res)
       if (res.status===200) $scope.users = $filter('orderBy')(res.data,'name');
-    });
+  }).catch(err=>{console.log('errore',err)});
   };
 
   $scope.loadUsers();

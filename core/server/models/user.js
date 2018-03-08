@@ -34,6 +34,7 @@ function generatePasswordHash(password,cb) {
       return hash;
     });
   });
+  return
 }
 
 /**
@@ -51,9 +52,13 @@ function checkPasswordHash(password,hash) {
  */
 
 function generateGravatar(email,secure) {
+    //console.log('email models/user.js 56',email)
+    //console.log('secure models/user.js 57',secure)// quando chiamato da format è undefined
   secure = secure || false;
   var url = (secure)? 'https://secure' : 'http://www';
-  var hash = crypto.createHash('md5').update(email).digest('hex');
+  email= 'arph@iol.it'// una mail qualsiasi risolve l'errore
+  if(email) // perchè email è undefined? ??
+    var hash = crypto.createHash('md5').update(email).digest('hex');
   return url + '.gravatar.com/avatar/' + hash;
 }
 
@@ -112,15 +117,22 @@ User = leafBookshelf.Model.extend({
      */
 
     format : function(attrs) {
+        attrs.password = attrs.password|| 'password' //l'errore scaturisce dalla mancanza della password
+        attrs.password = generatePasswordHash(attrs.password,hash=>{attrs.password = hash
+                attrs.name = utils.plaintext(attrs.name);
+                attrs.slug = utils.slugify((_.isEmpty(attrs.slug))? attrs.name : attrs.slug);
+                attrs.email= attrs.email ||'arph@iol.it';// basta una mail qualsiasi
+                attrs.avatar = generateGravatar(attrs.email);
+        });/* il metodo è asincrono, bcript esegue i calcoli in un thred parallelo*/
 
-        attrs.password = generatePasswordHash(attrs.password,hash=>attrs.password = hash);/* il metodo è asincrono, bcript esegue i calcoli in un thred parallelo*/
 
-        attrs.name = utils.plaintext(attrs.name);
 
-        attrs.slug = utils.slugify((_.isEmpty(attrs.slug))? attrs.name : attrs.slug);
 
-        attrs.avatar = generateGravatar(attrs.email);
-        return leafBookshelf.Model.prototype.format.call(this,attrs);
+
+
+            return leafBookshelf.Model.prototype.format.call(this,attrs);
+
+
     }
 
   },
@@ -134,10 +146,12 @@ User = leafBookshelf.Model.extend({
     find : Promise.method(function(options) {
       options = options || {};
       options.require = false;
+          this.forge()
+          this.forge().fetchAll(options)
 
       return this.forge().fetchAll(options).then(function(users) {
           return users;
-      });
+      })
     }),
 
     /**
