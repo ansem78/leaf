@@ -5,9 +5,8 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
   $urlMatcherFactoryProvider.strictMode(false);
 
   var modulesUrl = 'app/components/';
-
   $stateProvider
-  
+
   // Setup.
   .state('setup',{
     url : '/setup',
@@ -42,7 +41,7 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
     },
     cache : false
   })
-  
+
   // Sign up.
   .state('signup',{
     url : '/signup/:token',
@@ -411,7 +410,8 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
       items : [
         {id : 'dashboard',title : 'Dashboard',url : 'dashboard',icon : 'pulse',roles : []},
         {id : 'editor',title : 'Editor',url : 'editor',icon : 'pen-b',roles : []},
-        {id : 'users',title : 'Team',url : 'users',icon : 'users',roles : []}
+        {id : 'users',title : 'Team',url : 'users',icon : 'users',roles : []},
+        {id : 'login',title : 'Login',url : 'login',icon : 'pen-b',roles : []}
       ]
     },
     {
@@ -431,6 +431,16 @@ angular.module('Leaf',['ui.router','ngSanitize','ngAnimate','oc.lazyLoad','ui.so
         {id : 'navigation',title : 'Navigation',url : 'navigation',icon : 'compass',roles : []},
         {id : 'shares',title : 'Sharing',url : 'shares',icon : 'share-b',roles : []},
         {id : 'themes',title : 'Themes',url : 'themes',icon : 'brush',roles : []}
+      ]
+    },
+    {
+      id : 'settings',
+      title : 'Settings',
+      items : [
+        {id : 'settings-general',title : 'General',url : 'settings/general',icon : 'gear',roles : []},
+        {id : 'settings-contents',title : 'Contents',url : 'settings/contents',icon : 'folder-open-a',roles : []},
+        {id : 'settings-users',title : 'Users',url : 'settings/users',icon : 'user',roles : []},
+        {id : 'settings-advanced',title : 'Advanced',url : 'settings/advanced',icon : 'wrench-c',roles : []}
       ]
     },
     {

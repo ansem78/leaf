@@ -16,7 +16,8 @@ routes = [
   'navigation',
   'shares',
   'themes',
-  'misc'
+  'misc',
+  'login'
 ];
 
 routes.forEach(function(name) {
